@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物件情報 - 有限会社 谷島商事</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
+        .bg-main-blue { background-color: #0081cc; }
+        .text-main-blue { color: #0081cc; }
+        .bg-accent-green { background-color: #8fc31f; }
+        .bg-accent-yellow { background-color: #f8b500; }
+        .section-title::after {
+            content: ''; display: block; width: 60px; height: 3px;
+            background-color: #0081cc; margin-top: 8px; margin-left: auto; margin-right: auto;
+        }
+        .subsection-title {
+            color: #0081cc;
+            border-left: 5px solid #0081cc;
+            padding-left: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- ヘッダー -->
+    <header id="header" class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-main-blue">有限会社 谷島商事</a>
+            <nav class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                <a href="properties.html" class="text-main-blue font-bold">物件情報</a>
+                <a href="strengths.html" class="text-gray-600 hover:text-main-blue">当社の強み</a>
+                <a href="flow.html" class="text-gray-600 hover:text-main-blue">ご入居までの流れ</a>
+                <a href="customers.html" class="text-gray-600 hover:text-main-blue">お客様の声</a>
+                <a href="company.html" class="text-gray-600 hover:text-main-blue">会社概要</a>
+                <a href="contact.html" class="bg-main-blue text-white font-bold py-2 px-4 rounded-lg hover:opacity-90 transition-opacity">お問い合わせ</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <a href="properties.html" class="block py-2 px-6 text-sm bg-blue-100 text-main-blue">物件情報</a>
+            <a href="strengths.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">当社の強み</a>
+            <a href="flow.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">ご入居までの流れ</a>
+            <a href="customers.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">お客様の声</a>
+            <a href="company.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">会社概要</a>
+            <a href="contact.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">お問い合わせ</a>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="py-16 sm:py-20">
+        <div class="container mx-auto px-6">
+            <h1 class="section-title text-3xl font-bold text-center inline-block w-full mb-16">物件情報</h1>
+
+            <!-- 賃貸住宅情報 -->
+            <section id="rentals-housing">
+                <h2 class="subsection-title text-2xl font-bold mb-8">賃貸住宅</h2>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 賃貸住宅カード 1 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x250/fef9c3/333333?text=賃貸アパート" alt="物件画像" class="w-full h-56 object-cover">
+                            <span class="absolute top-2 left-2 bg-accent-green text-white text-sm font-bold px-3 py-1 rounded-full">新着</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main-blue mb-2">賃貸アパート 2LDK</h3>
+                            <p class="text-gray-600 mb-4">リフォーム済みで綺麗な内装。スーパーや公園も近く生活に便利。</p>
+                            <div class="text-2xl font-bold text-red-600 mb-4">7.5万円<span class="text-base font-normal text-gray-600">/月</span></div>
+                             <div class="border-t pt-4 text-sm text-gray-500">
+                                <p>専有面積: 55.2㎡ / 敷金: 1ヶ月 / 礼金: 1ヶ月</p>
+                                <p>所在地: 羽生市南 / 築年月: 2010年3月</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 賃貸住宅カード 2 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x250/ecfccb/333333?text=賃貸マンション" alt="物件画像" class="w-full h-56 object-cover">
+                            <span class="absolute top-2 left-2 bg-accent-yellow text-white text-sm font-bold px-3 py-1 rounded-full">駅近</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main-blue mb-2">賃貸マンション 1K</h3>
+                            <p class="text-gray-600 mb-4">単身者向け。オートロック完備でセキュリティも安心。</p>
+                            <div class="text-2xl font-bold text-red-600 mb-4">5.2万円<span class="text-base font-normal text-gray-600">/月</span></div>
+                             <div class="border-t pt-4 text-sm text-gray-500">
+                                <p>専有面積: 25.0㎡ / 敷金: 0ヶ月 / 礼金: 1ヶ月</p>
+                                <p>所在地: 羽生市中央 / 築年月: 2018年9月</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 賃貸住宅カード 3 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x250/dbeafe/333333?text=賃貸戸建て" alt="物件画像" class="w-full h-56 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main-blue mb-2">賃貸戸建て 庭付き4LDK</h3>
+                            <p class="text-gray-600 mb-4">家庭菜園も楽しめる広いお庭が魅力。ファミリーにおすすめ。</p>
+                            <div class="text-2xl font-bold text-red-600 mb-4">11万円<span class="text-base font-normal text-gray-600">/月</span></div>
+                             <div class="border-t pt-4 text-sm text-gray-500">
+                                <p>土地面積: 180.0㎡ / 建物面積: 110.0㎡</p>
+                                <p>所在地: 羽生市西 / 築年月: 2005年10月</p>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- 賃貸住宅カード 4 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x250/fefce8/333333?text=賃貸アパート" alt="物件画像" class="w-full h-56 object-cover">
+                             <span class="absolute top-2 left-2 bg-accent-green text-white text-sm font-bold px-3 py-1 rounded-full">ペット可</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main-blue mb-2">ペットと暮らせるアパート 1LDK</h3>
+                            <p class="text-gray-600 mb-4">大切なペットと一緒に暮らせます。ドッグラン近くにあり。</p>
+                            <div class="text-2xl font-bold text-red-600 mb-4">6.8万円<span class="text-base font-normal text-gray-600">/月</span></div>
+                             <div class="border-t pt-4 text-sm text-gray-500">
+                                <p>専有面積: 45.5㎡ / 敷金: 2ヶ月 / 礼金: 1ヶ月</p>
+                                <p>所在地: 羽生市東 / 築年月: 2015年2月</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 賃貸住宅カード 5 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x250/e0f2fe/333333?text=賃貸マンション" alt="物件画像" class="w-full h-56 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main-blue mb-2">分譲賃貸マンション 3LDK</h3>
+                            <p class="text-gray-600 mb-4">眺望良好な高層階。充実の設備が魅力です。</p>
+                            <div class="text-2xl font-bold text-red-600 mb-4">12.5万円<span class="text-base font-normal text-gray-600">/月</span></div>
+                             <div class="border-t pt-4 text-sm text-gray-500">
+                                <p>専有面積: 78.0㎡ / 管理費: 10,000円</p>
+                                <p>所在地: 羽生市北 / 築年月: 2012年6月</p>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- 賃貸住宅カード 6 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x250/fce7f3/333333?text=賃貸アパート" alt="物件画像" class="w-full h-56 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main-blue mb-2">ロフト付きアパート 1R</h3>
+                            <p class="text-gray-600 mb-4">天井が高く開放的な空間。学生さんにもおすすめ。</p>
+                            <div class="text-2xl font-bold text-red-600 mb-4">4.8万円<span class="text-base font-normal text-gray-600">/月</span></div>
+                             <div class="border-t pt-4 text-sm text-gray-500">
+                                <p>専有面積: 22.0㎡ / 敷金: 1ヶ月 / 礼金: 0ヶ月</p>
+                                <p>所在地: 羽生市藤井下組 / 築年月: 2019年1月</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 月極駐車場情報 -->
+            <section id="rentals-parking" class="mt-16 sm:mt-20">
+                <h2 class="subsection-title text-2xl font-bold mb-8">月極駐車場</h2>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 駐車場カード 1 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x250/e5e7eb/333333?text=月極駐車場" alt="駐車場画像" class="w-full h-56 object-cover">
+                            <span class="absolute top-2 left-2 bg-accent-yellow text-white text-sm font-bold px-3 py-1 rounded-full">空きあり</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main-blue mb-2">羽生駅東口 駐車場</h3>
+                            <p class="text-gray-600 mb-4">駅まで徒歩3分！アスファルト舗装で綺麗です。</p>
+                            <div class="text-2xl font-bold text-red-600 mb-4">7,000円<span class="text-base font-normal text-gray-600">/月</span></div>
+                             <div class="border-t pt-4 text-sm text-gray-500">
+                                <p>所在地: 羽生市中央3丁目</p>
+                                <p>敷金: 1ヶ月 / 礼金: 0ヶ月</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 駐車場カード 2 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x250/d1d5db/333333?text=月極駐車場" alt="駐車場画像" class="w-full h-56 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main-blue mb-2">南羽生駅近く 駐車場</h3>
+                            <p class="text-gray-600 mb-4">大型車も駐車可能な広々とした区画です。</p>
+                            <div class="text-2xl font-bold text-red-600 mb-4">6,000円<span class="text-base font-normal text-gray-600">/月</span></div>
+                             <div class="border-t pt-4 text-sm text-gray-500">
+                                <p>所在地: 羽生市南2丁目</p>
+                                <p>敷金: 1ヶ月 / 礼金: 0ヶ月</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 駐車場カード 3 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x250/9ca3af/333333?text=屋根付き駐車場" alt="駐車場画像" class="w-full h-56 object-cover">
+                             <span class="absolute top-2 left-2 bg-accent-green text-white text-sm font-bold px-3 py-1 rounded-full">屋根付き</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main-blue mb-2">屋根付き月極駐車場</h3>
+                            <p class="text-gray-600 mb-4">雨や紫外線から愛車を守ります。ハイルーフ車も対応可能。</p>
+                            <div class="text-2xl font-bold text-red-600 mb-4">9,000円<span class="text-base font-normal text-gray-600">/月</span></div>
+                             <div class="border-t pt-4 text-sm text-gray-500">
+                                <p>所在地: 羽生市西4丁目</p>
+                                <p>敷金: 1ヶ月 / 礼金: 1ヶ月</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-main-blue text-white mt-16 sm:mt-20">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <p class="text-xl font-bold">有限会社 谷島商事</p>
+                    <p class="text-sm">〒348-0053 埼玉県羽生市南6丁目16-9</p>
+                </div>
+                <div class="text-sm">
+                    <a href="properties.html" class="hover:underline">物件情報</a> |
+                    <a href="strengths.html" class="hover:underline ml-2">当社の強み</a> |
+                    <a href="flow.html" class="hover:underline ml-2">ご入居までの流れ</a> |
+                    <a href="customers.html" class="hover:underline ml-2">お客様の声</a> |
+                    <a href="company.html" class="hover:underline ml-2">会社概要</a>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-blue-500 pt-6 text-center text-sm">
+                <p>&copy; 2024 Yajima Shoji Co., Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+    </script>
+
+</body>
+</html>

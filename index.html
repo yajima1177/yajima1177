@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>有限会社 谷島商事 - 埼玉県羽生市の不動産会社</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
+        .bg-main-blue { background-color: #0081cc; }
+        .text-main-blue { color: #0081cc; }
+        .border-main-blue { border-color: #0081cc; }
+        .bg-accent-green { background-color: #8fc31f; }
+        .text-accent-green { color: #8fc31f; }
+        .bg-accent-yellow { background-color: #f8b500; }
+        .section-title::after {
+            content: ''; display: block; width: 60px; height: 3px;
+            background-color: #0081cc; margin-top: 8px; margin-left: auto; margin-right: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- ヘッダー -->
+    <header id="header" class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-main-blue">有限会社 谷島商事</a>
+            <nav class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                <a href="properties.html" class="text-gray-600 hover:text-main-blue">物件情報</a>
+                <a href="strengths.html" class="text-gray-600 hover:text-main-blue">当社の強み</a>
+                <a href="flow.html" class="text-gray-600 hover:text-main-blue">ご入居までの流れ</a>
+                <a href="customers.html" class="text-gray-600 hover:text-main-blue">お客様の声</a>
+                <a href="company.html" class="text-gray-600 hover:text-main-blue">会社概要</a>
+                <a href="contact.html" class="bg-main-blue text-white font-bold py-2 px-4 rounded-lg hover:opacity-90 transition-opacity">お問い合わせ</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <a href="properties.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">物件情報</a>
+            <a href="strengths.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">当社の強み</a>
+            <a href="flow.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">ご入居までの流れ</a>
+            <a href="customers.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">お客様の声</a>
+            <a href="company.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">会社概要</a>
+            <a href="contact.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">お問い合わせ</a>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main>
+        <!-- ヒーローセクション -->
+        <!-- ★★★ ここを修正しました ★★★ -->
+        <section>
+            <video autoplay loop muted playsinline class="w-full h-auto">
+                <source src="videos/yajima_top.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+
+        <!-- ごあいさつ＆コンテンツ案内 -->
+        <section class="py-16 sm:py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title text-3xl font-bold inline-block mb-8">ようこそ、谷島商事へ</h2>
+                <p class="max-w-3xl mx-auto text-gray-600 mb-12">
+                    私たちは、埼玉県羽生市を拠点に、お客様の「理想の住まい探し」をお手伝いする不動産会社です。<br>
+                    豊富な物件情報と地域に精通した知識で、皆様の新しい生活をサポートいたします。
+                </p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <a href="properties.html" class="block bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+                        <h3 class="text-xl font-bold text-main-blue mb-2">物件を探す</h3>
+                        <p class="text-gray-600">賃貸アパート・駐車場など、最新の物件情報はこちらからご覧ください。</p>
+                    </a>
+                    <a href="strengths.html" class="block bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+                        <h3 class="text-xl font-bold text-accent-green mb-2">当社の強み</h3>
+                        <p class="text-gray-600">地域密着だからこそできる、お客様に寄り添ったサポートをご紹介します。</p>
+                    </a>
+                    <a href="flow.html" class="block bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+                        <h3 class="text-xl font-bold text-accent-yellow mb-2">ご入居までの流れ</h3>
+                        <p class="text-gray-600">お部屋探しからご契約まで、分かりやすくステップごとにご説明します。</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- おすすめ物件情報セクション -->
+        <section class="bg-gray-100 py-16 sm:py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-3xl font-bold text-center inline-block w-full mb-12">おすすめ物件情報</h2>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 物件カード 1 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x250/d1fae5/333333?text=賃貸アパート" alt="物件画像" class="w-full h-56 object-cover">
+                            <span class="absolute top-2 left-2 bg-accent-green text-white text-sm font-bold px-3 py-1 rounded-full">新着</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main-blue mb-2">賃貸アパート 2LDK</h3>
+                            <p class="text-gray-600 mb-4">リフォーム済みで綺麗な内装。スーパーや公園も近く生活に便利。</p>
+                            <div class="text-2xl font-bold text-red-600 mb-4">7.5万円<span class="text-base font-normal text-gray-600">/月</span></div>
+                        </div>
+                    </div>
+                    <!-- 物件カード 2 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x250/fef9c3/333333?text=賃貸戸建て" alt="物件画像" class="w-full h-56 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main-blue mb-2">賃貸戸建て 庭付き4LDK</h3>
+                            <p class="text-gray-600 mb-4">家庭菜園も楽しめる広いお庭が魅力。ファミリーにおすすめ。</p>
+                            <div class="text-2xl font-bold text-red-600 mb-4">11万円<span class="text-base font-normal text-gray-600">/月</span></div>
+                        </div>
+                    </div>
+                    <!-- 物件カード 3 -->
+                     <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x250/e5e7eb/333333?text=月極駐車場" alt="駐車場画像" class="w-full h-56 object-cover">
+                            <span class="absolute top-2 left-2 bg-accent-yellow text-white text-sm font-bold px-3 py-1 rounded-full">空きあり</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main-blue mb-2">羽生駅東口 駐車場</h3>
+                            <p class="text-gray-600 mb-4">駅まで徒歩3分！アスファルト舗装で綺麗です。</p>
+                            <div class="text-2xl font-bold text-red-600 mb-4">7,000円<span class="text-base font-normal text-gray-600">/月</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                     <a href="properties.html" class="bg-main-blue text-white font-bold py-3 px-8 rounded-lg hover:opacity-90 transition-opacity text-lg">
+                        もっと物件を見る
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- お知らせセクション -->
+        <section id="news" class="py-16 sm:py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-3xl font-bold text-center inline-block w-full mb-12">お知らせ</h2>
+                <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg">
+                    <ul class="divide-y divide-gray-200">
+                        <li class="p-4 hover:bg-gray-50 transition-colors"><a href="#" class="flex justify-between items-center"><div><span class="text-sm text-gray-500 mr-4">2025.08.01</span><span class="font-bold text-main-blue">夏季休業のお知らせ</span></div><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg></a></li>
+                        <li class="p-4 hover:bg-gray-50 transition-colors"><a href="#" class="flex justify-between items-center"><div><span class="text-sm text-gray-500 mr-4">2025.07.15</span><span class="font-bold text-main-blue">新着物件（賃貸アパート）を追加しました。</span></div><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg></a></li>
+                        <li class="p-4 hover:bg-gray-50 transition-colors"><a href="#" class="flex justify-between items-center"><div><span class="text-sm text-gray-500 mr-4">2025.06.20</span><span class="font-bold text-main-blue">ホームページをリニューアルしました。</span></div><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg></a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- お問い合わせへの誘導 -->
+        <section class="bg-gray-100 py-16 sm:py-20">
+            <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-3xl font-bold mb-4">住まいに関するご相談はお気軽に</h2>
+                 <p class="text-gray-600 mb-8">物件探しのご相談から、売却査定のご依頼まで、何でもお気軽にお問い合わせください。</p>
+                 <a href="contact.html" class="bg-accent-yellow text-white font-bold py-3 px-8 rounded-lg hover:opacity-90 transition-opacity text-lg">
+                    お問い合わせフォームへ
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-main-blue text-white">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <p class="text-xl font-bold">有限会社 谷島商事</p>
+                    <p class="text-sm">〒348-0053 埼玉県羽生市南6丁目16-9</p>
+                </div>
+                <div class="text-sm">
+                    <a href="properties.html" class="hover:underline">物件情報</a> |
+                    <a href="strengths.html" class="hover:underline ml-2">当社の強み</a> |
+                    <a href="flow.html" class="hover:underline ml-2">ご入居までの流れ</a> |
+                    <a href="customers.html" class="hover:underline ml-2">お客様の声</a> |
+                    <a href="company.html" class="hover:underline ml-2">会社概要</a>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-blue-500 pt-6 text-center text-sm">
+                <p>&copy; 2024 Yajima Shoji Co., Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+
+        // お知らせなど、ページ内リンクをクリックしたときにメニューを閉じる
+        document.querySelectorAll('#mobile-menu a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>

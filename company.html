@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会社概要 - 有限会社 谷島商事</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
+        .bg-main-blue { background-color: #0081cc; }
+        .text-main-blue { color: #0081cc; }
+        .border-main-blue { border-color: #0081cc; }
+        .section-title::after {
+            content: ''; display: block; width: 60px; height: 3px;
+            background-color: #0081cc; margin-top: 8px; margin-left: auto; margin-right: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- ヘッダー -->
+    <header id="header" class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-main-blue">有限会社 谷島商事</a>
+            <nav class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                <a href="properties.html" class="text-gray-600 hover:text-main-blue">物件情報</a>
+                <a href="strengths.html" class="text-gray-600 hover:text-main-blue">当社の強み</a>
+                <a href="flow.html" class="text-gray-600 hover:text-main-blue">ご入居までの流れ</a>
+                <a href="customers.html" class="text-gray-600 hover:text-main-blue">お客様の声</a>
+                <a href="company.html" class="text-main-blue font-bold">会社概要</a>
+                <a href="contact.html" class="bg-main-blue text-white font-bold py-2 px-4 rounded-lg hover:opacity-90 transition-opacity">お問い合わせ</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <a href="properties.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">物件情報</a>
+            <a href="strengths.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">当社の強み</a>
+            <a href="flow.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">ご入居までの流れ</a>
+            <a href="customers.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">お客様の声</a>
+            <a href="company.html" class="block py-2 px-6 text-sm bg-blue-100 text-main-blue">会社概要</a>
+            <a href="contact.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">お問い合わせ</a>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="py-16 sm:py-20">
+        <div class="container mx-auto px-6">
+            <h1 class="section-title text-3xl font-bold text-center inline-block w-full mb-12">会社概要</h1>
+            
+            <div class="bg-white max-w-5xl mx-auto rounded-lg shadow-xl p-8 md:p-12">
+                <!-- PRコメント -->
+                <blockquote class="bg-blue-50 border-l-4 border-main-blue p-6 rounded-r-lg mb-12">
+                    <p class="text-gray-800 leading-relaxed italic">
+                        当社は東武伊勢崎線羽生市を基点に埼玉県の北部及び群馬県東部に営業を展開しております。賃貸（貸家・店舗・倉庫・アパート・マンション・駐車場）、売買（土地・住宅・店舗・工場倉庫用地）の不動産情報は当社へお任せ下さい。どうぞお気軽にご相談ご来店下さい。
+                    </p>
+                </blockquote>
+
+                <div class="grid lg:grid-cols-5 gap-12">
+                    <!-- 左側: 会社詳細 -->
+                    <div class="lg:col-span-3">
+                        <dl>
+                            <div class="py-4 grid grid-cols-3 gap-4 border-b">
+                                <dt class="font-semibold text-gray-600">会社名</dt>
+                                <dd class="col-span-2 text-gray-800">有限会社谷島商事</dd>
+                            </div>
+                            <div class="py-4 grid grid-cols-3 gap-4 border-b">
+                                <dt class="font-semibold text-gray-600">代表者</dt>
+                                <dd class="col-span-2 text-gray-800">谷島 栄太</dd>
+                            </div>
+                            <div class="py-4 grid grid-cols-3 gap-4 border-b">
+                                <dt class="font-semibold text-gray-600">TEL / FAX</dt>
+                                <dd class="col-span-2 text-gray-800">048-563-1177 / 048-563-2888</dd>
+                            </div>
+                            <div class="py-4 grid grid-cols-3 gap-4 border-b">
+                                <dt class="font-semibold text-gray-600">営業時間</dt>
+                                <dd class="col-span-2 text-gray-800">9:00～19:00</dd>
+                            </div>
+                            <div class="py-4 grid grid-cols-3 gap-4 border-b">
+                                <dt class="font-semibold text-gray-600">定休日</dt>
+                                <dd class="col-span-2 text-gray-800">水曜 / 第1日曜日と最終週の日曜日を除く日曜日</dd>
+                            </div>
+                            <div class="py-4 grid grid-cols-3 gap-4 border-b">
+                                <dt class="font-semibold text-gray-600">免許番号</dt>
+                                <dd class="col-span-2 text-gray-800">埼玉県知事免許（1）第0024986号</dd>
+                            </div>
+                            <div class="py-4 grid grid-cols-3 gap-4 border-b">
+                                <dt class="font-semibold text-gray-600">所属団体</dt>
+                                <dd class="col-span-2 text-gray-800">(公社)埼玉県宅地建物取引業協会会員<br>(公社)首都圏不動産公正取引協議会加盟</dd>
+                            </div>
+                             <div class="py-4 grid grid-cols-3 gap-4">
+                                <dt class="font-semibold text-gray-600">主な取扱物件</dt>
+                                <dd class="col-span-2 text-gray-800">
+                                    【賃貸】アパート・マンション、戸建ほか、事務所・店舗、駐車場、工場・倉庫<br>
+                                    【売買】新築・中古戸建、中古マンション、土地、事務所・店舗
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <!-- 右側: アクセス情報と地図 -->
+                    <div class="lg:col-span-2">
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <h3 class="font-bold text-lg text-main-blue mb-4">アクセスマップ</h3>
+                            <div class="mb-4">
+                                <div class="aspect-w-16 aspect-h-9 rounded-md overflow-hidden border">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3215.151748286908!2d139.5400983152763!3d36.1627919800529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601f2f676a0d2f5b%3A0x83c15a7746d1830!2z44CSMzQ4LTAwNTMg5ZKM5ZCN55yM576O55Sf5biC5Y2X77yW5LiB55uu77yR77yW4oiS77yZ!5e0!3m2!1sja!2sjp!4v1691032283313!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+                            </div>
+                            <p class="font-semibold text-gray-800">有限会社 谷島商事</p>
+                            <p class="text-sm text-gray-600 mt-1">〒348-0053<br>埼玉県羽生市南6丁目16-9</p>
+                            <p class="text-sm text-gray-600 mt-2">東武伊勢崎線・大師線 / 羽生駅 徒歩20分</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-main-blue text-white mt-16 sm:mt-20">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <p class="text-xl font-bold">有限会社 谷島商事</p>
+                    <p class="text-sm">〒348-0053 埼玉県羽生市南6丁目16-9</p>
+                </div>
+                <div class="text-sm">
+                    <a href="properties.html" class="hover:underline">物件情報</a> |
+                    <a href="strengths.html" class="hover:underline ml-2">当社の強み</a> |
+                    <a href="flow.html" class="hover:underline ml-2">ご入居までの流れ</a> |
+                    <a href="customers.html" class="hover:underline ml-2">お客様の声</a> |
+                    <a href="company.html" class="hover:underline ml-2">会社概要</a>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-blue-500 pt-6 text-center text-sm">
+                <p>&copy; 2024 Yajima Shoji Co., Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+    </script>
+
+</body>
+</html>
