@@ -27,7 +27,6 @@
         @media (min-width: 768px) { #scrollToTopBtn { bottom: 30px; right: 30px; } }
         #scrollToTopBtn.show { opacity: 0.7; transform: translateX(0); }
         #scrollToTopBtn:hover.show { opacity: 1; }
-        /* --- 追加 --- */
         .btn-primary { transition: all 0.3s ease; }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
         .btn-line-ghost { color: #fff; border: 2px solid #fff; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
@@ -38,22 +37,37 @@
         @media (min-width: 768px) { #line-fab { bottom: 30px; left: 30px; width: 64px; height: 64px; } }
         #line-fab.show { opacity: 1; transform: scale(1); }
         #line-fab:hover { transform: scale(1.1); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+        #lang-selector-dropdown { transition: opacity 0.2s ease, transform 0.2s ease; transform: translateY(-10px); opacity: 0; pointer-events: none; }
+        #lang-selector-dropdown.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
     </style>
 </head>
 <body class="bg-deep-gray text-gray-800">
 
+    <!-- Header -->
     <header id="main-header" class="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html">
                 <img src="images/logo.png" alt="有限会社 谷島商事 ロゴ" class="h-12 w-auto">
             </a>
-            <nav class="hidden md:flex items-center space-x-6 lg:space-x-8">
-                <a href="strengths.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link">当社の強み</a>
-                <a href="flow.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link">ご入居までの流れ</a>
-                <a href="properties.html" class="text-main-blue font-bold nav-link">物件情報</a>
-                <a href="customers.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link">お客様の声</a>
-                <a href="company.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link">会社概要</a>
-                <a href="contact.html" class="bg-main-blue text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 btn-primary">お問い合わせ</a>
+            <nav class="hidden md:flex items-center text-sm space-x-4 lg:space-x-6">
+                <a href="strengths.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-strengths">当社の強み</a>
+                <a href="flow.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-flow">ご入居までの流れ</a>
+                <a href="properties.html" class="text-main-blue font-bold nav-link" data-lang-key="nav-properties">物件情報</a>
+                <a href="customers.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-customers">お客様の声</a>
+                <a href="company.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-company">会社概要</a>
+                <a href="contact.html" class="bg-main-blue text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 btn-primary" data-lang-key="nav-contact">お問い合わせ</a>
+                <div id="lang-selector" class="relative ml-2">
+                    <button id="lang-selector-button" class="flex items-center text-gray-600 hover:text-main-blue transition-colors">
+                        <i class="fa-solid fa-globe w-5 h-5"></i>
+                        <span id="current-lang" class="ml-2 font-semibold">日本語</span>
+                        <i class="fa-solid fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div id="lang-selector-dropdown" class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl z-50 overflow-hidden">
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="ja">日本語</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="en">English</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="zh">中文</a>
+                    </div>
+                </div>
             </nav>
             <div class="md:hidden">
                 <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
@@ -62,31 +76,32 @@
             </div>
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-white">
-            <a href="strengths.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">当社の強み</a>
-            <a href="flow.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">ご入居までの流れ</a>
-            <a href="properties.html" class="block py-2 px-6 text-sm bg-blue-100 text-main-blue">物件情報</a>
-            <a href="customers.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">お客様の声</a>
-            <a href="company.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">会社概要</a>
-            <a href="contact.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">お問い合わせ</a>
+            <a href="strengths.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-strengths">当社の強み</a>
+            <a href="flow.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-flow">ご入居までの流れ</a>
+            <a href="properties.html" class="block py-2 px-6 text-sm bg-blue-100 text-main-blue" data-lang-key="nav-properties">物件情報</a>
+            <a href="customers.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-customers">お客様の声</a>
+            <a href="company.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-company">会社概要</a>
+            <a href="contact.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-contact">お問い合わせ</a>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main class="py-16 sm:py-20">
         <div class="container mx-auto px-6">
-            <h1 class="section-title text-3xl font-bold text-center inline-block w-full mb-16 reveal-title">物件情報</h1>
+            <h1 class="section-title text-3xl font-bold text-center inline-block w-full mb-16 reveal-title" data-lang-key="properties-title">物件情報</h1>
 
             <div class="bg-white p-6 rounded-lg shadow-lg mb-12 reveal-card">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
                     <div>
-                        <label for="property-type" class="block text-sm font-medium text-gray-700">物件種別</label>
+                        <label for="property-type" class="block text-sm font-medium text-gray-700" data-lang-key="filter-type">物件種別</label>
                         <select id="property-type" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-main-blue focus:border-main-blue sm:text-sm">
-                            <option value="all">すべて</option>
-                            <option value="housing">賃貸住宅</option>
-                            <option value="parking">月極駐車場</option>
+                            <option value="all" data-lang-key="filter-type-all">すべて</option>
+                            <option value="housing" data-lang-key="filter-type-housing">賃貸住宅</option>
+                            <option value="parking" data-lang-key="filter-type-parking">月極駐車場</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">間取り</label>
+                        <label class="block text-sm font-medium text-gray-700" data-lang-key="filter-layout">間取り</label>
                         <div id="layout-filter" class="flex flex-wrap gap-x-4 gap-y-2 mt-2">
                             <label class="inline-flex items-center"><input type="checkbox" value="1R" class="rounded border-gray-300 text-main-blue shadow-sm focus:border-main-blue focus:ring focus:ring-offset-0 focus:ring-main-blue focus:ring-opacity-50"> <span class="ml-2 text-sm">1R/1K</span></label>
                             <label class="inline-flex items-center"><input type="checkbox" value="1LDK" class="rounded border-gray-300 text-main-blue shadow-sm focus:border-main-blue focus:ring focus:ring-offset-0 focus:ring-main-blue focus:ring-opacity-50"> <span class="ml-2 text-sm">1LDK</span></label>
@@ -95,39 +110,41 @@
                         </div>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">こだわり</label>
+                        <label class="block text-sm font-medium text-gray-700" data-lang-key="filter-features">こだわり</label>
                          <div id="tags-filter" class="flex flex-wrap gap-x-4 gap-y-2 mt-2">
-                            <label class="inline-flex items-center"><input type="checkbox" value="新着" class="rounded border-gray-300 text-main-blue shadow-sm focus:border-main-blue focus:ring focus:ring-offset-0 focus:ring-main-blue focus:ring-opacity-50"> <span class="ml-2 text-sm">新着</span></label>
-                            <label class="inline-flex items-center"><input type="checkbox" value="ペット可" class="rounded border-gray-300 text-main-blue shadow-sm focus:border-main-blue focus:ring focus:ring-offset-0 focus:ring-main-blue focus:ring-opacity-50"> <span class="ml-2 text-sm">ペット可</span></label>
-                             <label class="inline-flex items-center"><input type="checkbox" value="駅近" class="rounded border-gray-300 text-main-blue shadow-sm focus:border-main-blue focus:ring focus:ring-offset-0 focus:ring-main-blue focus:ring-opacity-50"> <span class="ml-2 text-sm">駅近</span></label>
+                            <label class="inline-flex items-center"><input type="checkbox" value="tag-new" class="rounded border-gray-300 text-main-blue shadow-sm focus:border-main-blue focus:ring focus:ring-offset-0 focus:ring-main-blue focus:ring-opacity-50"> <span class="ml-2 text-sm" data-lang-key="filter-feature-new">新着</span></label>
+                            <label class="inline-flex items-center"><input type="checkbox" value="tag-pets" class="rounded border-gray-300 text-main-blue shadow-sm focus:border-main-blue focus:ring focus:ring-offset-0 focus:ring-main-blue focus:ring-opacity-50"> <span class="ml-2 text-sm" data-lang-key="filter-feature-pets">ペット可</span></label>
+                             <label class="inline-flex items-center"><input type="checkbox" value="tag-station" class="rounded border-gray-300 text-main-blue shadow-sm focus:border-main-blue focus:ring focus:ring-offset-0 focus:ring-main-blue focus:ring-opacity-50"> <span class="ml-2 text-sm" data-lang-key="filter-feature-station">駅近</span></label>
                         </div>
                     </div>
                     <div>
-                        <label for="sort-order" class="block text-sm font-medium text-gray-700">並べ替え</label>
+                        <label for="sort-order" class="block text-sm font-medium text-gray-700" data-lang-key="filter-sort">並べ替え</label>
                         <select id="sort-order" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-main-blue focus:border-main-blue sm:text-sm">
-                            <option value="default">おすすめ順</option>
-                            <option value="price-asc">賃料の安い順</option>
-                            <option value="price-desc">賃料の高い順</option>
+                            <option value="default" data-lang-key="filter-sort-default">おすすめ順</option>
+                            <option value="price-asc" data-lang-key="filter-sort-asc">賃料の安い順</option>
+                            <option value="price-desc" data-lang-key="filter-sort-desc">賃料の高い順</option>
                         </select>
                     </div>
                     <div class="md:col-span-2 lg:col-span-1 text-right">
                         <button id="reset-filter" class="w-full bg-gray-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-gray-600 transition-all">
-                            <i class="fa-solid fa-rotate-right mr-1"></i>リセット
+                            <i class="fa-solid fa-rotate-right mr-1"></i><span data-lang-key="filter-reset">リセット</span>
                         </button>
                     </div>
                 </div>
             </div>
 
             <div id="properties-list" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                </div>
+                <!-- Property cards will be generated by JavaScript -->
+            </div>
             <div id="no-results" class="hidden text-center py-16">
                 <i class="fa-solid fa-magnifying-glass text-4xl text-gray-400 mb-4"></i>
-                <p class="text-xl text-gray-600">指定された条件の物件は見つかりませんでした。</p>
-                <p class="text-gray-500 mt-2">条件を変更して再度お試しください。</p>
+                <p class="text-xl text-gray-600" data-lang-key="no-results-title">指定された条件の物件は見つかりませんでした。</p>
+                <p class="text-gray-500 mt-2" data-lang-key="no-results-text">条件を変更して再度お試しください。</p>
             </div>
         </div>
     </main>
 
+    <!-- LINE CTA Section -->
     <section class="bg-white py-16 sm:py-20">
         <div class="container mx-auto px-6 max-w-4xl">
             <div class="bg-gray-700 rounded-2xl shadow-xl p-8 reveal-card">
@@ -135,19 +152,19 @@
                     <div class="col-span-12 md:col-span-5 text-center md:text-left">
                         <div class="flex items-center justify-center md:justify-start mb-3">
                             <i class="fab fa-line text-3xl text-green-400"></i>
-                            <span class="ml-3 text-2xl font-bold">LINE公式アカウント</span>
+                            <span class="ml-3 text-2xl font-bold" data-lang-key="line-title">LINE公式アカウント</span>
                         </div>
-                        <p class="text-gray-300 mb-6">
+                        <p class="text-gray-300 mb-6" data-lang-key="line-text">
                             友だち追加で、最新の物件情報やお得な情報をお届けします。
                         </p>
                         <a href="https://line.me/R/ti/p/YOUR_LINE_ID" target="_blank" class="font-bold py-3 px-8 rounded-full transition-all text-lg inline-flex items-center justify-center btn-line-ghost">
-                            <i class="fa-solid fa-plus mr-2"></i> 友だち追加はこちら
+                            <i class="fa-solid fa-plus mr-2"></i> <span data-lang-key="line-btn">友だち追加はこちら</span>
                         </a>
                     </div>
                     <div class="col-span-12 md:col-span-3 hidden md:flex justify-center items-center order-first md:order-none">
                         <div class="relative w-32 h-32">
                             <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-40 speech-bubble p-2 text-center text-sm font-bold shadow-lg">
-                                <p>お気軽に<br>ご相談ください！</p>
+                                <p data-lang-key="line-char-bubble">お気軽に<br>ご相談ください！</p>
                             </div>
                             <img src="images/yajimashoji_originalcharacter_A.png" alt="谷島商事 オリジナルキャラクター" class="w-full h-full object-contain drop-shadow-lg mt-11">
                         </div>
@@ -162,6 +179,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="bg-gray-800 text-white mt-16 sm:mt-20">
         <div class="container mx-auto px-6 py-10">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -170,18 +188,18 @@
                     <p class="text-sm mt-2">〒348-0053<br>埼玉県羽生市南6丁目16-9</p>
                 </div>
                 <div class="text-sm">
-                    <h4 class="font-bold mb-3">サイトマップ</h4>
-                    <a href="strengths.html" class="block mt-2 hover:underline">当社の強み</a>
-                    <a href="flow.html" class="block mt-2 hover:underline">ご入居までの流れ</a>
-                    <a href="properties.html" class="block mt-2 hover:underline">物件情報</a>
-                    <a href="customers.html" class="block mt-2 hover:underline">お客様の声</a>
-                    <a href="company.html" class="block mt-2 hover:underline">会社概要</a>
-                    <a href="contact.html" class="block mt-2 hover:underline">お問い合わせ</a>
+                    <h4 class="font-bold mb-3" data-lang-key="footer-sitemap">サイトマップ</h4>
+                    <a href="strengths.html" class="block mt-2 hover:underline" data-lang-key="nav-strengths">当社の強み</a>
+                    <a href="flow.html" class="block mt-2 hover:underline" data-lang-key="nav-flow">ご入居までの流れ</a>
+                    <a href="properties.html" class="block mt-2 hover:underline" data-lang-key="nav-properties">物件情報</a>
+                    <a href="customers.html" class="block mt-2 hover:underline" data-lang-key="nav-customers">お客様の声</a>
+                    <a href="company.html" class="block mt-2 hover:underline" data-lang-key="nav-company">会社概要</a>
+                    <a href="contact.html" class="block mt-2 hover:underline" data-lang-key="nav-contact">お問い合わせ</a>
                 </div>
                  <div class="text-sm">
-                    <h4 class="font-bold mb-3">営業時間</h4>
-                    <p>月-土: 9:00～19:00</p>
-                    <p>定休日: 水曜、日曜（第1・最終週を除く）</p>
+                    <h4 class="font-bold mb-3" data-lang-key="footer-hours">営業時間</h4>
+                    <p data-lang-key="footer-hours-details">月-土: 9:00～19:00</p>
+                    <p data-lang-key="footer-closing-days">定休日: 水曜、日曜（第1・最終週を除く）</p>
                 </div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-6 text-center text-sm text-gray-400">
@@ -199,162 +217,226 @@
     </a>
     
     <script>
-        // --- Property Filtering and Rendering Logic (Specific to this page) ---
-        const propertiesData = [
-            { id: 1, type: 'housing', name: '賃貸アパート 2LDK', image: 'https://placehold.co/400x250/fef9c3/333333?text=賃貸アパート', description: 'リフォーム済みで綺麗な内装。スーパーや公園も近く生活に便利。', price: 75000, layout: '2LDK', tags: ['新着'], details: { area: '55.2㎡', deposit: '1ヶ月', gratuity: '1ヶ月', address: '羽生市南', built: '2010年3月' }},
-            { id: 2, type: 'housing', name: '賃貸マンション 1K', image: 'https://placehold.co/400x250/ecfccb/333333?text=賃貸マンション', description: '単身者向け。オートロック完備でセキュリティも安心。', price: 52000, layout: '1K', tags: ['駅近'], details: { area: '25.0㎡', deposit: '0ヶ月', gratuity: '1ヶ月', address: '羽生市中央', built: '2018年9月' }},
-            { id: 3, type: 'housing', name: '賃貸戸建て 庭付き4LDK', image: 'https://placehold.co/400x250/dbeafe/333333?text=賃貸戸建て', description: '家庭菜園も楽しめる広いお庭が魅力。ファミリーにおすすめ。', price: 110000, layout: '4LDK', tags: [], details: { area: '110.0㎡', deposit: '2ヶ月', gratuity: '1ヶ月', address: '羽生市西', built: '2005年10月' }},
-            { id: 4, type: 'housing', name: 'ペットと暮らせるアパート 1LDK', image: 'https://placehold.co/400x250/fefce8/333333?text=賃貸アパート', description: '大切なペットと一緒に暮らせます。ドッグラン近くにあり。', price: 68000, layout: '1LDK', tags: ['ペット可'], details: { area: '45.5㎡', deposit: '2ヶ月', gratuity: '1ヶ月', address: '羽生市東', built: '2015年2月' }},
-            { id: 5, type: 'housing', name: '分譲賃貸マンション 3LDK', image: 'https://placehold.co/400x250/e0f2fe/333333?text=賃貸マンション', description: '眺望良好な高層階。充実の設備が魅力です。', price: 125000, layout: '3LDK', tags: [], details: { area: '78.0㎡', deposit: '2ヶ月', gratuity: '2ヶ月', address: '羽生市北', built: '2012年6月' }},
-            { id: 6, type: 'housing', name: 'ロフト付きアパート 1R', image: 'https://placehold.co/400x250/fce7f3/333333?text=賃貸アパート', description: '天井が高く開放的な空間。学生さんにもおすすめ。', price: 48000, layout: '1R', tags: [], details: { area: '22.0㎡', deposit: '1ヶ月', gratuity: '0ヶ月', address: '羽生市藤井下組', built: '2019年1月' }},
-            { id: 7, type: 'parking', name: '羽生駅東口 駐車場', image: 'https://placehold.co/400x250/e5e7eb/333333?text=月極駐車場', description: '駅まで徒歩3分！アスファルト舗装で綺麗です。', price: 7000, layout: 'parking', tags: ['空きあり', '駅近'], details: { deposit: '1ヶ月', gratuity: '0ヶ月', address: '羽生市中央3丁目'}},
-            { id: 8, type: 'parking', name: '南羽生駅近く 駐車場', image: 'https://placehold.co/400x250/d1d5db/333333?text=月極駐車場', description: '大型車も駐車可能な広々とした区画です。', price: 6000, layout: 'parking', tags: ['空きあり'], details: { deposit: '1ヶ月', gratuity: '0ヶ月', address: '羽生市南2丁目'}},
-            { id: 9, type: 'parking', name: '屋根付き月極駐車場', image: 'https://placehold.co/400x250/9ca3af/333333?text=屋根付き駐車場', description: '雨や紫外線から愛車を守ります。ハイルーフ車も対応可能。', price: 9000, layout: 'parking', tags: ['空きあり', '屋根付き'], details: { deposit: '1ヶ月', gratuity: '1ヶ月', address: '羽生市西4丁目'}},
-        ];
+        document.addEventListener('DOMContentLoaded', () => {
+            const translations = {
+                "nav-strengths": { ja: "当社の強み", en: "Our Strengths", zh: "我们的优势" },
+                "nav-flow": { ja: "ご入居までの流れ", en: "Process", zh: "入住流程" },
+                "nav-properties": { ja: "物件情報", en: "Properties", zh: "房产信息" },
+                "nav-customers": { ja: "お客様の声", en: "Testimonials", zh: "客户心声" },
+                "nav-company": { ja: "会社概要", en: "Company", zh: "公司简介" },
+                "nav-contact": { ja: "お問い合わせ", en: "Contact", zh: "联系我们" },
+                "properties-title": { ja: "物件情報", en: "Property Information", zh: "房产信息" },
+                "filter-type": { ja: "物件種別", en: "Property Type", zh: "房产类型" },
+                "filter-type-all": { ja: "すべて", en: "All", zh: "全部" },
+                "filter-type-housing": { ja: "賃貸住宅", en: "Rental Housing", zh: "出租住房" },
+                "filter-type-parking": { ja: "月極駐車場", en: "Monthly Parking", zh: "月租停车场" },
+                "filter-layout": { ja: "間取り", en: "Layout", zh: "户型" },
+                "filter-features": { ja: "こだわり", en: "Features", zh: "特色" },
+                "filter-feature-new": { ja: "新着", en: "New", zh: "新" },
+                "filter-feature-pets": { ja: "ペット可", en: "Pets Allowed", zh: "可养宠物" },
+                "filter-feature-station": { ja: "駅近", en: "Near Station", zh: "近车站" },
+                "filter-sort": { ja: "並べ替え", en: "Sort By", zh: "排序" },
+                "filter-sort-default": { ja: "おすすめ順", en: "Recommended", zh: "推荐排序" },
+                "filter-sort-asc": { ja: "賃料の安い順", en: "Price: Low to High", zh: "租金从低到高" },
+                "filter-sort-desc": { ja: "賃料の高い順", en: "Price: High to Low", zh: "租金从高到低" },
+                "filter-reset": { ja: "リセット", en: "Reset", zh: "重置" },
+                "no-results-title": { ja: "指定された条件の物件は見つかりませんでした。", en: "No properties were found matching your criteria.", zh: "未找到符合您条件的房产。" },
+                "no-results-text": { ja: "条件を変更して再度お試しください。", en: "Please change the criteria and try again.", zh: "请更改条件后重试。" },
+                "line-title": { ja: "LINE公式アカウント", en: "Official LINE Account", zh: "LINE官方账号" },
+                "line-text": { ja: "友だち追加で、最新の物件情報やお得な情報をお届けします。", en: "Add us to get the latest property deals and information.", zh: "添加好友，获取最新的房产信息和优惠资讯。" },
+                "line-btn": { ja: "友だち追加はこちら", en: "Add Friend", zh: "添加好友" },
+                "line-char-bubble": { ja: "お気軽に<br>ご相談ください！", en: "Feel free<br>to ask!", zh: "欢迎<br>随时咨询！" },
+                "footer-sitemap": { ja: "サイトマップ", en: "Sitemap", zh: "网站地图" },
+                "footer-hours": { ja: "営業時間", en: "Business Hours", zh: "营业时间" },
+                "footer-hours-details": { ja: "月-土: 9:00～19:00", en: "Mon-Sat: 9:00 AM - 7:00 PM", zh: "周一至周六: 9:00 - 19:00" },
+                "footer-closing-days": { ja: "定休日: 水曜、日曜（第1・最終週を除く）", en: "Closed: Wednesdays, Sundays (except 1st & last of month)", zh: "休息日: 周三、周日（每月第一和最后一周除外）" },
+                "tag-new": { ja: "新着", en: "New", zh: "新" },
+                "tag-pets": { ja: "ペット可", en: "Pets OK", zh: "可养宠物" },
+                "tag-station": { ja: "駅近", en: "Near Sta.", zh: "近车站" },
+                "tag-available": { ja: "空きあり", en: "Available", zh: "有空" },
+                "tag-covered": { ja: "屋根付き", en: "Covered", zh: "带顶棚" },
+                "detail-area": { ja: "専有面積:", en: "Area:", zh: "専有面积:" },
+                "detail-built": { ja: "築年月:", en: "Built:", zh: "建筑年份:" },
+                "detail-parking-feature": { ja: "アスファルト舗装", en: "Asphalt Pavement", zh: "沥青铺装" },
+                "price-per-month": { ja: "/月", en: "/month", zh: "/月" },
+                "currency-yen": { ja: "円", en: " JPY", zh: "日元" },
+            };
 
-        const propertyList = document.getElementById('properties-list');
-        const noResults = document.getElementById('no-results');
-        const propertyTypeFilter = document.getElementById('property-type');
-        const layoutFilter = document.getElementById('layout-filter');
-        const tagsFilter = document.getElementById('tags-filter');
-        const sortOrder = document.getElementById('sort-order');
-        const resetFilterBtn = document.getElementById('reset-filter');
+            const propertiesData = [
+                { id: 1, type: 'housing', name: {ja:'賃貸アパート 2LDK', en:'Rental Apt 2LDK', zh:'出租公寓 2LDK'}, image: 'https://placehold.co/400x250/fef9c3/333333?text=賃貸アパート', description: {ja:'リフォーム済みで綺麗な内装。スーパーや公園も近く生活に便利。', en:'Renovated with a clean interior. Conveniently located near supermarkets and parks.', zh:'已翻新，内部干净整洁。靠近超市和公园，生活便利。'}, price: 75000, layout: '2LDK', tags: ['tag-new'], details: { area: '55.2㎡', deposit: '1ヶ月', gratuity: '1ヶ月', address: {ja:'羽生市南', en:'Hanyu-shi Minami', zh:'羽生市南'}, built: '2010年3月' }},
+                { id: 2, type: 'housing', name: {ja:'賃貸マンション 1K', en:'Rental Condo 1K', zh:'出租公寓 1K'}, image: 'https://placehold.co/400x250/ecfccb/333333?text=賃貸マンション', description: {ja:'単身者向け。オートロック完備でセキュリティも安心。', en:'For singles. Secure with auto-lock system.', zh:'适合单身人士。配备自动门锁，安全放心。'}, price: 52000, layout: '1K', tags: ['tag-station'], details: { area: '25.0㎡', deposit: '0ヶ月', gratuity: '1ヶ月', address: {ja:'羽生市中央', en:'Hanyu-shi Chuo', zh:'羽生市中央'}, built: '2018年9月' }},
+                { id: 3, type: 'housing', name: {ja:'賃貸戸建て 庭付き4LDK', en:'Rental House with Garden 4LDK', zh:'带花园的出租房屋 4LDK'}, image: 'https://placehold.co/400x250/dbeafe/333333?text=賃貸戸建て', description: {ja:'家庭菜園も楽しめる広いお庭が魅力。ファミリーにおすすめ。', en:'Features a spacious garden perfect for home gardening. Recommended for families.', zh:'宽敞的庭院可供享受家庭菜园的乐趣，是其魅力所在。推荐给家庭居住。'}, price: 110000, layout: '4LDK', tags: [], details: { area: '110.0㎡', deposit: '2ヶ月', gratuity: '1ヶ月', address: {ja:'羽生市西', en:'Hanyu-shi Nishi', zh:'羽生市西'}, built: '2005年10月' }},
+                { id: 4, type: 'housing', name: {ja:'ペットと暮らせるアパート 1LDK', en:'Pet-Friendly Apt 1LDK', zh:'可与宠物同住的公寓 1LDK'}, image: 'https://placehold.co/400x250/fefce8/333333?text=賃貸アパート', description: {ja:'大切なペットと一緒に暮らせます。ドッグラン近くにあり。', en:'Live with your beloved pets. A dog run is located nearby.', zh:'可以和您心爱的宠物一起生活。附近有狗狗活动区。'}, price: 68000, layout: '1LDK', tags: ['tag-pets'], details: { area: '45.5㎡', deposit: '2ヶ月', gratuity: '1ヶ月', address: {ja:'羽生市東', en:'Hanyu-shi Higashi', zh:'羽生市东'}, built: '2015年2月' }},
+                { id: 5, type: 'housing', name: {ja:'分譲賃貸マンション 3LDK', en:'Condo for Rent 3LDK', zh:'分售型出租公寓 3LDK'}, image: 'https://placehold.co/400x250/e0f2fe/333333?text=賃貸マンション', description: {ja:'眺望良好な高層階。充実の設備が魅力です。', en:'High floor with a great view. Features excellent amenities.', zh:'高层视野良好。完善的设备是其魅力所在。'}, price: 125000, layout: '3LDK', tags: [], details: { area: '78.0㎡', deposit: '2ヶ月', gratuity: '2ヶ月', address: {ja:'羽生市北', en:'Hanyu-shi Kita', zh:'羽生市北'}, built: '2012年6月' }},
+                { id: 6, type: 'housing', name: {ja:'ロフト付きアパート 1R', en:'Apt with Loft 1R', zh:'带阁楼的公寓 1R'}, image: 'https://placehold.co/400x250/fce7f3/333333?text=賃貸アパート', description: {ja:'天井が高く開放的な空間。学生さんにもおすすめ。', en:'High ceilings create a spacious atmosphere. Recommended for students.', zh:'天花板高，空间开阔。也推荐给学生。'}, price: 48000, layout: '1R', tags: [], details: { area: '22.0㎡', deposit: '1ヶ月', gratuity: '0ヶ月', address: {ja:'羽生市藤井下組', en:'Hanyu-shi Fujiishitagumi', zh:'羽生市藤井下组'}, built: '2019年1月' }},
+                { id: 7, type: 'parking', name: {ja:'羽生駅東口 駐車場', en:'Hanyu Sta. East Exit Parking', zh:'羽生站东口停车场'}, image: 'https://placehold.co/400x250/e5e7eb/333333?text=月極駐車場', description: {ja:'駅まで徒歩3分！アスファルト舗装で綺麗です。', en:'A 3-minute walk to the station! Clean and asphalt-paved.', zh:'步行3分钟到车站！沥青路面，干净整洁。'}, price: 7000, layout: 'parking', tags: ['tag-available', 'tag-station'], details: { deposit: '1ヶ月', gratuity: '0ヶ月', address: {ja:'羽生市中央3丁目', en:'Hanyu-shi Chuo 3-chome', zh:'羽生市中央3丁目'}}},
+                { id: 8, type: 'parking', name: {ja:'南羽生駅近く 駐車場', en:'Parking near Minami-Hanyu Sta.', zh:'南羽生站附近停车场'}, image: 'https://placehold.co/400x250/d1d5db/333333?text=月極駐車場', description: {ja:'大型車も駐車可能な広々とした区画です。', en:'Spacious lots available that can accommodate large vehicles.', zh:'宽敞的车位，大型车辆也可停放。'}, price: 6000, layout: 'parking', tags: ['tag-available'], details: { deposit: '1ヶ月', gratuity: '0ヶ月', address: {ja:'羽生市南2丁目', en:'Hanyu-shi Minami 2-chome', zh:'羽生市南2丁目'}}},
+                { id: 9, type: 'parking', name: {ja:'屋根付き月極駐車場', en:'Covered Monthly Parking', zh:'带顶棚的月租停车场'}, image: 'https://placehold.co/400x250/9ca3af/333333?text=屋根付き駐車場', description: {ja:'雨や紫外線から愛車を守ります。ハイルーフ車も対応可能。', en:'Protects your car from rain and UV rays. High-roof vehicles are also supported.', zh:'保护您的爱车免受雨水和紫外线的伤害。也支持高顶车辆。'}, price: 9000, layout: 'parking', tags: ['tag-available', 'tag-covered'], details: { deposit: '1ヶ月', gratuity: '1ヶ月', address: {ja:'羽生市西4丁目', en:'Hanyu-shi Nishi 4-chome', zh:'羽生市西4丁目'}}},
+            ];
 
-        const tagColors = {
-            '新着': 'bg-accent-green', '駅近': 'bg-accent-yellow', 'ペット可': 'bg-blue-500',
-            '空きあり': 'bg-green-500', '屋根付き': 'bg-gray-500'
-        };
+            const propertyList = document.getElementById('properties-list');
+            const noResults = document.getElementById('no-results');
+            const propertyTypeFilter = document.getElementById('property-type');
+            const layoutFilter = document.getElementById('layout-filter');
+            const tagsFilter = document.getElementById('tags-filter');
+            const sortOrder = document.getElementById('sort-order');
+            const resetFilterBtn = document.getElementById('reset-filter');
 
-        const renderProperties = (data) => {
-            propertyList.innerHTML = '';
-            noResults.classList.toggle('hidden', data.length > 0);
+            const tagColors = {
+                '新着': 'bg-accent-green', '駅近': 'bg-accent-yellow', 'ペット可': 'bg-blue-500',
+                '空きあり': 'bg-green-500', '屋根付き': 'bg-gray-500'
+            };
 
-            data.forEach(p => {
-                const tagsHTML = `
-                    <div class="absolute top-2 left-2 flex flex-wrap gap-1">
-                        ${p.tags.map(tag => `<span class="${tagColors[tag] || 'bg-main-blue'} text-white text-xs font-bold px-2 py-1 rounded-full">${tag}</span>`).join('')}
-                    </div>
-                `;
-                
-                let detailsHTML = '';
-                if (p.type === 'housing') {
-                    detailsHTML = `
-                        <div class="flex items-center"><i class="fa-solid fa-ruler-combined w-5 text-main-blue"></i><span class="ml-2 text-sm">専有面積: ${p.details.area}</span></div>
-                        <div class="flex items-center mt-2"><i class="fa-solid fa-map-marker-alt w-5 text-main-blue"></i><span class="ml-2 text-sm">${p.details.address}</span></div>
-                        <div class="flex items-center mt-2"><i class="fa-solid fa-calendar-alt w-5 text-main-blue"></i><span class="ml-2 text-sm">築年月: ${p.details.built}</span></div>
+            const renderProperties = (data, lang) => {
+                propertyList.innerHTML = '';
+                noResults.classList.toggle('hidden', data.length > 0);
+
+                data.forEach(p => {
+                    const tagsHTML = `
+                        <div class="absolute top-2 left-2 flex flex-wrap gap-1">
+                            ${p.tags.map(tagKey => {
+                                const originalTagText = translations[tagKey] ? translations[tagKey]['ja'] : '';
+                                const translatedTagText = translations[tagKey] ? translations[tagKey][lang] : '';
+                                return `<span class="${tagColors[originalTagText] || 'bg-main-blue'} text-white text-xs font-bold px-2 py-1 rounded-full">${translatedTagText}</span>`
+                            }).join('')}
+                        </div>
                     `;
-                } else if (p.type === 'parking') {
-                    detailsHTML = `
-                        <div class="flex items-center"><i class="fa-solid fa-car w-5 text-main-blue"></i><span class="ml-2 text-sm">アスファルト舗装</span></div>
-                        <div class="flex items-center mt-2"><i class="fa-solid fa-map-marker-alt w-5 text-main-blue"></i><span class="ml-2 text-sm">${p.details.address}</span></div>
-                    `;
+                    
+                    let detailsHTML = '';
+                    if (p.type === 'housing') {
+                        detailsHTML = `
+                            <div class="flex items-center"><i class="fa-solid fa-ruler-combined w-5 text-main-blue"></i><span class="ml-2 text-sm">${translations['detail-area'][lang]} ${p.details.area}</span></div>
+                            <div class="flex items-center mt-2"><i class="fa-solid fa-map-marker-alt w-5 text-main-blue"></i><span class="ml-2 text-sm">${p.details.address[lang]}</span></div>
+                            <div class="flex items-center mt-2"><i class="fa-solid fa-calendar-alt w-5 text-main-blue"></i><span class="ml-2 text-sm">${translations['detail-built'][lang]} ${p.details.built}</span></div>
+                        `;
+                    } else if (p.type === 'parking') {
+                        detailsHTML = `
+                            <div class="flex items-center"><i class="fa-solid fa-car w-5 text-main-blue"></i><span class="ml-2 text-sm">${translations['detail-parking-feature'][lang]}</span></div>
+                            <div class="flex items-center mt-2"><i class="fa-solid fa-map-marker-alt w-5 text-main-blue"></i><span class="ml-2 text-sm">${p.details.address[lang]}</span></div>
+                        `;
+                    }
+
+                    const card = `
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-2xl hover:-translate-y-3 hover:scale-105 transition-all duration-300 reveal-card" data-price="${p.price}" data-id="${p.id}">
+                        <div class="relative">
+                            <img src="${p.image}" alt="${p.name[lang]}" class="w-full h-56 object-cover">
+                            ${p.tags.length > 0 ? tagsHTML : ''}
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-main-blue mb-2">${p.name[lang]}</h3>
+                            <p class="text-gray-600 text-sm mb-4 h-10">${p.description[lang]}</p>
+                            <div class="text-2xl font-bold text-red-600 mb-4">${p.price.toLocaleString()}${translations['currency-yen'][lang]}<span class="text-base font-normal text-gray-600">${translations['price-per-month'][lang]}</span></div>
+                            <div class="border-t pt-4 text-gray-500 space-y-2">
+                                ${detailsHTML}
+                            </div>
+                        </div>
+                    </div>`;
+                    propertyList.insertAdjacentHTML('beforeend', card);
+                });
+            };
+
+            const filterAndSortProperties = () => {
+                const lang = document.documentElement.lang || 'ja';
+                let filtered = [...propertiesData];
+                const type = propertyTypeFilter.value;
+                const layouts = [...layoutFilter.querySelectorAll('input:checked')].map(el => el.value);
+                const tags = [...tagsFilter.querySelectorAll('input:checked')].map(el => el.value);
+                const sort = sortOrder.value;
+
+                if (type !== 'all') {
+                    filtered = filtered.filter(p => p.type === type);
                 }
 
-                const card = `
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-2xl hover:-translate-y-3 hover:scale-105 transition-all duration-300 reveal-card" data-price="${p.price}" data-id="${p.id}">
-                    <div class="relative">
-                        <img src="${p.image}" alt="${p.name}" class="w-full h-56 object-cover">
-                        ${p.tags.length > 0 ? tagsHTML : ''}
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-main-blue mb-2">${p.name}</h3>
-                        <p class="text-gray-600 text-sm mb-4 h-10">${p.description}</p>
-                        <div class="text-2xl font-bold text-red-600 mb-4">${p.price.toLocaleString()}円<span class="text-base font-normal text-gray-600">/月</span></div>
-                        <div class="border-t pt-4 text-gray-500 space-y-2">
-                            ${detailsHTML}
-                        </div>
-                    </div>
-                </div>`;
-                propertyList.insertAdjacentHTML('beforeend', card);
-            });
-        };
+                if (layouts.length > 0) {
+                    filtered = filtered.filter(p => {
+                        if (p.layout === 'parking') return false;
+                        const mainLayout = p.layout.split(' ')[0];
+                        if (layouts.includes('1R') && (mainLayout === '1R' || mainLayout === '1K')) return true;
+                        if (layouts.includes('3LDK+')) {
+                            const num = parseInt(mainLayout[0], 10);
+                            if (!isNaN(num) && num >= 3) return true;
+                        }
+                        return layouts.includes(mainLayout);
+                    });
+                }
 
-        const filterAndSortProperties = () => {
-            let filtered = [...propertiesData];
-            const type = propertyTypeFilter.value;
-            const layouts = [...layoutFilter.querySelectorAll('input:checked')].map(el => el.value);
-            const tags = [...tagsFilter.querySelectorAll('input:checked')].map(el => el.value);
-            const sort = sortOrder.value;
+                if (tags.length > 0) {
+                    filtered = filtered.filter(p => tags.every(tagKey => p.tags.includes(tagKey)));
+                }
 
-            if (type !== 'all') {
-                filtered = filtered.filter(p => p.type === type);
-            }
+                if (sort === 'price-asc') {
+                    filtered.sort((a, b) => a.price - b.price);
+                } else if (sort === 'price-desc') {
+                    filtered.sort((a, b) => b.price - a.price);
+                }
 
-            if (layouts.length > 0) {
-                filtered = filtered.filter(p => {
-                    if (p.layout === 'parking') return false;
-                    const mainLayout = p.layout.split(' ')[0];
-                    if (layouts.includes('1R') && (mainLayout === '1R' || mainLayout === '1K')) return true;
-                    if (layouts.includes('3LDK+')) {
-                        const num = parseInt(mainLayout[0], 10);
-                        if (!isNaN(num) && num >= 3) return true;
+                renderProperties(filtered, lang);
+                if(window.sr) {
+                    sr.sync();
+                }
+            };
+            
+            function setLanguage(lang) {
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-lang-key]').forEach(elem => {
+                    const key = elem.getAttribute('data-lang-key');
+                    if (translations[key] && translations[key][lang]) {
+                        elem.innerHTML = translations[key][lang];
                     }
-                    return layouts.includes(mainLayout);
                 });
+                const currentLangElem = document.getElementById('current-lang');
+                if(lang === 'ja') currentLangElem.textContent = '日本語';
+                if(lang === 'en') currentLangElem.textContent = 'English';
+                if(lang === 'zh') currentLangElem.textContent = '中文';
+                localStorage.setItem('preferredLanguage', lang);
+                langSelectorDropdown.classList.remove('show');
+                filterAndSortProperties(); // Re-render properties with the new language
             }
 
-            if (tags.length > 0) {
-                filtered = filtered.filter(p => tags.every(tag => p.tags.includes(tag)));
-            }
-
-            if (sort === 'price-asc') {
-                filtered.sort((a, b) => a.price - b.price);
-            } else if (sort === 'price-desc') {
-                filtered.sort((a, b) => b.price - a.price);
-            }
-
-            renderProperties(filtered);
-            if(window.sr) {
-                sr.sync();
-            }
-        };
-        
-        const resetFilters = () => {
-            propertyTypeFilter.value = 'all';
-            sortOrder.value = 'default';
-            [...layoutFilter.querySelectorAll('input'), ...tagsFilter.querySelectorAll('input')].forEach(el => el.checked = false);
-            filterAndSortProperties();
-        };
-
-        propertyTypeFilter.addEventListener('change', filterAndSortProperties);
-        layoutFilter.addEventListener('change', filterAndSortProperties);
-        tagsFilter.addEventListener('change', filterAndSortProperties);
-        sortOrder.addEventListener('change', filterAndSortProperties);
-        resetFilterBtn.addEventListener('click', resetFilters);
-
-        // --- Common Scripts ---
-        var mobileMenuButton = document.getElementById('mobile-menu-button');
-        var mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenuButton) {
-            mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-        }
-
-        var header = document.getElementById('main-header');
-        var lineFab = document.getElementById('line-fab');
-        window.onscroll = function() {
-            if (header && window.scrollY > 50) { header.classList.add('header-scrolled'); } 
-            else if (header) { header.classList.remove('header-scrolled'); }
-
-            if (lineFab && window.pageYOffset > 300) { lineFab.classList.add('show'); }
-            else if (lineFab) { lineFab.classList.remove('show'); }
-        };
-        
-        var scrollToTopBtn = document.getElementById('scrollToTopBtn');
-        if (scrollToTopBtn) {
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) { scrollToTopBtn.classList.add('show'); } 
-                else { scrollToTopBtn.classList.remove('show'); }
+            const langSelectorButton = document.getElementById('lang-selector-button');
+            const langSelectorDropdown = document.getElementById('lang-selector-dropdown');
+            langSelectorButton.addEventListener('click', (e) => { e.stopPropagation(); langSelectorDropdown.classList.toggle('show'); });
+            document.addEventListener('click', () => { if (langSelectorDropdown.classList.contains('show')) { langSelectorDropdown.classList.remove('show'); } });
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.addEventListener('click', (e) => { e.preventDefault(); setLanguage(e.target.getAttribute('data-lang')); });
             });
-            scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        }
-        
-        var sr = ScrollReveal({
-            distance: '50px', duration: 1000, easing: 'ease-out', reset: false
-        });
-        
-        // --- Initial Page Load ---
-        document.addEventListener('DOMContentLoaded', () => {
-            renderProperties(propertiesData);
+            
+            propertyTypeFilter.addEventListener('change', filterAndSortProperties);
+            layoutFilter.addEventListener('change', filterAndSortProperties);
+            tagsFilter.addEventListener('change', filterAndSortProperties);
+            sortOrder.addEventListener('change', filterAndSortProperties);
+            resetFilterBtn.addEventListener('click', () => {
+                propertyTypeFilter.value = 'all';
+                sortOrder.value = 'default';
+                [...layoutFilter.querySelectorAll('input'), ...tagsFilter.querySelectorAll('input')].forEach(el => el.checked = false);
+                filterAndSortProperties();
+            });
+
+            // --- Initial Page Load ---
+            const savedLang = localStorage.getItem('preferredLanguage') || 'ja';
+            setLanguage(savedLang);
+
+            // --- Common Scripts ---
+            var mobileMenuButton = document.getElementById('mobile-menu-button');
+            var mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton) { mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); }); }
+            var header = document.getElementById('main-header');
+            var lineFab = document.getElementById('line-fab');
+            window.onscroll = function() {
+                if (header && window.scrollY > 50) { header.classList.add('header-scrolled'); } 
+                else if (header) { header.classList.remove('header-scrolled'); }
+                if (lineFab && window.pageYOffset > 300) { lineFab.classList.add('show'); }
+                else if (lineFab) { lineFab.classList.remove('show'); }
+            };
+            var scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            if (scrollToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 300) { scrollToTopBtn.classList.add('show'); } 
+                    else { scrollToTopBtn.classList.remove('show'); }
+                });
+                scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            }
+            var sr = ScrollReveal({ distance: '50px', duration: 1000, easing: 'ease-out', reset: false });
             sr.reveal('.reveal-title', { origin: 'top' });
             sr.reveal('.reveal-text', { origin: 'bottom', delay: 200 });
             sr.reveal('.reveal-card', { origin: 'bottom', interval: 200 });

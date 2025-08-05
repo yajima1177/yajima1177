@@ -29,30 +29,47 @@
         @media (min-width: 768px) { #scrollToTopBtn { bottom: 30px; right: 30px; } }
         #scrollToTopBtn.show { opacity: 0.7; transform: translateX(0); }
         #scrollToTopBtn:hover.show { opacity: 1; }
-        .btn-line-ghost { color: #fff; border: 2px solid #fff; transition: all 0.3s ease; }
-        .btn-line-ghost:hover { background: #06C755; color: #fff; border-color: #06C755; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0, 0.2); }
+        .btn-primary { transition: all 0.3s ease; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+        .btn-line-ghost { color: #fff; border: 2px solid #fff; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .btn-line-ghost:hover { background: #06C755; color: #fff; border-color: #06C755; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0, 0.3); }
         .speech-bubble { position: relative; background: #fff; border-radius: .4em; color: #333; }
         .speech-bubble:after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 0; border: 12px solid transparent; border-top-color: #fff; border-bottom: 0; margin-left: -12px; margin-bottom: -12px; }
         #line-fab { position: fixed; bottom: 20px; left: 15px; z-index: 99; width: 56px; height: 56px; background-color: #06C755; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15); opacity: 0; transform: scale(0.5); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
         @media (min-width: 768px) { #line-fab { bottom: 30px; left: 30px; width: 64px; height: 64px; } }
         #line-fab.show { opacity: 1; transform: scale(1); }
         #line-fab:hover { transform: scale(1.1); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+        #lang-selector-dropdown { transition: opacity 0.2s ease, transform 0.2s ease; transform: translateY(-10px); opacity: 0; pointer-events: none; }
+        #lang-selector-dropdown.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
     </style>
 </head>
 <body class="bg-deep-gray text-gray-800">
 
+    <!-- Header -->
     <header id="main-header" class="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html">
                 <img src="images/logo.png" alt="有限会社 谷島商事 ロゴ" class="h-12 w-auto">
             </a>
-            <nav class="hidden md:flex items-center space-x-6 lg:space-x-8">
-                <a href="strengths.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link">当社の強み</a>
-                <a href="flow.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link">ご入居までの流れ</a>
-                <a href="properties.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link">物件情報</a>
-                <a href="customers.html" class="text-main-blue font-bold nav-link">お客様の声</a>
-                <a href="company.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link">会社概要</a>
-                <a href="contact.html" class="bg-main-blue text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 btn-primary">お問い合わせ</a>
+            <nav class="hidden md:flex items-center text-sm space-x-4 lg:space-x-6">
+                <a href="strengths.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-strengths">当社の強み</a>
+                <a href="flow.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-flow">ご入居までの流れ</a>
+                <a href="properties.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-properties">物件情報</a>
+                <a href="customers.html" class="text-main-blue font-bold nav-link" data-lang-key="nav-customers">お客様の声</a>
+                <a href="company.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-company">会社概要</a>
+                <a href="contact.html" class="bg-main-blue text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 btn-primary" data-lang-key="nav-contact">お問い合わせ</a>
+                <div id="lang-selector" class="relative ml-2">
+                    <button id="lang-selector-button" class="flex items-center text-gray-600 hover:text-main-blue transition-colors">
+                        <i class="fa-solid fa-globe w-5 h-5"></i>
+                        <span id="current-lang" class="ml-2 font-semibold">日本語</span>
+                        <i class="fa-solid fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div id="lang-selector-dropdown" class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl z-50 overflow-hidden">
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="ja">日本語</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="en">English</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="zh">中文</a>
+                    </div>
+                </div>
             </nav>
             <div class="md:hidden">
                 <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
@@ -61,19 +78,20 @@
             </div>
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-white">
-            <a href="strengths.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">当社の強み</a>
-            <a href="flow.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">ご入居までの流れ</a>
-            <a href="properties.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">物件情報</a>
-            <a href="customers.html" class="block py-2 px-6 text-sm bg-blue-100 text-main-blue">お客様の声</a>
-            <a href="company.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">会社概要</a>
-            <a href="contact.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">お問い合わせ</a>
+            <a href="strengths.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-strengths">当社の強み</a>
+            <a href="flow.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-flow">ご入居までの流れ</a>
+            <a href="properties.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties">物件情報</a>
+            <a href="customers.html" class="block py-2 px-6 text-sm bg-blue-100 text-main-blue" data-lang-key="nav-customers">お客様の声</a>
+            <a href="company.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-company">会社概要</a>
+            <a href="contact.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-contact">お問い合わせ</a>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main class="py-16 sm:py-20">
         <div class="container mx-auto px-6">
-            <h1 class="section-title text-3xl font-bold text-center inline-block w-full mb-8 reveal-title">お客様の声</h1>
-            <p class="max-w-3xl mx-auto text-center text-gray-600 mb-16 reveal-text">
+            <h1 class="section-title text-3xl font-bold text-center inline-block w-full mb-8 reveal-title" data-lang-key="customers-title">お客様の声</h1>
+            <p class="max-w-3xl mx-auto text-center text-gray-600 mb-16 reveal-text" data-lang-key="customers-intro">
                 谷島商事を通じて、羽生市で新しい一歩を踏み出したお客様をご紹介します。<br>
                 この街で夢を叶えた、素敵な方々のストーリーです。
             </p>
@@ -85,13 +103,13 @@
                     </div>
                     <div class="md:w-2/3 p-8 flex flex-col justify-center">
                         <div class="testimonial-quote">
-                            <span class="text-sm font-bold bg-accent-yellow text-white py-1 px-3 rounded-full">飲食店 開業</span>
-                            <h2 class="text-2xl font-bold text-main-blue my-3">念願の隠れ家バーをオープン！</h2>
-                            <p class="text-gray-600 leading-relaxed mb-4">
+                            <span class="text-sm font-bold bg-accent-yellow text-white py-1 px-3 rounded-full" data-lang-key="customer1-tag">飲食店 開業</span>
+                            <h2 class="text-2xl font-bold text-main-blue my-3" data-lang-key="customer1-title">念願の隠れ家バーをオープン！</h2>
+                            <p class="text-gray-600 leading-relaxed mb-4" data-lang-key="customer1-text">
                                 「いつか自分のバーを持ちたいと夢見ていました。羽生市は落ち着いた雰囲気で、理想の場所でした。谷島商事さんには、物件探しだけでなく、地域の特性や開業までの流れも親身に相談に乗ってもらえて本当に心強かったです。おかげさまで、常連さんも増え、毎日楽しく過ごしています。」
                             </p>
                             <div class="flex justify-between items-center">
-                                <p class="font-bold">A様（30代女性）/ Bar Hanyu オーナー</p>
+                                <p class="font-bold" data-lang-key="customer1-name">A様（30代女性）/ Bar Hanyu オーナー</p>
                                 <div class="text-accent-yellow">
                                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                                 </div>
@@ -106,13 +124,13 @@
                     </div>
                     <div class="md:w-2/3 p-8 flex flex-col justify-center">
                         <div class="testimonial-quote">
-                            <span class="text-sm font-bold bg-accent-green text-white py-1 px-3 rounded-full">自動車販売店 開業</span>
-                            <h2 class="text-2xl font-bold text-main-blue my-3">長年の趣味を仕事に。自分の城ができました。</h2>
-                            <p class="text-gray-600 leading-relaxed mb-4">
+                            <span class="text-sm font-bold bg-accent-green text-white py-1 px-3 rounded-full" data-lang-key="customer2-tag">自動車販売店 開業</span>
+                            <h2 class="text-2xl font-bold text-main-blue my-3" data-lang-key="customer2-title">長年の趣味を仕事に。自分の城ができました。</h2>
+                            <p class="text-gray-600 leading-relaxed mb-4" data-lang-key="customer2-text">
                                 「定年後の第二の人生として、趣味の車を扱う店を開くのが夢でした。広い敷地が必要でしたが、谷島商事さんが粘り強く探してくれたおかげで、理想的な物件に出会えました。的確なアドバイスと迅速な対応には感謝しかありません。今では車好きが集まる憩いの場になっています。」
                             </p>
                             <div class="flex justify-between items-center">
-                                <p class="font-bold">B様（50代男性）/ 谷島モータース 代表</p>
+                                <p class="font-bold" data-lang-key="customer2-name">B様（50代男性）/ 谷島モータース 代表</p>
                                 <div class="text-accent-yellow">
                                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
                                 </div>
@@ -127,13 +145,13 @@
                     </div>
                     <div class="md:w-2/3 p-8 flex flex-col justify-center">
                         <div class="testimonial-quote">
-                            <span class="text-sm font-bold bg-main-blue text-white py-1 px-3 rounded-full">コワーキングスペース 開業</span>
-                            <h2 class="text-2xl font-bold text-main-blue my-3">人と人が繋がる新しい場所を羽生に。</h2>
-                            <p class="text-gray-600 leading-relaxed mb-4">
+                            <span class="text-sm font-bold bg-main-blue text-white py-1 px-3 rounded-full" data-lang-key="customer3-tag">コワーキングスペース 開業</span>
+                            <h2 class="text-2xl font-bold text-main-blue my-3" data-lang-key="customer3-title">人と人が繋がる新しい場所を羽生に。</h2>
+                            <p class="text-gray-600 leading-relaxed mb-4" data-lang-key="customer3-text">
                                 「リモートワークが普及する中で、地元羽生にもっと気軽に集まれる場所を作りたいと思いました。若い私の挑戦を、谷島商事さんは『面白いね！』と応援してくれて。物件の紹介だけでなく、地域の方々との繋がりも作ってくれました。ここから新しいビジネスが生まれるのが楽しみです。」
                             </p>
                             <div class="flex justify-between items-center">
-                                <p class="font-bold">C様（20代）/ ハブ-ベース羽生 運営</p>
+                                <p class="font-bold" data-lang-key="customer3-name">C様（20代）/ ハブ-ベース羽生 運営</p>
                                 <div class="text-accent-yellow">
                                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                                 </div>
@@ -145,26 +163,27 @@
         </div>
     </main>
 
+    <!-- LINE CTA Section -->
     <section class="bg-white py-16 sm:py-20">
         <div class="container mx-auto px-6 max-w-4xl">
-        <div class="bg-gray-700 rounded-2xl shadow-xl p-8 reveal-card">
+            <div class="bg-gray-700 rounded-2xl shadow-xl p-8 reveal-card">
                 <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-6 text-white">
                     <div class="col-span-12 md:col-span-5 text-center md:text-left">
                         <div class="flex items-center justify-center md:justify-start mb-3">
                             <i class="fab fa-line text-3xl text-green-400"></i>
-                            <span class="ml-3 text-2xl font-bold">LINE公式アカウント</span>
+                            <span class="ml-3 text-2xl font-bold" data-lang-key="line-title">LINE公式アカウント</span>
                         </div>
-                        <p class="text-gray-300 mb-6">
+                        <p class="text-gray-300 mb-6" data-lang-key="line-text">
                             友だち追加で、最新の物件情報やお得な情報をお届けします。
                         </p>
                         <a href="https://line.me/R/ti/p/YOUR_LINE_ID" target="_blank" class="font-bold py-3 px-8 rounded-full transition-all text-lg inline-flex items-center justify-center btn-line-ghost">
-                            <i class="fa-solid fa-plus mr-2"></i> 友だち追加はこちら
+                            <i class="fa-solid fa-plus mr-2"></i> <span data-lang-key="line-btn">友だち追加はこちら</span>
                         </a>
                     </div>
                     <div class="col-span-12 md:col-span-3 hidden md:flex justify-center items-center order-first md:order-none">
                         <div class="relative w-32 h-32">
                             <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-40 speech-bubble p-2 text-center text-sm font-bold shadow-lg">
-                                <p>お気軽に<br>ご相談ください！</p>
+                                <p data-lang-key="line-char-bubble">お気軽に<br>ご相談ください！</p>
                             </div>
                             <img src="images/yajimashoji_originalcharacter_A.png" alt="谷島商事 オリジナルキャラクター" class="w-full h-full object-contain drop-shadow-lg mt-11">
                         </div>
@@ -179,6 +198,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="bg-gray-800 text-white mt-16 sm:mt-20">
         <div class="container mx-auto px-6 py-10">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -187,18 +207,18 @@
                     <p class="text-sm mt-2">〒348-0053<br>埼玉県羽生市南6丁目16-9</p>
                 </div>
                 <div class="text-sm">
-                    <h4 class="font-bold mb-3">サイトマップ</h4>
-                    <a href="strengths.html" class="block mt-2 hover:underline">当社の強み</a>
-                    <a href="flow.html" class="block mt-2 hover:underline">ご入居までの流れ</a>
-                    <a href="properties.html" class="block mt-2 hover:underline">物件情報</a>
-                    <a href="customers.html" class="block mt-2 hover:underline">お客様の声</a>
-                    <a href="company.html" class="block mt-2 hover:underline">会社概要</a>
-                    <a href="contact.html" class="block mt-2 hover:underline">お問い合わせ</a>
+                    <h4 class="font-bold mb-3" data-lang-key="footer-sitemap">サイトマップ</h4>
+                    <a href="strengths.html" class="block mt-2 hover:underline" data-lang-key="nav-strengths">当社の強み</a>
+                    <a href="flow.html" class="block mt-2 hover:underline" data-lang-key="nav-flow">ご入居までの流れ</a>
+                    <a href="properties.html" class="block mt-2 hover:underline" data-lang-key="nav-properties">物件情報</a>
+                    <a href="customers.html" class="block mt-2 hover:underline" data-lang-key="nav-customers">お客様の声</a>
+                    <a href="company.html" class="block mt-2 hover:underline" data-lang-key="nav-company">会社概要</a>
+                    <a href="contact.html" class="block mt-2 hover:underline" data-lang-key="nav-contact">お問い合わせ</a>
                 </div>
                  <div class="text-sm">
-                    <h4 class="font-bold mb-3">営業時間</h4>
-                    <p>月-土: 9:00～19:00</p>
-                    <p>定休日: 水曜、日曜（第1・最終週を除く）</p>
+                    <h4 class="font-bold mb-3" data-lang-key="footer-hours">営業時間</h4>
+                    <p data-lang-key="footer-hours-details">月-土: 9:00～19:00</p>
+                    <p data-lang-key="footer-closing-days">定休日: 水曜、日曜（第1・最終週を除く）</p>
                 </div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-6 text-center text-sm text-gray-400">
@@ -216,44 +236,86 @@
     </a>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+             const translations = {
+                "nav-strengths": { ja: "当社の強み", en: "Our Strengths", zh: "我们的优势" },
+                "nav-flow": { ja: "ご入居までの流れ", en: "Process", zh: "入住流程" },
+                "nav-properties": { ja: "物件情報", en: "Properties", zh: "房产信息" },
+                "nav-customers": { ja: "お客様の声", en: "Testimonials", zh: "客户心声" },
+                "nav-company": { ja: "会社概要", en: "Company", zh: "公司简介" },
+                "nav-contact": { ja: "お問い合わせ", en: "Contact", zh: "联系我们" },
+                "customers-title": { ja: "お客様の声", en: "Testimonials", zh: "客户心声" },
+                "customers-intro": { 
+                    ja: `谷島商事を通じて、羽生市で新しい一歩を踏み出したお客様をご紹介します。<br>この街で夢を叶えた、素敵な方々のストーリーです。`,
+                    en: `Introducing customers who have taken a new step in Hanyu City through Yajima Shoji.<br>These are the stories of wonderful people who have fulfilled their dreams in this town.`,
+                    zh: `介绍通过谷岛商事，在羽生市迈出新一步的客户。<br>这是在这个城市实现梦想的精彩人物的故事。`
+                },
+                "customer1-tag": { ja: "飲食店 開業", en: "Restaurant Opening", zh: "开设餐厅" },
+                "customer1-title": { ja: "念願の隠れ家バーをオープン！", en: "Opened my long-awaited hideaway bar!", zh: "开设了梦寐以求的隐秘酒吧！" },
+                "customer1-text": { ja: "「いつか自分のバーを持ちたいと夢見ていました。羽生市は落ち着いた雰囲気で、理想の場所でした。谷島商事さんには、物件探しだけでなく、地域の特性や開業までの流れも親身に相談に乗ってもらえて本当に心強かったです。おかげさまで、常連さんも増え、毎日楽しく過ごしています。」", en: `"I always dreamed of having my own bar. Hanyu City had the calm atmosphere I was looking for, making it the ideal location. Yajima Shoji was a great support, not just in finding a property, but also in providing advice on the local characteristics and the process of opening a business. Thanks to them, my base of regular customers is growing, and I'm enjoying every day."`, zh: "“我一直梦想着能拥有自己的酒吧。羽生市氛围宁静，是理想的地点。谷岛商事不仅帮我找到了房产，还亲切地为我提供了关于地区特色和开业流程的咨询，真的让我感到很安心。托他们的福，我的常客越来越多，每天都过得很开心。”" },
+                "customer1-name": { ja: "A様（30代女性）/ Bar Hanyu オーナー", en: "Ms. A (30s) / Owner of Bar Hanyu", zh: "A女士（30多岁）/ Bar Hanyu 店主" },
+                "customer2-tag": { ja: "自動車販売店 開業", en: "Car Dealership Opening", zh: "开设汽车销售店" },
+                "customer2-title": { ja: "長年の趣味を仕事に。自分の城ができました。", en: "Turned my long-time hobby into a business. I have my own castle now.", zh: "将多年的爱好变成了工作。我有了自己的城堡。" },
+                "customer2-text": { ja: "「定年後の第二の人生として、趣味の車を扱う店を開くのが夢でした。広い敷地が必要でしたが、谷島商事さんが粘り強く探してくれたおかげで、理想的な物件に出会えました。的確なアドバイスと迅速な対応には感謝しかありません。今では車好きが集まる憩いの場になっています。」", en: `"My dream for my second life after retirement was to open a shop dealing with my hobby, cars. I needed a large plot of land, and thanks to Yajima Shoji's persistent search, I found the ideal property. I am nothing but grateful for their accurate advice and prompt response. It has now become a gathering place for car lovers."`, zh: "“我梦想着退休后开始第二人生，开一家经营我爱好的汽车店。虽然需要一块很大的地，但多亏了谷岛商事不懈地寻找，我才找到了理想的房产。对于他们准确的建议和迅速的对应，我只有感谢。现在这里已经成了车迷们聚集的休息场所。”" },
+                "customer2-name": { ja: "B様（50代男性）/ 谷島モータース 代表", en: "Mr. B (50s) / Representative of Yajima Motors", zh: "B先生（50多岁）/ 谷岛汽车 代表" },
+                "customer3-tag": { ja: "コワーキングスペース 開業", en: "Coworking Space Opening", zh: "开设共享办公空间" },
+                "customer3-title": { ja: "人と人が繋がる新しい場所を羽生に。", en: "A new place in Hanyu for people to connect.", zh: "在羽生打造一个连接人与人的新场所。" },
+                "customer3-text": { ja: "「リモートワークが普及する中で、地元羽生にもっと気軽に集まれる場所を作りたいと思いました。若い私の挑戦を、谷島商事さんは『面白いね！』と応援してくれて。物件の紹介だけでなく、地域の方々との繋がりも作ってくれました。ここから新しいビジネスが生まれるのが楽しみです。」", en: `"With the spread of remote work, I wanted to create a place in my hometown of Hanyu where people could gather more casually. Yajima Shoji supported my youthful challenge, saying, 'That's interesting!' They not only introduced me to properties but also helped me connect with local people. I'm excited to see new businesses born from here."`, zh: "“随着远程工作的普及，我想在我的家乡羽生创造一个可以更轻松聚集的地方。谷岛商事对我的年轻挑战给予了‘这很有趣！’的支持。他们不仅介绍了房产，还帮助我与当地人建立了联系。我期待着从这里诞生新的商业机会。”" },
+                "customer3-name": { ja: "C様（20代）/ ハブ-ベース羽生 運営", en: "Mr. C (20s) / Operator of Hub-Base Hanyu", zh: "C先生（20多岁）/ Hub-Base羽生 运营" },
+                "line-title": { ja: "LINE公式アカウント", en: "Official LINE Account", zh: "LINE官方账号" },
+                "line-text": { ja: "友だち追加で、最新の物件情報やお得な情報をお届けします。", en: "Add us to get the latest property deals and information.", zh: "添加好友，获取最新的房产信息和优惠资讯。" },
+                "line-btn": { ja: "友だち追加はこちら", en: "Add Friend", zh: "添加好友" },
+                "line-char-bubble": { ja: "お気軽に<br>ご相談ください！", en: "Feel free<br>to ask!", zh: "欢迎<br>随时咨询！" },
+                "footer-sitemap": { ja: "サイトマップ", en: "Sitemap", zh: "网站地图" },
+                "footer-hours": { ja: "営業時間", en: "Business Hours", zh: "营业时间" },
+                "footer-hours-details": { ja: "月-土: 9:00～19:00", en: "Mon-Sat: 9:00 AM - 7:00 PM", zh: "周一至周六: 9:00 - 19:00" },
+                "footer-closing-days": { ja: "定休日: 水曜、日曜（第1・最終週を除く）", en: "Closed: Wednesdays, Sundays (except 1st & last of month)", zh: "休息日: 周三、周日（每月第一和最后一周除外）" }
+            };
+
+            function setLanguage(lang) {
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-lang-key]').forEach(elem => {
+                    const key = elem.getAttribute('data-lang-key');
+                    if (translations[key] && translations[key][lang]) {
+                        elem.innerHTML = translations[key][lang];
+                    }
+                });
+                const currentLangElem = document.getElementById('current-lang');
+                if(lang === 'ja') currentLangElem.textContent = '日本語';
+                if(lang === 'en') currentLangElem.textContent = 'English';
+                if(lang === 'zh') currentLangElem.textContent = '中文';
+                localStorage.setItem('preferredLanguage', lang);
+                langSelectorDropdown.classList.remove('show');
+            }
+
+            const langSelectorButton = document.getElementById('lang-selector-button');
+            const langSelectorDropdown = document.getElementById('lang-selector-dropdown');
+            langSelectorButton.addEventListener('click', (e) => { e.stopPropagation(); langSelectorDropdown.classList.toggle('show'); });
+            document.addEventListener('click', () => { if (langSelectorDropdown.classList.contains('show')) { langSelectorDropdown.classList.remove('show'); } });
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.addEventListener('click', (e) => { e.preventDefault(); setLanguage(e.target.getAttribute('data-lang')); });
+            });
+            const savedLang = localStorage.getItem('preferredLanguage') || 'ja';
+            setLanguage(savedLang);
+        });
+
         var mobileMenuButton = document.getElementById('mobile-menu-button');
         var mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenuButton) {
-            mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-        }
-
+        if (mobileMenuButton) { mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); }); }
         var header = document.getElementById('main-header');
         var lineFab = document.getElementById('line-fab');
         window.onscroll = function() {
-            if (header && window.scrollY > 50) {
-                header.classList.add('header-scrolled');
-            } else if (header) {
-                header.classList.remove('header-scrolled');
-            }
-            if (lineFab && window.pageYOffset > 300) {
-                lineFab.classList.add('show');
-            } else if (lineFab) {
-                lineFab.classList.remove('show');
-            }
+            if (header && window.scrollY > 50) { header.classList.add('header-scrolled'); } else if (header) { header.classList.remove('header-scrolled'); }
+            if (lineFab && window.pageYOffset > 300) { lineFab.classList.add('show'); } else if (lineFab) { lineFab.classList.remove('show'); }
         };
-        
         var scrollToTopBtn = document.getElementById('scrollToTopBtn');
         if (scrollToTopBtn) {
             window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    scrollToTopBtn.classList.add('show');
-                } else {
-                    scrollToTopBtn.classList.remove('show');
-                }
+                if (window.pageYOffset > 300) { scrollToTopBtn.classList.add('show'); } else { scrollToTopBtn.classList.remove('show'); }
             });
-            scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+            scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
         }
-    
-        var sr = ScrollReveal({
-            distance: '50px', duration: 1000, easing: 'ease-out', reset: false
-        });
+        var sr = ScrollReveal({ distance: '50px', duration: 1000, easing: 'ease-out', reset: false });
         sr.reveal('.reveal-title', { origin: 'top' });
         sr.reveal('.reveal-text', { origin: 'bottom', delay: 200 });
         sr.reveal('.reveal-card', { origin: 'bottom', interval: 200 });

@@ -23,7 +23,6 @@
         @media (min-width: 768px) { #scrollToTopBtn { bottom: 30px; right: 30px; } }
         #scrollToTopBtn.show { opacity: 0.7; transform: translateX(0); }
         #scrollToTopBtn:hover.show { opacity: 1; }
-        /* --- 追加 --- */
         .btn-primary { transition: all 0.3s ease; }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
         .bg-accent-yellow { background-color: #f8b500; }
@@ -35,22 +34,37 @@
         @media (min-width: 768px) { #line-fab { bottom: 30px; left: 30px; width: 64px; height: 64px; } }
         #line-fab.show { opacity: 1; transform: scale(1); }
         #line-fab:hover { transform: scale(1.1); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+        #lang-selector-dropdown { transition: opacity 0.2s ease, transform 0.2s ease; transform: translateY(-10px); opacity: 0; pointer-events: none; }
+        #lang-selector-dropdown.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
     </style>
 </head>
 <body class="bg-deep-gray text-gray-800">
 
+    <!-- Header -->
     <header id="main-header" class="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html">
                 <img src="images/logo.png" alt="有限会社 谷島商事 ロゴ" class="h-12 w-auto">
             </a>
-            <nav class="hidden md:flex items-center space-x-6 lg:space-x-8">
-                <a href="strengths.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link">当社の強み</a>
-                <a href="flow.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link">ご入居までの流れ</a>
-                <a href="properties.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link">物件情報</a>
-                <a href="customers.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link">お客様の声</a>
-                <a href="company.html" class="text-main-blue font-bold nav-link">会社概要</a>
-                <a href="contact.html" class="bg-main-blue text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 btn-primary">お問い合わせ</a>
+            <nav class="hidden md:flex items-center text-sm space-x-4 lg:space-x-6">
+                <a href="strengths.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-strengths">当社の強み</a>
+                <a href="flow.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-flow">ご入居までの流れ</a>
+                <a href="properties.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-properties">物件情報</a>
+                <a href="customers.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-customers">お客様の声</a>
+                <a href="company.html" class="text-main-blue font-bold nav-link" data-lang-key="nav-company">会社概要</a>
+                <a href="contact.html" class="bg-main-blue text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 btn-primary" data-lang-key="nav-contact">お問い合わせ</a>
+                <div id="lang-selector" class="relative ml-2">
+                    <button id="lang-selector-button" class="flex items-center text-gray-600 hover:text-main-blue transition-colors">
+                        <i class="fa-solid fa-globe w-5 h-5"></i>
+                        <span id="current-lang" class="ml-2 font-semibold">日本語</span>
+                        <i class="fa-solid fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div id="lang-selector-dropdown" class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl z-50 overflow-hidden">
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="ja">日本語</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="en">English</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="zh">中文</a>
+                    </div>
+                </div>
             </nav>
             <div class="md:hidden">
                 <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
@@ -59,22 +73,23 @@
             </div>
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-white">
-            <a href="strengths.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">当社の強み</a>
-            <a href="flow.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">ご入居までの流れ</a>
-            <a href="properties.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">物件情報</a>
-            <a href="customers.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">お客様の声</a>
-            <a href="company.html" class="block py-2 px-6 text-sm bg-blue-100 text-main-blue">会社概要</a>
-            <a href="contact.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">お問い合わせ</a>
+            <a href="strengths.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-strengths">当社の強み</a>
+            <a href="flow.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-flow">ご入居までの流れ</a>
+            <a href="properties.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties">物件情報</a>
+            <a href="customers.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-customers">お客様の声</a>
+            <a href="company.html" class="block py-2 px-6 text-sm bg-blue-100 text-main-blue" data-lang-key="nav-company">会社概要</a>
+            <a href="contact.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-contact">お問い合わせ</a>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main class="py-16 sm:py-20">
         <div class="container mx-auto px-6">
-            <h1 class="section-title text-3xl font-bold text-center inline-block w-full mb-12 reveal-title">会社概要</h1>
+            <h1 class="section-title text-3xl font-bold text-center inline-block w-full mb-12 reveal-title" data-lang-key="company-title">会社概要</h1>
             
             <div class="bg-white max-w-5xl mx-auto rounded-lg shadow-xl p-8 md:p-12 reveal-card">
                 <blockquote class="bg-blue-50 border-l-4 border-main-blue p-6 rounded-r-lg mb-12">
-                    <p class="text-gray-800 leading-relaxed italic">
+                    <p class="text-gray-800 leading-relaxed italic" data-lang-key="company-quote">
                         当社は東武伊勢崎線羽生市を基点に埼玉県の北部及び群馬県東部に営業を展開しております。賃貸（貸家・店舗・倉庫・アパート・マンション・駐車場）、売買（土地・住宅・店舗・工場倉庫用地）の不動産情報は当社へお任せ下さい。どうぞお気軽にご相談ご来店下さい。
                     </p>
                 </blockquote>
@@ -82,20 +97,20 @@
                 <div class="grid lg:grid-cols-5 gap-12">
                     <div class="lg:col-span-3">
                         <dl>
-                            <div class="py-4 flex items-start border-b"><dt class="w-1/3 font-semibold text-gray-600 flex items-center"><i class="fa-solid fa-building w-5 mr-2 text-main-blue"></i>会社名</dt><dd class="w-2/3 text-gray-800">有限会社谷島商事</dd></div>
-                            <div class="py-4 flex items-start border-b"><dt class="w-1/3 font-semibold text-gray-600 flex items-center"><i class="fa-solid fa-user-tie w-5 mr-2 text-main-blue"></i>代表者</dt><dd class="w-2/3 text-gray-800">谷島 栄太</dd></div>
+                            <div class="py-4 flex items-start border-b"><dt class="w-1/3 font-semibold text-gray-600 flex items-center"><i class="fa-solid fa-building w-5 mr-2 text-main-blue"></i><span data-lang-key="company-name-label">会社名</span></dt><dd class="w-2/3 text-gray-800">有限会社谷島商事</dd></div>
+                            <div class="py-4 flex items-start border-b"><dt class="w-1/3 font-semibold text-gray-600 flex items-center"><i class="fa-solid fa-user-tie w-5 mr-2 text-main-blue"></i><span data-lang-key="company-rep-label">代表者</span></dt><dd class="w-2/3 text-gray-800">谷島 栄太</dd></div>
                             <div class="py-4 flex items-start border-b"><dt class="w-1/3 font-semibold text-gray-600 flex items-center"><i class="fa-solid fa-phone w-5 mr-2 text-main-blue"></i>TEL / FAX</dt><dd class="w-2/3 text-gray-800">048-563-1177 / 048-563-2888</dd></div>
-                            <div class="py-4 flex items-start border-b"><dt class="w-1/3 font-semibold text-gray-600 flex items-center"><i class="fa-solid fa-clock w-5 mr-2 text-main-blue"></i>営業時間</dt><dd class="w-2/3 text-gray-800">9:00～19:00</dd></div>
-                            <div class="py-4 flex items-start border-b"><dt class="w-1/3 font-semibold text-gray-600 flex items-center"><i class="fa-solid fa-calendar-xmark w-5 mr-2 text-main-blue"></i>定休日</dt><dd class="w-2/3 text-gray-800">水曜 / 第1日曜日と最終週の日曜日を除く日曜日</dd></div>
-                            <div class="py-4 flex items-start border-b"><dt class="w-1/3 font-semibold text-gray-600 flex items-center"><i class="fa-solid fa-id-card w-5 mr-2 text-main-blue"></i>免許番号</dt><dd class="w-2/3 text-gray-800">埼玉県知事免許（1）第0024986号</dd></div>
-                            <div class="py-4 flex items-start border-b"><dt class="w-1/3 font-semibold text-gray-600 flex items-center"><i class="fa-solid fa-users w-5 mr-2 text-main-blue"></i>所属団体</dt><dd class="w-2/3 text-gray-800">(公社)埼玉県宅地建物取引業協会会員<br>(公社)首都圏不動産公正取引協議会加盟</dd></div>
-                             <div class="py-4 flex items-start"><dt class="w-1/3 font-semibold text-gray-600 flex items-center"><i class="fa-solid fa-house-signal w-5 mr-2 text-main-blue"></i>主な取扱物件</dt><dd class="w-2/3 text-gray-800">【賃貸】アパート・マンション、戸建ほか、事務所・店舗、駐車場、工場・倉庫<br>【売買】新築・中古戸建、中古マンション、土地、事務所・店舗</dd></div>
+                            <div class="py-4 flex items-start border-b"><dt class="w-1/3 font-semibold text-gray-600 flex items-center"><i class="fa-solid fa-clock w-5 mr-2 text-main-blue"></i><span data-lang-key="company-hours-label">営業時間</span></dt><dd class="w-2/3 text-gray-800">9:00～19:00</dd></div>
+                            <div class="py-4 flex items-start border-b"><dt class="w-1/3 font-semibold text-gray-600 flex items-center"><i class="fa-solid fa-calendar-xmark w-5 mr-2 text-main-blue"></i><span data-lang-key="company-closed-label">定休日</span></dt><dd class="w-2/3 text-gray-800" data-lang-key="company-closed-value">水曜 / 第1日曜日と最終週の日曜日を除く日曜日</dd></div>
+                            <div class="py-4 flex items-start border-b"><dt class="w-1/3 font-semibold text-gray-600 flex items-center"><i class="fa-solid fa-id-card w-5 mr-2 text-main-blue"></i><span data-lang-key="company-license-label">免許番号</span></dt><dd class="w-2/3 text-gray-800">埼玉県知事免許（1）第0024986号</dd></div>
+                            <div class="py-4 flex items-start border-b"><dt class="w-1/3 font-semibold text-gray-600 flex items-center"><i class="fa-solid fa-users w-5 mr-2 text-main-blue"></i><span data-lang-key="company-org-label">所属団体</span></dt><dd class="w-2/3 text-gray-800">(公社)埼玉県宅地建物取引業協会会員<br>(公社)首都圏不動産公正取引協議会加盟</dd></div>
+                             <div class="py-4 flex items-start"><dt class="w-1/3 font-semibold text-gray-600 flex items-center"><i class="fa-solid fa-house-signal w-5 mr-2 text-main-blue"></i><span data-lang-key="company-services-label">主な取扱物件</span></dt><dd class="w-2/3 text-gray-800" data-lang-key="company-services-value">【賃貸】アパート・マンション、戸建ほか、事務所・店舗、駐車場、工場・倉庫<br>【売買】新築・中古戸建、中古マンション、土地、事務所・店舗</dd></div>
                         </dl>
                     </div>
 
                     <div class="lg:col-span-2">
                         <div class="bg-gray-50 rounded-lg p-6">
-                            <h3 class="font-bold text-lg text-main-blue mb-4">アクセスマップ</h3>
+                            <h3 class="font-bold text-lg text-main-blue mb-4" data-lang-key="company-map-label">アクセスマップ</h3>
                             <div class="mb-4">
                                 <div class="aspect-w-16 aspect-h-9 rounded-md overflow-hidden border">
                                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3215.151748286908!2d139.5400983152763!3d36.1627919800529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601f2f676a0d2f5b%3A0x83c15a7746d1830!2z44CSMzQ4LTAwNTMg5ZKM5ZCN55yM576O55Sf5biC5Y2X77yW5LiB55uu77yR77yW4oiS77yZ!5e0!3m2!1sja!2sjp!4v1691032283313!5m2!1sja!2sjp" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -103,7 +118,7 @@
                             </div>
                             <p class="font-semibold text-gray-800">有限会社 谷島商事</p>
                             <p class="text-sm text-gray-600 mt-1">〒348-0053<br>埼玉県羽生市南6丁目16-9</p>
-                            <p class="text-sm text-gray-600 mt-2">東武伊勢崎線・大師線 / 羽生駅 徒歩20分</p>
+                            <p class="text-sm text-gray-600 mt-2" data-lang-key="company-access">東武伊勢崎線・大師線 / 羽生駅 徒歩20分</p>
                         </div>
                     </div>
                 </div>
@@ -111,6 +126,7 @@
         </div>
     </main>
 
+    <!-- LINE CTA Section -->
     <section class="bg-white py-16 sm:py-20">
         <div class="container mx-auto px-6 max-w-4xl">
             <div class="bg-gray-700 rounded-2xl shadow-xl p-8 reveal-card">
@@ -118,19 +134,19 @@
                     <div class="col-span-12 md:col-span-5 text-center md:text-left">
                         <div class="flex items-center justify-center md:justify-start mb-3">
                             <i class="fab fa-line text-3xl text-green-400"></i>
-                            <span class="ml-3 text-2xl font-bold">LINE公式アカウント</span>
+                            <span class="ml-3 text-2xl font-bold" data-lang-key="line-title">LINE公式アカウント</span>
                         </div>
-                        <p class="text-gray-300 mb-6">
+                        <p class="text-gray-300 mb-6" data-lang-key="line-text">
                             友だち追加で、最新の物件情報やお得な情報をお届けします。
                         </p>
                         <a href="https://line.me/R/ti/p/YOUR_LINE_ID" target="_blank" class="font-bold py-3 px-8 rounded-full transition-all text-lg inline-flex items-center justify-center btn-line-ghost">
-                            <i class="fa-solid fa-plus mr-2"></i> 友だち追加はこちら
+                            <i class="fa-solid fa-plus mr-2"></i> <span data-lang-key="line-btn">友だち追加はこちら</span>
                         </a>
                     </div>
                     <div class="col-span-12 md:col-span-3 hidden md:flex justify-center items-center order-first md:order-none">
                         <div class="relative w-32 h-32">
                             <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-40 speech-bubble p-2 text-center text-sm font-bold shadow-lg">
-                                <p>お気軽に<br>ご相談ください！</p>
+                                <p data-lang-key="line-char-bubble">お気軽に<br>ご相談ください！</p>
                             </div>
                             <img src="images/yajimashoji_originalcharacter_A.png" alt="谷島商事 オリジナルキャラクター" class="w-full h-full object-contain drop-shadow-lg mt-11">
                         </div>
@@ -145,6 +161,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="bg-gray-800 text-white mt-16 sm:mt-20">
         <div class="container mx-auto px-6 py-10">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -153,18 +170,18 @@
                     <p class="text-sm mt-2">〒348-0053<br>埼玉県羽生市南6丁目16-9</p>
                 </div>
                 <div class="text-sm">
-                    <h4 class="font-bold mb-3">サイトマップ</h4>
-                    <a href="strengths.html" class="block mt-2 hover:underline">当社の強み</a>
-                    <a href="flow.html" class="block mt-2 hover:underline">ご入居までの流れ</a>
-                    <a href="properties.html" class="block mt-2 hover:underline">物件情報</a>
-                    <a href="customers.html" class="block mt-2 hover:underline">お客様の声</a>
-                    <a href="company.html" class="block mt-2 hover:underline">会社概要</a>
-                    <a href="contact.html" class="block mt-2 hover:underline">お問い合わせ</a>
+                    <h4 class="font-bold mb-3" data-lang-key="footer-sitemap">サイトマップ</h4>
+                    <a href="strengths.html" class="block mt-2 hover:underline" data-lang-key="nav-strengths">当社の強み</a>
+                    <a href="flow.html" class="block mt-2 hover:underline" data-lang-key="nav-flow">ご入居までの流れ</a>
+                    <a href="properties.html" class="block mt-2 hover:underline" data-lang-key="nav-properties">物件情報</a>
+                    <a href="customers.html" class="block mt-2 hover:underline" data-lang-key="nav-customers">お客様の声</a>
+                    <a href="company.html" class="block mt-2 hover:underline" data-lang-key="nav-company">会社概要</a>
+                    <a href="contact.html" class="block mt-2 hover:underline" data-lang-key="nav-contact">お問い合わせ</a>
                 </div>
                  <div class="text-sm">
-                    <h4 class="font-bold mb-3">営業時間</h4>
-                    <p>月-土: 9:00～19:00</p>
-                    <p>定休日: 水曜、日曜（第1・最終週を除く）</p>
+                    <h4 class="font-bold mb-3" data-lang-key="footer-hours">営業時間</h4>
+                    <p data-lang-key="footer-hours-details">月-土: 9:00～19:00</p>
+                    <p data-lang-key="footer-closing-days">定休日: 水曜、日曜（第1・最終週を除く）</p>
                 </div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-6 text-center text-sm text-gray-400">
@@ -182,44 +199,89 @@
     </a>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+             const translations = {
+                "nav-strengths": { ja: "当社の強み", en: "Our Strengths", zh: "我们的优势" },
+                "nav-flow": { ja: "ご入居までの流れ", en: "Process", zh: "入住流程" },
+                "nav-properties": { ja: "物件情報", en: "Properties", zh: "房产信息" },
+                "nav-customers": { ja: "お客様の声", en: "Testimonials", zh: "客户心声" },
+                "nav-company": { ja: "会社概要", en: "Company", zh: "公司简介" },
+                "nav-contact": { ja: "お問い合わせ", en: "Contact", zh: "联系我们" },
+                "company-title": { ja: "会社概要", en: "Company Profile", zh: "公司简介" },
+                "company-quote": { 
+                    ja: "当社は東武伊勢崎線羽生市を基点に埼玉県の北部及び群馬県東部に営業を展開しております。賃貸（貸家・店舗・倉庫・アパート・マンション・駐車場）、売買（土地・住宅・店舗・工場倉庫用地）の不動産情報は当社へお任せ下さい。どうぞお気軽にご相談ご来店下さい。",
+                    en: "Based in Hanyu City on the Tobu Isesaki Line, we operate in northern Saitama and eastern Gunma. Please entrust us with real estate information for both rental (houses, shops, warehouses, apartments, condos, parking) and sales (land, homes, shops, factory/warehouse sites). Feel free to visit us for a consultation.",
+                    zh: "本公司以东武伊势崎线的羽生市为据点，业务范围覆盖埼玉县北部及群马县东部。无论是租赁（独栋、店铺、仓库、公寓、停车场）还是买卖（土地、住宅、店铺、工厂仓库用地）的房地产信息，请放心交给我们。欢迎随时光临咨询。"
+                },
+                "company-name-label": { ja: "会社名", en: "Company Name", zh: "公司名称" },
+                "company-rep-label": { ja: "代表者", en: "Representative", zh: "代表人" },
+                "company-hours-label": { ja: "営業時間", en: "Business Hours", zh: "营业时间" },
+                "company-closed-label": { ja: "定休日", en: "Closing Days", zh: "休息日" },
+                "company-closed-value": { ja: "水曜 / 第1日曜日と最終週の日曜日を除く日曜日", en: "Wednesdays / Sundays (excluding the first and last Sunday of the month)", zh: "星期三 / 除第一个和最后一个星期日外的星期日" },
+                "company-license-label": { ja: "免許番号", en: "License No.", zh: "许可证号" },
+                "company-org-label": { ja: "所属団体", en: "Affiliations", zh: "所属团体" },
+                "company-services-label": { ja: "主な取扱物件", en: "Main Properties", zh: "主要经营项目" },
+                "company-services-value": { 
+                    ja: "【賃貸】アパート・マンション、戸建ほか、事務所・店舗、駐車場、工場・倉庫<br>【売買】新築・中古戸建、中古マンション、土地、事務所・店舗",
+                    en: "[Rental] Apartments, condos, houses, offices, shops, parking, factories, warehouses<br>[Sale] New/used houses, used condos, land, offices, shops",
+                    zh: "【租赁】公寓、高级公寓、独栋住宅、办公室、店铺、停车场、工厂、仓库<br>【买卖】新建/二手独栋住宅、二手高级公寓、土地、办公室、店铺"
+                },
+                "company-map-label": { ja: "アクセスマップ", en: "Access Map", zh: "交通地图" },
+                "company-access": { ja: "東武伊勢崎線・大師線 / 羽生駅 徒歩20分", en: "Tobu Isesaki/Daishi Line / 20-min walk from Hanyu Station", zh: "东武伊势崎线・大师线 / 羽生站 步行20分钟" },
+                "line-title": { ja: "LINE公式アカウント", en: "Official LINE Account", zh: "LINE官方账号" },
+                "line-text": { ja: "友だち追加で、最新の物件情報やお得な情報をお届けします。", en: "Add us to get the latest property deals and information.", zh: "添加好友，获取最新的房产信息和优惠资讯。" },
+                "line-btn": { ja: "友だち追加はこちら", en: "Add Friend", zh: "添加好友" },
+                "line-char-bubble": { ja: "お気軽に<br>ご相談ください！", en: "Feel free<br>to ask!", zh: "欢迎<br>随时咨询！" },
+                "footer-sitemap": { ja: "サイトマップ", en: "Sitemap", zh: "网站地图" },
+                "footer-hours": { ja: "営業時間", en: "Business Hours", zh: "营业时间" },
+                "footer-hours-details": { ja: "月-土: 9:00～19:00", en: "Mon-Sat: 9:00 AM - 7:00 PM", zh: "周一至周六: 9:00 - 19:00" },
+                "footer-closing-days": { ja: "定休日: 水曜、日曜（第1・最終週を除く）", en: "Closed: Wednesdays, Sundays (except 1st & last of month)", zh: "休息日: 周三、周日（每月第一和最后一周除外）" }
+            };
+
+            function setLanguage(lang) {
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-lang-key]').forEach(elem => {
+                    const key = elem.getAttribute('data-lang-key');
+                    if (translations[key] && translations[key][lang]) {
+                        elem.innerHTML = translations[key][lang];
+                    }
+                });
+                const currentLangElem = document.getElementById('current-lang');
+                if(lang === 'ja') currentLangElem.textContent = '日本語';
+                if(lang === 'en') currentLangElem.textContent = 'English';
+                if(lang === 'zh') currentLangElem.textContent = '中文';
+                localStorage.setItem('preferredLanguage', lang);
+                langSelectorDropdown.classList.remove('show');
+            }
+
+            const langSelectorButton = document.getElementById('lang-selector-button');
+            const langSelectorDropdown = document.getElementById('lang-selector-dropdown');
+            langSelectorButton.addEventListener('click', (e) => { e.stopPropagation(); langSelectorDropdown.classList.toggle('show'); });
+            document.addEventListener('click', () => { if (langSelectorDropdown.classList.contains('show')) { langSelectorDropdown.classList.remove('show'); } });
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.addEventListener('click', (e) => { e.preventDefault(); setLanguage(e.target.getAttribute('data-lang')); });
+            });
+            const savedLang = localStorage.getItem('preferredLanguage') || 'ja';
+            setLanguage(savedLang);
+        });
+
         var mobileMenuButton = document.getElementById('mobile-menu-button');
         var mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenuButton) {
-            mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-        }
-
+        if (mobileMenuButton) { mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); }); }
         var header = document.getElementById('main-header');
         var lineFab = document.getElementById('line-fab');
         window.onscroll = function() {
-            if (header && window.scrollY > 50) {
-                header.classList.add('header-scrolled');
-            } else if (header) {
-                header.classList.remove('header-scrolled');
-            }
-            if (lineFab && window.pageYOffset > 300) {
-                lineFab.classList.add('show');
-            } else if (lineFab) {
-                lineFab.classList.remove('show');
-            }
+            if (header && window.scrollY > 50) { header.classList.add('header-scrolled'); } else if (header) { header.classList.remove('header-scrolled'); }
+            if (lineFab && window.pageYOffset > 300) { lineFab.classList.add('show'); } else if (lineFab) { lineFab.classList.remove('show'); }
         };
-        
         var scrollToTopBtn = document.getElementById('scrollToTopBtn');
         if (scrollToTopBtn) {
             window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    scrollToTopBtn.classList.add('show');
-                } else {
-                    scrollToTopBtn.classList.remove('show');
-                }
+                if (window.pageYOffset > 300) { scrollToTopBtn.classList.add('show'); } else { scrollToTopBtn.classList.remove('show'); }
             });
-            scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+            scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
         }
-    
-        var sr = ScrollReveal({
-            distance: '50px', duration: 1000, easing: 'ease-out', reset: false
-        });
+        var sr = ScrollReveal({ distance: '50px', duration: 1000, easing: 'ease-out', reset: false });
         sr.reveal('.reveal-title', { origin: 'top' });
         sr.reveal('.reveal-card', { origin: 'bottom' });
     </script>
