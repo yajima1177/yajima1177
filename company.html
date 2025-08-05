@@ -34,8 +34,8 @@
         @media (min-width: 768px) { #line-fab { bottom: 30px; left: 30px; width: 64px; height: 64px; } }
         #line-fab.show { opacity: 1; transform: scale(1); }
         #line-fab:hover { transform: scale(1.1); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
-        #lang-selector-dropdown { transition: opacity 0.2s ease, transform 0.2s ease; transform: translateY(-10px); opacity: 0; pointer-events: none; }
-        #lang-selector-dropdown.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        .lang-selector-dropdown { transition: opacity 0.2s ease, transform 0.2s ease; transform: translateY(-10px); opacity: 0; pointer-events: none; }
+        .lang-selector-dropdown.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
     </style>
 </head>
 <body class="bg-deep-gray text-gray-800">
@@ -53,21 +53,31 @@
                 <a href="customers.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-customers">お客様の声</a>
                 <a href="company.html" class="text-main-blue font-bold nav-link" data-lang-key="nav-company">会社概要</a>
                 <a href="contact.html" class="bg-main-blue text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 btn-primary" data-lang-key="nav-contact">お問い合わせ</a>
-                <div id="lang-selector" class="relative ml-2">
-                    <button id="lang-selector-button" class="flex items-center text-gray-600 hover:text-main-blue transition-colors">
+                <div class="relative lang-selector">
+                    <button class="flex items-center text-gray-600 hover:text-main-blue transition-colors lang-selector-button">
                         <i class="fa-solid fa-globe w-5 h-5"></i>
-                        <span id="current-lang" class="ml-2 font-semibold">日本語</span>
+                        <span class="ml-2 font-semibold current-lang">日本語</span>
                         <i class="fa-solid fa-chevron-down ml-1 text-xs"></i>
                     </button>
-                    <div id="lang-selector-dropdown" class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl z-50 overflow-hidden">
+                    <div class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl z-50 overflow-hidden lang-selector-dropdown">
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="ja">日本語</a>
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="en">English</a>
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="zh">中文</a>
                     </div>
                 </div>
             </nav>
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
+            <div class="md:hidden flex items-center space-x-2">
+                 <div class="relative lang-selector">
+                    <button class="flex items-center text-gray-600 hover:text-main-blue transition-colors p-2 lang-selector-button">
+                        <i class="fa-solid fa-globe w-5 h-5"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl z-50 overflow-hidden lang-selector-dropdown">
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="ja">日本語</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="en">English</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="zh">中文</a>
+                    </div>
+                </div>
+                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none p-2">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
@@ -79,6 +89,12 @@
             <a href="customers.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-customers">お客様の声</a>
             <a href="company.html" class="block py-2 px-6 text-sm bg-blue-100 text-main-blue" data-lang-key="nav-company">会社概要</a>
             <a href="contact.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-contact">お問い合わせ</a>
+            <div class="border-t border-gray-200 mt-2 pt-2">
+                <p class="px-6 py-2 text-xs text-gray-400" data-lang-key="language-menu-title">Language</p>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="ja">日本語</a>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="en">English</a>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="zh">中文</a>
+            </div>
         </div>
     </header>
 
@@ -235,7 +251,8 @@
                 "footer-sitemap": { ja: "サイトマップ", en: "Sitemap", zh: "网站地图" },
                 "footer-hours": { ja: "営業時間", en: "Business Hours", zh: "营业时间" },
                 "footer-hours-details": { ja: "月-土: 9:00～19:00", en: "Mon-Sat: 9:00 AM - 7:00 PM", zh: "周一至周六: 9:00 - 19:00" },
-                "footer-closing-days": { ja: "定休日: 水曜、日曜（第1・最終週を除く）", en: "Closed: Wednesdays, Sundays (except 1st & last of month)", zh: "休息日: 周三、周日（每月第一和最后一周除外）" }
+                "footer-closing-days": { ja: "定休日: 水曜、日曜（第1・最終週を除く）", en: "Closed: Wednesdays, Sundays (except 1st & last of month)", zh: "休息日: 周三、周日（每月第一和最后一周除外）" },
+                "language-menu-title": { ja: "言語", en: "Language", zh: "语言" }
             };
 
             function setLanguage(lang) {
@@ -246,44 +263,62 @@
                         elem.innerHTML = translations[key][lang];
                     }
                 });
-                const currentLangElem = document.getElementById('current-lang');
-                if(lang === 'ja') currentLangElem.textContent = '日本語';
-                if(lang === 'en') currentLangElem.textContent = 'English';
-                if(lang === 'zh') currentLangElem.textContent = '中文';
+                document.querySelectorAll('.current-lang').forEach(elem => {
+                    if(lang === 'ja') elem.textContent = '日本語';
+                    if(lang === 'en') elem.textContent = 'English';
+                    if(lang === 'zh') elem.textContent = '中文';
+                });
+
                 localStorage.setItem('preferredLanguage', lang);
-                langSelectorDropdown.classList.remove('show');
+                document.querySelectorAll('.lang-selector-dropdown').forEach(dropdown => dropdown.classList.remove('show'));
             }
 
-            const langSelectorButton = document.getElementById('lang-selector-button');
-            const langSelectorDropdown = document.getElementById('lang-selector-dropdown');
-            langSelectorButton.addEventListener('click', (e) => { e.stopPropagation(); langSelectorDropdown.classList.toggle('show'); });
-            document.addEventListener('click', () => { if (langSelectorDropdown.classList.contains('show')) { langSelectorDropdown.classList.remove('show'); } });
-            document.querySelectorAll('.lang-option').forEach(option => {
-                option.addEventListener('click', (e) => { e.preventDefault(); setLanguage(e.target.getAttribute('data-lang')); });
+            document.querySelectorAll('.lang-selector-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const dropdown = button.nextElementSibling;
+                    dropdown.classList.toggle('show');
+                });
             });
+
+            document.addEventListener('click', () => {
+                document.querySelectorAll('.lang-selector-dropdown').forEach(dropdown => {
+                    if (dropdown.classList.contains('show')) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            });
+
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    setLanguage(e.target.getAttribute('data-lang'));
+                });
+            });
+            
             const savedLang = localStorage.getItem('preferredLanguage') || 'ja';
             setLanguage(savedLang);
-        });
 
-        var mobileMenuButton = document.getElementById('mobile-menu-button');
-        var mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenuButton) { mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); }); }
-        var header = document.getElementById('main-header');
-        var lineFab = document.getElementById('line-fab');
-        window.onscroll = function() {
-            if (header && window.scrollY > 50) { header.classList.add('header-scrolled'); } else if (header) { header.classList.remove('header-scrolled'); }
-            if (lineFab && window.pageYOffset > 300) { lineFab.classList.add('show'); } else if (lineFab) { lineFab.classList.remove('show'); }
-        };
-        var scrollToTopBtn = document.getElementById('scrollToTopBtn');
-        if (scrollToTopBtn) {
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) { scrollToTopBtn.classList.add('show'); } else { scrollToTopBtn.classList.remove('show'); }
-            });
-            scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        }
-        var sr = ScrollReveal({ distance: '50px', duration: 1000, easing: 'ease-out', reset: false });
-        sr.reveal('.reveal-title', { origin: 'top' });
-        sr.reveal('.reveal-card', { origin: 'bottom' });
+            var mobileMenuButton = document.getElementById('mobile-menu-button');
+            var mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton) { mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); }); }
+            var header = document.getElementById('main-header');
+            var lineFab = document.getElementById('line-fab');
+            window.onscroll = function() {
+                if (header && window.scrollY > 50) { header.classList.add('header-scrolled'); } else if (header) { header.classList.remove('header-scrolled'); }
+                if (lineFab && window.pageYOffset > 300) { lineFab.classList.add('show'); } else if (lineFab) { lineFab.classList.remove('show'); }
+            };
+            var scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            if (scrollToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 300) { scrollToTopBtn.classList.add('show'); } else { scrollToTopBtn.classList.remove('show'); }
+                });
+                scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            }
+            var sr = ScrollReveal({ distance: '50px', duration: 1000, easing: 'ease-out', reset: false });
+            sr.reveal('.reveal-title', { origin: 'top' });
+            sr.reveal('.reveal-card', { origin: 'bottom' });
+        });
     </script>
 
 </body>
