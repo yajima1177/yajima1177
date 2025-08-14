@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>賃貸物件 - 有限会社 谷島商事</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
+        .bg-main-blue { background-color: #0072b8; }
+        .text-main-blue { color: #0072b8; }
+        .bg-deep-gray { background-color: #f3f4f6; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background-color: #0072b8; margin-top: 8px; margin-left: auto; margin-right: auto; }
+        .header-scrolled { background-color: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); }
+        header { transition: all 0.3s ease-in-out; }
+        .nav-link::after { content: ''; display: block; width: 0; height: 2px; background: #0072b8; transition: width .3s; }
+        .nav-link:hover::after { width: 100%; }
+        .dropdown { position: relative; }
+        .dropdown .dropdown-arrow { opacity: 0; transition: opacity 0.2s ease-in-out; }
+        .dropdown:hover .dropdown-arrow { opacity: 1; }
+        .dropdown-menu { opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.2s ease-out, transform 0.2s ease-out, visibility 0.2s; pointer-events: none; position: absolute; left: 0; top: 100%; }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+        .dropdown:hover > .dropdown-trigger { color: #0072b8; }
+        .dropdown-menu a { transition: background-color 0.2s ease, color 0.2s ease; }
+        .dropdown-menu a:hover { background-color: #eff6ff; color: #0072b8; }
+        #properties-submenu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
+        #properties-submenu.open { max-height: 200px; }
+        #properties-toggle .arrow-icon { transition: transform 0.3s ease; }
+        #properties-toggle.open .arrow-icon { transform: rotate(180deg); }
+        .lang-selector-dropdown { transition: opacity 0.2s ease, transform 0.2s ease; transform: translateY(-10px); opacity: 0; pointer-events: none; }
+        .lang-selector-dropdown.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    </style>
+</head>
+<body class="bg-deep-gray text-gray-800">
+
+    <!-- Header -->
+    <header id="main-header" class="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html">
+                <img src="images/logo.png" alt="有限会社 谷島商事 ロゴ" class="h-12 w-auto">
+            </a>
+            <nav class="hidden md:flex items-center text-sm space-x-4 lg:space-x-6">
+                <a href="strengths.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-strengths">当社の強み</a>
+                <a href="flow.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-flow">ご入居までの流れ</a>
+                <div class="dropdown">
+                    <div class="dropdown-trigger text-main-blue font-bold flex items-center py-2 cursor-pointer">
+                        <span data-lang-key="nav-properties">物件情報</span>
+                        <i class="fa-solid fa-chevron-down ml-1 text-xs dropdown-arrow"></i>
+                    </div>
+                    <div class="dropdown-menu w-48 bg-white rounded-md shadow-lg z-50 overflow-hidden">
+                        <a href="properties_rental.html" class="block px-4 py-3 text-sm text-gray-700" data-lang-key="nav-properties-rental">賃貸物件</a>
+                        <a href="properties_sale.html" class="block px-4 py-3 text-sm text-gray-700" data-lang-key="nav-properties-sale">売買物件</a>
+                        <a href="properties_parking.html" class="block px-4 py-3 text-sm text-gray-700" data-lang-key="nav-properties-parking">駐車場</a>
+                    </div>
+                </div>
+                <a href="customers.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-protagonists">まちの主役たち</a>
+                <a href="company.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-company">会社概要</a>
+                <a href="contact.html" class="bg-main-blue text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700" data-lang-key="nav-contact">お問い合わせ</a>
+                <div class="relative lang-selector">
+                    <button class="flex items-center text-gray-600 hover:text-main-blue transition-colors lang-selector-button">
+                        <i class="fa-solid fa-globe w-5 h-5"></i>
+                        <span class="ml-2 font-semibold current-lang">日本語</span>
+                        <i class="fa-solid fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl z-50 overflow-hidden lang-selector-dropdown">
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="ja">日本語</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="en">English</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="zh">中文</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="md:hidden flex items-center space-x-2">
+                 <div class="relative lang-selector">
+                    <button class="flex items-center text-gray-600 hover:text-main-blue transition-colors p-2 lang-selector-button">
+                        <i class="fa-solid fa-globe w-5 h-5"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl z-50 overflow-hidden lang-selector-dropdown">
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="ja">日本語</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="en">English</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="zh">中文</a>
+                    </div>
+                </div>
+                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <a href="strengths.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-strengths">当社の強み</a>
+            <a href="flow.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-flow">ご入居までの流れ</a>
+            <div>
+                <button id="properties-toggle" class="w-full text-left block py-2 px-6 text-sm text-main-blue bg-blue-100 font-bold flex justify-between items-center">
+                    <span data-lang-key="nav-properties">物件情報</span>
+                    <i class="fa-solid fa-chevron-down ml-1 text-xs arrow-icon"></i>
+                </button>
+                <div id="properties-submenu" class="pl-4">
+                     <a href="properties_rental.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties-rental">賃貸物件</a>
+                     <a href="properties_sale.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties-sale">売買物件</a>
+                     <a href="properties_parking.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties-parking">駐車場</a>
+                </div>
+             </div>
+            <a href="customers.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-protagonists">まちの主役たち</a>
+            <a href="company.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-company">会社概要</a>
+            <a href="contact.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-contact">お問い合わせ</a>
+            <div class="border-t border-gray-200 mt-2 pt-2">
+                <p class="px-6 py-2 text-xs text-gray-400" data-lang-key="language-menu-title">Language</p>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="ja">日本語</a>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="en">English</a>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="zh">中文</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-16 sm:py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="section-title text-3xl font-bold inline-block w-full mb-8" data-lang-key="properties-rental-title">賃貸物件</h1>
+            <div class="bg-white p-12 rounded-lg shadow-lg max-w-2xl mx-auto">
+                <i class="fas fa-tools text-5xl text-gray-400 mb-4"></i>
+                <p class="text-xl text-gray-700" data-lang-key="coming-soon-title">現在準備中です</p>
+                <p class="text-gray-500 mt-2" data-lang-key="coming-soon-text">新しい物件情報を楽しみにお待ちください。</p>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const translations = {
+                "nav-strengths": { ja: "当社の強み", en: "Our Strengths", zh: "我们的优势" },
+                "nav-flow": { ja: "ご入居までの流れ", en: "Process", zh: "入住流程" },
+                "nav-properties": { ja: "物件情報", en: "Properties", zh: "房产信息" },
+                "nav-properties-rental": { ja: "賃貸物件", en: "Rental", zh: "租赁物业" },
+                "nav-properties-sale": { ja: "売買物件", en: "For Sale", zh: "买卖物业" },
+                "nav-properties-parking": { ja: "駐車場", en: "Parking", zh: "停车场" },
+                "nav-protagonists": { ja: "まちの主役たち", en: "Stars of the Town", zh: "小镇主角" },
+                "nav-company": { ja: "会社概要", en: "Company", zh: "公司简介" },
+                "nav-contact": { ja: "お問い合わせ", en: "Contact", zh: "联系我们" },
+                "properties-rental-title": { ja: "賃貸物件", en: "Rental Properties", zh: "租赁物业" },
+                "coming-soon-title": { ja: "現在準備中です", en: "Coming Soon", zh: "敬请期待" },
+                "coming-soon-text": { ja: "新しい物件情報を楽しみにお待ちください。", en: "Please look forward to new property information.", zh: "请期待新的房产信息。" },
+                "language-menu-title": { ja: "言語", en: "Language", zh: "语言" }
+            };
+
+            function setLanguage(lang) {
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-lang-key]').forEach(elem => {
+                    const key = elem.getAttribute('data-lang-key');
+                    if (translations[key] && translations[key][lang]) {
+                        elem.innerHTML = translations[key][lang];
+                    }
+                });
+                document.querySelectorAll('.current-lang').forEach(elem => {
+                    if(lang === 'ja') elem.textContent = '日本語';
+                    if(lang === 'en') elem.textContent = 'English';
+                    if(lang === 'zh') elem.textContent = '中文';
+                });
+                localStorage.setItem('preferredLanguage', lang);
+                document.querySelectorAll('.lang-selector-dropdown').forEach(dropdown => dropdown.classList.remove('show'));
+            }
+
+            document.querySelectorAll('.lang-selector-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const dropdown = button.nextElementSibling;
+                    dropdown.classList.toggle('show');
+                });
+            });
+
+            document.addEventListener('click', () => {
+                document.querySelectorAll('.lang-selector-dropdown').forEach(dropdown => {
+                    if (dropdown.classList.contains('show')) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            });
+
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    setLanguage(e.target.getAttribute('data-lang'));
+                });
+            });
+            
+            const savedLang = localStorage.getItem('preferredLanguage') || 'ja';
+            setLanguage(savedLang);
+
+            var mobileMenuButton = document.getElementById('mobile-menu-button');
+            var mobileMenu = document.getElementById('mobile-menu');
+            var propertiesToggle = document.getElementById('properties-toggle');
+            var propertiesSubmenu = document.getElementById('properties-submenu');
+
+            if (mobileMenuButton) { mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); }); }
+            if (propertiesToggle) { 
+                propertiesToggle.addEventListener('click', () => { 
+                    propertiesSubmenu.classList.toggle('open');
+                    propertiesToggle.classList.toggle('open');
+                }); 
+            }
+        });
+    </script>
+
+</body>
+</html>

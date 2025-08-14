@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>駐車場物件 - 有限会社 谷島商事</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
+        .bg-main-blue { background-color: #0072b8; }
+        .text-main-blue { color: #0072b8; }
+        .border-main-blue { border-color: #0072b8; }
+        .bg-accent-green { background-color: #8fc31f; }
+        .bg-accent-yellow { background-color: #f8b500; }
+        .bg-deep-gray { background-color: #f3f4f6; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background-color: #0072b8; margin-top: 8px; margin-left: auto; margin-right: auto; }
+        .reveal { visibility: hidden; }
+        .header-scrolled { background-color: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); }
+        header { transition: all 0.3s ease-in-out; }
+        .nav-link::after { content: ''; display: block; width: 0; height: 2px; background: #0072b8; transition: width .3s; }
+        .nav-link:hover::after { width: 100%; }
+        .dropdown { position: relative; }
+        .dropdown .dropdown-arrow { opacity: 0; transition: opacity 0.2s ease-in-out; }
+        .dropdown:hover .dropdown-arrow { opacity: 1; }
+        .dropdown-menu { opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.2s ease-out, transform 0.2s ease-out, visibility 0.2s; pointer-events: none; position: absolute; left: 0; top: 100%; }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+        .dropdown:hover > .dropdown-trigger { color: #0072b8; }
+        .dropdown-menu a { transition: background-color 0.2s ease, color 0.2s ease; }
+        .dropdown-menu a:hover { background-color: #eff6ff; color: #0072b8; }
+        #properties-submenu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
+        #properties-submenu.open { max-height: 200px; }
+        #properties-toggle .arrow-icon { transition: transform 0.3s ease; }
+        #properties-toggle.open .arrow-icon { transform: rotate(180deg); }
+        #scrollToTopBtn { position: fixed; bottom: 20px; right: 15px; z-index: 99; cursor: pointer; opacity: 0; transform: translateX(100px); transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: none; border: none; padding: 0; }
+        @media (min-width: 768px) { #scrollToTopBtn { bottom: 30px; right: 30px; } }
+        #scrollToTopBtn.show { opacity: 0.7; transform: translateX(0); }
+        #scrollToTopBtn:hover.show { opacity: 1; }
+        .btn-primary { transition: all 0.3s ease; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+        .btn-line-ghost { color: #fff; border: 2px solid #fff; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .btn-line-ghost:hover { background: #06C755; color: #fff; border-color: #06C755; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0, 0.3); }
+        .speech-bubble { position: relative; background: #fff; border-radius: .4em; color: #333; }
+        .speech-bubble:after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 0; border: 12px solid transparent; border-top-color: #fff; border-bottom: 0; margin-left: -12px; margin-bottom: -12px; }
+        #line-fab { position: fixed; bottom: 20px; left: 15px; z-index: 99; width: 56px; height: 56px; background-color: #06C755; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15); opacity: 0; transform: scale(0.5); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        @media (min-width: 768px) { #line-fab { bottom: 30px; left: 30px; width: 64px; height: 64px; } }
+        #line-fab.show { opacity: 1; transform: scale(1); }
+        #line-fab:hover { transform: scale(1.1); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+        .lang-selector-dropdown { transition: opacity 0.2s ease, transform 0.2s ease; transform: translateY(-10px); opacity: 0; pointer-events: none; }
+        .lang-selector-dropdown.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    </style>
+</head>
+<body class="bg-deep-gray text-gray-800">
+
+    <!-- Header -->
+    <header id="main-header" class="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html">
+                <img src="images/logo.png" alt="有限会社 谷島商事 ロゴ" class="h-16 md:h-17 w-auto">
+            </a>
+            <nav class="hidden md:flex items-center text-sm space-x-4 lg:space-x-6">
+                <a href="strengths.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-strengths">当社の強み</a>
+                <a href="flow.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-flow">ご入居までの流れ</a>
+                <div class="dropdown">
+                    <div class="dropdown-trigger text-main-blue font-bold flex items-center py-2 cursor-pointer">
+                        <span data-lang-key="nav-properties">物件情報</span>
+                        <i class="fa-solid fa-chevron-down ml-1 text-xs dropdown-arrow"></i>
+                    </div>
+                    <div class="dropdown-menu w-48 bg-white rounded-md shadow-lg z-50 overflow-hidden">
+                        <a href="properties_rental.html" class="block px-4 py-3 text-sm text-gray-700" data-lang-key="nav-properties-rental">賃貸物件</a>
+                        <a href="properties_sale.html" class="block px-4 py-3 text-sm text-gray-700" data-lang-key="nav-properties-sale">売買物件</a>
+                        <a href="properties_parking.html" class="block px-4 py-3 text-sm text-gray-700" data-lang-key="nav-properties-parking">駐車場</a>
+                    </div>
+                </div>
+                <a href="customers.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-protagonists">まちの主役たち</a>
+                <a href="company.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-company">会社概要</a>
+                <a href="contact.html" class="bg-main-blue text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 btn-primary" data-lang-key="nav-contact">お問い合わせ</a>
+                <div class="relative lang-selector">
+                    <button class="flex items-center text-gray-600 hover:text-main-blue transition-colors lang-selector-button">
+                        <i class="fa-solid fa-globe w-5 h-5"></i>
+                        <span class="ml-2 font-semibold current-lang">日本語</span>
+                        <i class="fa-solid fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl z-50 overflow-hidden lang-selector-dropdown">
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="ja">日本語</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="en">English</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="zh">中文</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="md:hidden flex items-center space-x-2">
+                 <div class="relative lang-selector">
+                    <button class="flex items-center text-gray-600 hover:text-main-blue transition-colors p-2 lang-selector-button">
+                        <i class="fa-solid fa-globe w-5 h-5"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl z-50 overflow-hidden lang-selector-dropdown">
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="ja">日本語</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="en">English</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="zh">中文</a>
+                    </div>
+                </div>
+                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <a href="strengths.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-strengths">当社の強み</a>
+            <a href="flow.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-flow">ご入居までの流れ</a>
+            <div>
+                <button id="properties-toggle" class="w-full text-left block py-2 px-6 text-sm text-main-blue bg-blue-100 font-bold flex justify-between items-center">
+                    <span data-lang-key="nav-properties">物件情報</span>
+                    <i class="fa-solid fa-chevron-down ml-1 text-xs arrow-icon"></i>
+                </button>
+                <div id="properties-submenu" class="pl-4">
+                     <a href="properties_rental.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties-rental">賃貸物件</a>
+                     <a href="properties_sale.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties-sale">売買物件</a>
+                     <a href="properties_parking.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties-parking">駐車場</a>
+                </div>
+             </div>
+            <a href="customers.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-protagonists">まちの主役たち</a>
+            <a href="company.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-company">会社概要</a>
+            <a href="contact.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-contact">お問い合わせ</a>
+            <div class="border-t border-gray-200 mt-2 pt-2">
+                <p class="px-6 py-2 text-xs text-gray-400" data-lang-key="language-menu-title">Language</p>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="ja">日本語</a>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="en">English</a>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="zh">中文</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-16 sm:py-20">
+        <div class="container mx-auto px-6">
+            <h1 class="section-title text-3xl font-bold text-center inline-block w-full mb-16 reveal-title" data-lang-key="properties-parking-title">駐車場物件</h1>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg mb-12 reveal-card">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700" data-lang-key="filter-features">こだわり</label>
+                         <div id="tags-filter" class="flex flex-wrap gap-x-4 gap-y-2 mt-2">
+                            <label class="inline-flex items-center"><input type="checkbox" value="tag-new" class="rounded border-gray-300 text-main-blue shadow-sm focus:border-main-blue focus:ring focus:ring-offset-0 focus:ring-main-blue focus:ring-opacity-50"> <span class="ml-2 text-sm" data-lang-key="filter-feature-new">新着</span></label>
+                             <label class="inline-flex items-center"><input type="checkbox" value="tag-station" class="rounded border-gray-300 text-main-blue shadow-sm focus:border-main-blue focus:ring focus:ring-offset-0 focus:ring-main-blue focus:ring-opacity-50"> <span class="ml-2 text-sm" data-lang-key="filter-feature-station">駅近</span></label>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="sort-order" class="block text-sm font-medium text-gray-700" data-lang-key="filter-sort">並べ替え</label>
+                        <select id="sort-order" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-main-blue focus:border-main-blue sm:text-sm">
+                            <option value="default" data-lang-key="filter-sort-default">おすすめ順</option>
+                            <option value="price-asc" data-lang-key="filter-sort-asc">賃料の安い順</option>
+                            <option value="price-desc" data-lang-key="filter-sort-desc">賃料の高い順</option>
+                        </select>
+                    </div>
+                    <div class="text-right md:col-span-2">
+                        <button id="reset-filter" class="w-full md:w-auto bg-gray-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-gray-600 transition-all">
+                            <i class="fa-solid fa-rotate-right mr-1"></i><span data-lang-key="filter-reset">リセット</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="properties-list" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Property cards will be generated by JavaScript -->
+            </div>
+            <div id="no-results" class="hidden text-center py-16">
+                <i class="fa-solid fa-magnifying-glass text-4xl text-gray-400 mb-4"></i>
+                <p class="text-xl text-gray-600" data-lang-key="no-results-title">指定された条件の物件は見つかりませんでした。</p>
+                <p class="text-gray-500 mt-2" data-lang-key="no-results-text">条件を変更して再度お試しください。</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- LINE CTA Section -->
+    <section class="bg-white py-16 sm:py-20">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="bg-gray-700 rounded-2xl shadow-xl p-8 reveal-card">
+                <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-6 text-white">
+                    <div class="col-span-12 md:col-span-5 text-center md:text-left">
+                        <div class="flex items-center justify-center md:justify-start mb-3">
+                            <i class="fab fa-line text-3xl text-green-400"></i>
+                            <span class="ml-3 text-2xl font-bold" data-lang-key="line-title">LINE公式アカウント</span>
+                        </div>
+                        <p class="text-gray-300 mb-6" data-lang-key="line-text">
+                            友だち追加で、最新の物件情報やお得な情報をお届けします。
+                        </p>
+                        <a href="https://line.me/R/ti/p/YOUR_LINE_ID" target="_blank" class="font-bold py-3 px-8 rounded-full transition-all text-lg inline-flex items-center justify-center btn-line-ghost">
+                            <i class="fa-solid fa-plus mr-2"></i> <span data-lang-key="line-btn">友だち追加はこちら</span>
+                        </a>
+                    </div>
+                    <div class="col-span-12 md:col-span-3 hidden md:flex justify-center items-center order-first md:order-none">
+                        <div class="relative w-32 h-32">
+                            <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-40 speech-bubble p-2 text-center text-sm font-bold shadow-lg">
+                                <p data-lang-key="line-char-bubble">お気軽に<br>ご相談ください！</p>
+                            </div>
+                            <img src="images/yajimashoji_originalcharacter_A.png" alt="谷島商事 オリジナルキャラクター" class="w-full h-full object-contain drop-shadow-lg mt-11">
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-4 flex items-center justify-center md:justify-end">
+                        <div class="w-36 h-36 p-2 bg-white rounded-lg shadow-lg flex-shrink-0">
+                            <img src="https://placehold.co/144x144/ffffff/333333?text=QR" alt="LINE QR Code">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16 sm:mt-20">
+        <div class="container mx-auto px-6 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="mb-6 md:mb-0">
+                    <p class="text-xl font-bold">有限会社 谷島商事</p>
+                    <p class="text-sm mt-2">〒348-0053<br>埼玉県羽生市南6丁目16-9</p>
+                </div>
+                <div class="text-sm">
+                    <h4 class="font-bold mb-3" data-lang-key="footer-sitemap">サイトマップ</h4>
+                    <a href="strengths.html" class="block mt-2 hover:underline" data-lang-key="nav-strengths">当社の強み</a>
+                    <a href="flow.html" class="block mt-2 hover:underline" data-lang-key="nav-flow">ご入居までの流れ</a>
+                    <a href="properties_parking.html" class="block mt-2 hover:underline" data-lang-key="nav-properties">物件情報</a>
+                    <a href="customers.html" class="block mt-2 hover:underline" data-lang-key="nav-protagonists">まちの主役たち</a>
+                    <a href="company.html" class="block mt-2 hover:underline" data-lang-key="nav-company">会社概要</a>
+                    <a href="contact.html" class="block mt-2 hover:underline" data-lang-key="nav-contact">お問い合わせ</a>
+                </div>
+                 <div class="text-sm">
+                    <h4 class="font-bold mb-3" data-lang-key="footer-hours">営業時間</h4>
+                    <p data-lang-key="footer-hours-details">月-土: 9:00～19:00</p>
+                    <p data-lang-key="footer-closing-days">定休日: 水曜、日曜（第1・最終週を除く）</p>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-6 text-center text-sm text-gray-400">
+                <p>&copy; 2024 Yajima Shoji Co., Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scrollToTopBtn">
+        <img src="images/scroll-to-top-btn-img.png" alt="トップに戻る" class="w-20 h-20 md:w-40 md:h-40 transition-transform duration-300 hover:scale-110">
+    </button>
+
+    <a href="https://line.me/R/ti/p/YOUR_LINE_ID" target="_blank" id="line-fab">
+        <i class="fab fa-line text-white text-3xl md:text-4xl"></i>
+    </a>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const translations = {
+                "nav-strengths": { ja: "当社の強み", en: "Our Strengths", zh: "我们的优势" },
+                "nav-flow": { ja: "ご入居までの流れ", en: "Process", zh: "入住流程" },
+                "nav-properties": { ja: "物件情報", en: "Properties", zh: "房产信息" },
+                "nav-properties-rental": { ja: "賃貸物件", en: "Rental", zh: "租赁物业" },
+                "nav-properties-sale": { ja: "売買物件", en: "For Sale", zh: "买卖物业" },
+                "nav-properties-parking": { ja: "駐車場", en: "Parking", zh: "停车场" },
+                "nav-protagonists": { ja: "まちの主役たち", en: "Stars of the Town", zh: "小镇主角" },
+                "nav-company": { ja: "会社概要", en: "Company", zh: "公司简介" },
+                "nav-contact": { ja: "お問い合わせ", en: "Contact", zh: "联系我们" },
+                "properties-parking-title": { ja: "駐車場物件", en: "Parking Lots", zh: "停车场物业" },
+                "filter-features": { ja: "こだわり", en: "Features", zh: "特色" },
+                "filter-feature-new": { ja: "新着", en: "New", zh: "新" },
+                "filter-feature-station": { ja: "駅近", en: "Near Station", zh: "近车站" },
+                "filter-sort": { ja: "並べ替え", en: "Sort By", zh: "排序" },
+                "filter-sort-default": { ja: "おすすめ順", en: "Recommended", zh: "推荐排序" },
+                "filter-sort-asc": { ja: "賃料の安い順", en: "Price: Low to High", zh: "租金从低到高" },
+                "filter-sort-desc": { ja: "賃料の高い順", en: "Price: High to Low", zh: "租金从高到低" },
+                "filter-reset": { ja: "リセット", en: "Reset", zh: "重置" },
+                "no-results-title": { ja: "指定された条件の物件は見つかりませんでした。", en: "No properties were found matching your criteria.", zh: "未找到符合您条件的房产。" },
+                "no-results-text": { ja: "条件を変更して再度お試しください。", en: "Please change the criteria and try again.", zh: "请更改条件后重试。" },
+                "line-title": { ja: "LINE公式アカウント", en: "Official LINE Account", zh: "LINE官方账号" },
+                "line-text": { ja: "友だち追加で、最新の物件情報やお得な情報をお届けします。", en: "Add us to get the latest property deals and information.", zh: "添加好友，获取最新的房产信息和优惠资讯。" },
+                "line-btn": { ja: "友だち追加はこちら", en: "Add Friend", zh: "添加好友" },
+                "line-char-bubble": { ja: "お気軽に<br>ご相談ください！", en: "Feel free<br>to ask!", zh: "欢迎<br>随时咨询！" },
+                "footer-sitemap": { ja: "サイトマップ", en: "Sitemap", zh: "网站地图" },
+                "footer-hours": { ja: "営業時間", en: "Business Hours", zh: "营业时间" },
+                "footer-hours-details": { ja: "月-土: 9:00～19:00", en: "Mon-Sat: 9:00 AM - 7:00 PM", zh: "周一至周六: 9:00 - 19:00" },
+                "footer-closing-days": { ja: "定休日: 水曜、日曜（第1・最終週を除く）", en: "Closed: Wednesdays, Sundays (except 1st & last of month)", zh: "休息日: 周三、周日（每月第一和最后一周除外）" },
+                "tag-new": { ja: "新着", en: "New", zh: "新" },
+                "tag-station": { ja: "駅近", en: "Near Sta.", zh: "近车站" },
+                "tag-available": { ja: "空きあり", en: "Available", zh: "有空" },
+                "price-per-month": { ja: "/月", en: "/month", zh: "/月" },
+                "currency-yen": { ja: "円", en: " JPY", zh: "日元" },
+                "language-menu-title": { ja: "言語", en: "Language", zh: "语言" }
+            };
+
+            const propertiesData = [
+                {"id":1,"type":"parking","name":{"ja":"城沼駐車場","en":"Shironuma Parking","zh":"城沼停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4322,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県羽生市東8-12-1","en":"8-12-1 Higashi, Hanyu, Saitama","zh":"埼玉县羽生市东8-12-1"},"url":"https://www.park-direct.jp/parkinglot/PK000061082"}},
+                {"id":2,"type":"parking","name":{"ja":"篠崎駐車場","en":"Shinozaki Parking","zh":"篠崎停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4322,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県羽生市西5-35-13","en":"5-35-13 Nishi, Hanyu, Saitama","zh":"埼玉县羽生市西5-35-13"},"url":"https://www.park-direct.jp/parkinglot/PK000061083"}},
+                {"id":3,"type":"parking","name":{"ja":"田辺駐車場","en":"Tanabe Parking","zh":"田边停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4322,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県羽生市西5-30-1","en":"5-30-1 Nishi, Hanyu, Saitama","zh":"埼玉县羽生市西5-30-1"},"url":"https://www.park-direct.jp/parkinglot/PK000061084"}},
+                {"id":4,"type":"parking","name":{"ja":"田辺第2駐車場","en":"Tanabe No.2 Parking","zh":"田边第2停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4322,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県羽生市西5-18-1","en":"5-18-1 Nishi, Hanyu, Saitama","zh":"埼玉县羽生市西5-18-1"},"url":"https://www.park-direct.jp/parkinglot/PK000061085"}},
+                {"id":5,"type":"parking","name":{"ja":"キッコーミネ駐車場","en":"Kikkomine Parking","zh":"キッコーミネ停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4917,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県羽生市南7-2-5","en":"7-2-5 Minami, Hanyu, Saitama","zh":"埼玉县羽生市南7-2-5"},"url":"https://www.park-direct.jp/parkinglot/PK000061086"}},
+                {"id":6,"type":"parking","name":{"ja":"堀越駐車場","en":"Horikoshi Parking","zh":"堀越停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":3729,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県羽生市藤井上組1341-1","en":"1341-1 Fujiikami-gumi, Hanyu, Saitama","zh":"埼玉县羽生市藤井上組1341-1"},"url":"https://www.park-direct.jp/parkinglot/PK000061087"}},
+                {"id":7,"type":"parking","name":{"ja":"ブルースカイ駐車場","en":"Blue Sky Parking","zh":"蓝天停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4322,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県羽生市東7-9-12","en":"7-9-12 Higashi, Hanyu, Saitama","zh":"埼玉县羽生市东7-9-12"},"url":"https://www.park-direct.jp/parkinglot/PK000061088"}},
+                {"id":8,"type":"parking","name":{"ja":"針谷中央駐車場","en":"Hariya Chuo Parking","zh":"针谷中央停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":5510,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"埼玉県羽生市中央5-13-24","en":"5-13-24 Chuo, Hanyu, Saitama","zh":"埼玉县羽生市中央5-13-24"},"url":"https://www.park-direct.jp/parkinglot/PK000061089"}},
+                {"id":9,"type":"parking","name":{"ja":"太田駐車場","en":"Ota Parking","zh":"太田停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4917,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県羽生市西5-29-1","en":"5-29-1 Nishi, Hanyu, Saitama","zh":"埼玉县羽生市西5-29-1"},"url":"https://www.park-direct.jp/parkinglot/PK000061108"}},
+                {"id":10,"type":"parking","name":{"ja":"太田南駐車場","en":"Ota Minami Parking","zh":"太田南停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":6621,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県羽生市南1-6-15","en":"1-6-15 Minami, Hanyu, Saitama","zh":"埼玉县羽生市南1-6-15"},"url":"https://www.park-direct.jp/parkinglot/PK000061123"}},
+                {"id":11,"type":"parking","name":{"ja":"木村西口駐車場","en":"Kimura Nishiguchi Parking","zh":"木村西口停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":6621,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県羽生市西2-3-10","en":"2-3-10 Nishi, Hanyu, Saitama","zh":"埼玉县羽生市西2-3-10"},"url":"https://www.park-direct.jp/parkinglot/PK000061125"}},
+                {"id":12,"type":"parking","name":{"ja":"新井中央駐車場","en":"Arai Chuo Parking","zh":"新井中央停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":6028,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"埼玉県羽生市中央3-5-30","en":"3-5-30 Chuo, Hanyu, Saitama","zh":"埼玉县羽生市中央3-5-30"},"url":"https://www.park-direct.jp/parkinglot/PK000061126"}},
+                {"id":13,"type":"parking","name":{"ja":"明和駅前駐車場","en":"Meiwa Ekimae Parking","zh":"明和站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":3729,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"群馬県邑楽郡明和町新里44","en":"44 Shinsato, Meiwa, Ora-gun, Gunma","zh":"群马县邑楽郡明和町新里44"},"url":"https://www.park-direct.jp/parkinglot/PK000063119"}},
+                {"id":14,"type":"parking","name":{"ja":"入江第二駐車場","en":"Irie No.2 Parking","zh":"入江第二停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":6028,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"埼玉県羽生市中央2-3-9","en":"2-3-9 Chuo, Hanyu, Saitama","zh":"埼玉县羽生市中央2-3-9"},"url":"https://www.park-direct.jp/parkinglot/PK000063120"}},
+                {"id":15,"type":"parking","name":{"ja":"入江第三駐車場","en":"Irie No.3 Parking","zh":"入江第三停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4917,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県羽生市南1-1566-4","en":"1-1566-4 Minami, Hanyu, Saitama","zh":"埼玉县羽生市南1-1566-4"},"url":"https://www.park-direct.jp/parkinglot/PK000063121"}},
+                {"id":16,"type":"parking","name":{"ja":"ひまわり駐車場","en":"Himawari Parking","zh":"向日葵停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4322,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県羽生市東7-14-4","en":"7-14-4 Higashi, Hanyu, Saitama","zh":"埼玉县羽生市东7-14-4"},"url":"https://www.park-direct.jp/parkinglot/PK000063122"}},
+                {"id":17,"type":"parking","name":{"ja":"大久保久喜駐車場","en":"Okubo Kuki Parking","zh":"大久保久喜停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":5564,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県久喜市野久喜776-8","en":"776-8 Noguki, Kuki, Saitama","zh":"埼玉县久喜市野久喜776-8"},"url":"https://www.park-direct.jp/parkinglot/PK000063123"}},
+                {"id":18,"type":"parking","name":{"ja":"羽生駐車場","en":"Hanyu Parking","zh":"羽生停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4322,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県羽生市西5-17-25","en":"5-17-25 Nishi, Hanyu, Saitama","zh":"埼玉县羽生市西5-17-25"},"url":"https://www.park-direct.jp/parkinglot/PK000061081"}},
+                {"id":19,"type":"parking","name":{"ja":"川俣駅前駐車場","en":"Kawamata Ekimae Parking","zh":"川俣站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":3729,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"群馬県邑楽郡明和町中谷223","en":"223 Nakaya, Meiwa, Ora-gun, Gunma","zh":"群马县邑楽郡明和町中谷223"},"url":"https://www.park-direct.jp/parkinglot/PK000063118"}},
+                {"id":20,"type":"parking","name":{"ja":"羽生駅東口駐車場","en":"Hanyu Station East Exit Parking","zh":"羽生站东口停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":6621,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"埼玉県羽生市中央3-2-21","en":"3-2-21 Chuo, Hanyu, Saitama","zh":"埼玉县羽生市中央3-2-21"},"url":"https://www.park-direct.jp/parkinglot/PK000061124"}},
+                {"id":21,"type":"parking","name":{"ja":"南羽生駅前駐車場","en":"Minami-Hanyu Station Front Parking","zh":"南羽生站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4322,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"埼玉県羽生市南2-1-2","en":"2-1-2 Minami, Hanyu, Saitama","zh":"埼玉县羽生市南2-1-2"},"url":"https://www.park-direct.jp/parkinglot/PK000061080"}},
+                {"id":22,"type":"parking","name":{"ja":"東鷲宮駐車場","en":"Higashi-Washinomiya Parking","zh":"东鹫宫停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":5564,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県久喜市西大輪2-1-1","en":"2-1-1 Nishiowarin, Kuki, Saitama","zh":"埼玉县久喜市西大轮2-1-1"},"url":"https://www.park-direct.jp/parkinglot/PK000063124"}},
+                {"id":23,"type":"parking","name":{"ja":"栗原駐車場","en":"Kurihara Parking","zh":"栗原停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4917,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県羽生市南3-7-1","en":"3-7-1 Minami, Hanyu, Saitama","zh":"埼玉县羽生市南3-7-1"},"url":"https://www.park-direct.jp/parkinglot/PK000061122"}},
+                {"id":24,"type":"parking","name":{"ja":"加須駐車場","en":"Kazo Parking","zh":"加须停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県加須市中央1-1-15","en":"1-1-15 Chuo, Kazo, Saitama","zh":"埼玉县加须市中央1-1-15"},"url":"https://www.park-direct.jp/parkinglot/PK000063125"}},
+                {"id":25,"type":"parking","name":{"ja":"行田駅前駐車場","en":"Gyoda Station Front Parking","zh":"行田站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"埼玉県行田市大字長野603-1","en":"603-1 Nagano, Gyoda, Saitama","zh":"埼玉县行田市大字长野603-1"},"url":"https://www.park-direct.jp/parkinglot/PK000063126"}},
+                {"id":26,"type":"parking","name":{"ja":"東行田駅前駐車場","en":"Higashi-Gyoda Station Front Parking","zh":"东行田站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"埼玉県行田市桜町2-28-22","en":"2-28-22 Sakuracho, Gyoda, Saitama","zh":"埼玉县行田市樱町2-28-22"},"url":"https://www.park-direct.jp/parkinglot/PK000063127"}},
+                {"id":27,"type":"parking","name":{"ja":"武州荒木駅前駐車場","en":"Bushu-Araki Station Front Parking","zh":"武州荒木站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"埼玉県行田市大字荒木164-1","en":"164-1 Araki, Gyoda, Saitama","zh":"埼玉县行田市大字荒木164-1"},"url":"https://www.park-direct.jp/parkinglot/PK000063128"}},
+                {"id":28,"type":"parking","name":{"ja":"持田駅前駐車場","en":"Mochida Station Front Parking","zh":"持田站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"埼玉県行田市城西3-7-23","en":"3-7-23 Josai, Gyoda, Saitama","zh":"埼玉县行田市城西3-7-23"},"url":"https://www.park-direct.jp/parkinglot/PK000063129"}},
+                {"id":29,"type":"parking","name":{"ja":"ソシオ流通センター駅前駐車場","en":"Socio Ryutsu Center Station Front Parking","zh":"ソシオ流通センター站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"埼玉県熊谷市戸出1035-1","en":"1035-1 Toide, Kumagaya, Saitama","zh":"埼玉县熊谷市户出1035-1"},"url":"https://www.park-direct.jp/parkinglot/PK000063130"}},
+                {"id":30,"type":"parking","name":{"ja":"熊谷駐車場","en":"Kumagaya Parking","zh":"熊谷停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県熊谷市大原1-8-10","en":"1-8-10 Ohara, Kumagaya, Saitama","zh":"埼玉县熊谷市大原1-8-10"},"url":"https://www.park-direct.jp/parkinglot/PK000063131"}},
+                {"id":31,"type":"parking","name":{"ja":"籠原駅前駐車場","en":"Kagohara Station Front Parking","zh":"笼原站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"埼玉県熊谷市新堀915-1","en":"915-1 Niibori, Kumagaya, Saitama","zh":"埼玉县熊谷市新堀915-1"},"url":"https://www.park-direct.jp/parkinglot/PK000063132"}},
+                {"id":32,"type":"parking","name":{"ja":"深谷駅前駐車場","en":"Fukaya Station Front Parking","zh":"深谷站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"埼玉県深谷市西島町2-1-1","en":"2-1-1 Nishijimacho, Fukaya, Saitama","zh":"埼玉县深谷市西岛町2-1-1"},"url":"https://www.park-direct.jp/parkinglot/PK000063133"}},
+                {"id":33,"type":"parking","name":{"ja":"岡部駅前駐車場","en":"Okabe Station Front Parking","zh":"冈部站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"埼玉県深谷市岡2682-1","en":"2682-1 Oka, Fukaya, Saitama","zh":"埼玉县深谷市冈2682-1"},"url":"https://www.park-direct.jp/parkinglot/PK000063134"}},
+                {"id":34,"type":"parking","name":{"ja":"本庄駅前駐車場","en":"Honjo Station Front Parking","zh":"本庄站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"埼玉県本庄市駅南1-1-1","en":"1-1-1 Ekinan, Honjo, Saitama","zh":"埼玉县本庄市站南1-1-1"},"url":"https://www.park-direct.jp/parkinglot/PK000063135"}},
+                {"id":35,"type":"parking","name":{"ja":"神保原駅前駐車場","en":"Jimbohara Station Front Parking","zh":"神保原站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"埼玉県児玉郡上里町神保原町222-1","en":"222-1 Jimboharacho, Kamisato, Kodama-gun, Saitama","zh":"埼玉县儿玉郡上里町神保原町222-1"},"url":"https://www.park-direct.jp/parkinglot/PK000063136"}},
+                {"id":36,"type":"parking","name":{"ja":"新町駅前駐車場","en":"Shinmachi Station Front Parking","zh":"新町站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"群馬県高崎市新町2144-1","en":"2144-1 Shinmachi, Takasaki, Gunma","zh":"群马县高崎市新町2144-1"},"url":"https://www.park-direct.jp/parkinglot/PK000063137"}},
+                {"id":37,"type":"parking","name":{"ja":"倉賀野駅前駐車場","en":"Kuragano Station Front Parking","zh":"仓贺野站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"群馬県高崎市倉賀野町4673-1","en":"4673-1 Kuragano-machi, Takasaki, Gunma","zh":"群马县高崎市仓贺野町4673-1"},"url":"https://www.park-direct.jp/parkinglot/PK000063138"}},
+                {"id":38,"type":"parking","name":{"ja":"高崎駅東口駐車場","en":"Takasaki Station East Exit Parking","zh":"高崎站东口停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"群馬県高崎市栄町1-1","en":"1-1 Sakaecho, Takasaki, Gunma","zh":"群马县高崎市荣町1-1"},"url":"https://www.park-direct.jp/parkinglot/PK000063139"}},
+                {"id":39,"type":"parking","name":{"ja":"高崎問屋町駅前駐車場","en":"Takasaki-Tonyamachi Station Front Parking","zh":"高崎问屋町站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"群馬県高崎市問屋町1-1-1","en":"1-1-1 Toiyamachi, Takasaki, Gunma","zh":"群马县高崎市问屋町1-1-1"},"url":"https://www.park-direct.jp/parkinglot/PK000063140"}},
+                {"id":40,"type":"parking","name":{"ja":"井野駅前駐車場","en":"Ino Station Front Parking","zh":"井野站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"群馬県高崎市井野町1084-1","en":"1084-1 Ino-machi, Takasaki, Gunma","zh":"群马县高崎市井野町1084-1"},"url":"https://www.park-direct.jp/parkinglot/PK000063141"}},
+                {"id":41,"type":"parking","name":{"ja":"新前橋駅前駐車場","en":"Shin-Maebashi Station Front Parking","zh":"新前桥站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"群馬県前橋市古市町1-1-1","en":"1-1-1 Furuichi-machi, Maebashi, Gunma","zh":"群马县前桥市古市町1-1-1"},"url":"https://www.park-direct.jp/parkinglot/PK000063142"}},
+                {"id":42,"type":"parking","name":{"ja":"前橋駅前駐車場","en":"Maebashi Station Front Parking","zh":"前桥站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"群馬県前橋市表町2-29-1","en":"2-29-1 Omotemacho, Maebashi, Gunma","zh":"群马县前桥市表町2-29-1"},"url":"https://www.park-direct.jp/parkinglot/PK000063143"}},
+                {"id":43,"type":"parking","name":{"ja":"前橋大島駅前駐車場","en":"Maebashi-Oshima Station Front Parking","zh":"前桥大岛站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"群馬県前橋市天川大島町1-1-1","en":"1-1-1 Amakawa-Oshima-machi, Maebashi, Gunma","zh":"群马县前桥市天川大岛町1-1-1"},"url":"https://www.park-direct.jp/parkinglot/PK000063144"}},
+                {"id":44,"type":"parking","name":{"ja":"伊勢崎駅前駐車場","en":"Isesaki Station Front Parking","zh":"伊势崎站前停车场"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。"},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"群馬県伊勢崎市曲輪町1-1","en":"1-1 Kuruwacho, Isesaki, Gunma","zh":"群马县伊势崎市曲轮町1-1"},"url":"https://www.park-direct.jp/parkinglot/PK000063145"}}
+            ];
+
+            const propertyList = document.getElementById('properties-list');
+            const noResults = document.getElementById('no-results');
+            const tagsFilter = document.getElementById('tags-filter');
+            const sortOrder = document.getElementById('sort-order');
+            const resetFilterBtn = document.getElementById('reset-filter');
+
+            const tagColors = {
+                '新着': 'bg-accent-green', '駅近': 'bg-accent-yellow',
+                '空きあり': 'bg-green-500'
+            };
+
+            const renderProperties = (data, lang) => {
+                propertyList.innerHTML = '';
+                noResults.classList.toggle('hidden', data.length > 0);
+
+                data.forEach(p => {
+                    const tagsHTML = `
+                        <div class="absolute top-2 left-2 flex flex-wrap gap-1">
+                            ${p.tags.map(tagKey => {
+                                const originalTagText = translations[tagKey] ? translations[tagKey]['ja'] : '';
+                                const translatedTagText = translations[tagKey] ? translations[tagKey][lang] : '';
+                                return `<span class="${tagColors[originalTagText] || 'bg-main-blue'} text-white text-xs font-bold px-2 py-1 rounded-full">${translatedTagText}</span>`
+                            }).join('')}
+                        </div>
+                    `;
+                    
+                    const detailsHTML = `
+                        <div class="flex items-center mt-2"><i class="fa-solid fa-map-marker-alt w-5 text-main-blue"></i><span class="ml-2 text-sm">${p.details.address[lang] || p.details.address.ja}</span></div>
+                    `;
+
+                    // Correctly format the Google Maps URL to center the pin
+                    const mapQuery = encodeURIComponent(`${p.name.ja}｜パークダイレクト, ${p.details.address.ja}`);
+                    const mapUrl = `https://maps.google.co.jp/maps?output=embed&q=${mapQuery}&t=m&z=17`;
+
+
+                    const card = `
+                    <a href="${p.details.url}" target="_blank" rel="noopener noreferrer" class="block bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-2xl hover:-translate-y-3 hover:scale-105 transition-all duration-300 reveal-card" data-price="${p.price}" data-id="${p.id}">
+                        <div class="relative h-56">
+                             <iframe
+                                src="${mapUrl}"
+                                class="w-full h-full"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                            ${tagsHTML}
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-main-blue mb-2">${p.name[lang] || p.name.ja}</h3>
+                            <p class="text-gray-600 text-sm mb-4 h-10">${p.description[lang] || p.description.ja}</p>
+                            <div class="text-2xl font-bold text-red-600 mb-4">${Math.round(p.price).toLocaleString()}${translations['currency-yen'][lang]}<span class="text-base font-normal text-gray-600">${translations['price-per-month'][lang]}</span></div>
+                            <div class="border-t pt-4 text-gray-500 space-y-2">
+                                ${detailsHTML}
+                            </div>
+                        </div>
+                    </a>`;
+                    propertyList.insertAdjacentHTML('beforeend', card);
+                });
+            };
+
+            const filterAndSortProperties = () => {
+                const lang = document.documentElement.lang || 'ja';
+                let filtered = [...propertiesData];
+                const tags = [...tagsFilter.querySelectorAll('input:checked')].map(el => el.value);
+                const sort = sortOrder.value;
+
+                if (tags.length > 0) {
+                    filtered = filtered.filter(p => tags.every(tagKey => p.tags.includes(tagKey)));
+                }
+
+                if (sort === 'price-asc') {
+                    filtered.sort((a, b) => a.price - b.price);
+                } else if (sort === 'price-desc') {
+                    filtered.sort((a, b) => b.price - a.price);
+                }
+
+                renderProperties(filtered, lang);
+                if(window.sr) {
+                    sr.sync();
+                }
+            };
+            
+            function setLanguage(lang) {
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-lang-key]').forEach(elem => {
+                    const key = elem.getAttribute('data-lang-key');
+                    if (translations[key] && translations[key][lang]) {
+                        elem.innerHTML = translations[key][lang];
+                    }
+                });
+                document.querySelectorAll('.current-lang').forEach(elem => {
+                    if(lang === 'ja') elem.textContent = '日本語';
+                    if(lang === 'en') elem.textContent = 'English';
+                    if(lang === 'zh') elem.textContent = '中文';
+                });
+
+                localStorage.setItem('preferredLanguage', lang);
+                document.querySelectorAll('.lang-selector-dropdown').forEach(dropdown => dropdown.classList.remove('show'));
+                filterAndSortProperties(); 
+            }
+
+            document.querySelectorAll('.lang-selector-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const dropdown = button.nextElementSibling;
+                    dropdown.classList.toggle('show');
+                });
+            });
+
+            document.addEventListener('click', () => {
+                document.querySelectorAll('.lang-selector-dropdown').forEach(dropdown => {
+                    if (dropdown.classList.contains('show')) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            });
+
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    setLanguage(e.target.getAttribute('data-lang'));
+                });
+            });
+            
+            tagsFilter.addEventListener('change', filterAndSortProperties);
+            sortOrder.addEventListener('change', filterAndSortProperties);
+            resetFilterBtn.addEventListener('click', () => {
+                sortOrder.value = 'default';
+                [...tagsFilter.querySelectorAll('input')].forEach(el => el.checked = false);
+                filterAndSortProperties();
+            });
+
+            const savedLang = localStorage.getItem('preferredLanguage') || 'ja';
+            setLanguage(savedLang);
+
+            var mobileMenuButton = document.getElementById('mobile-menu-button');
+            var mobileMenu = document.getElementById('mobile-menu');
+            var propertiesToggle = document.getElementById('properties-toggle');
+            var propertiesSubmenu = document.getElementById('properties-submenu');
+
+            if (mobileMenuButton) { mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); }); }
+            if (propertiesToggle) { 
+                propertiesToggle.addEventListener('click', () => { 
+                    propertiesSubmenu.classList.toggle('open');
+                    propertiesToggle.classList.toggle('open');
+                }); 
+            }
+
+            var header = document.getElementById('main-header');
+            var lineFab = document.getElementById('line-fab');
+            window.onscroll = function() {
+                if (header && window.scrollY > 50) { header.classList.add('header-scrolled'); } 
+                else if (header) { header.classList.remove('header-scrolled'); }
+                if (lineFab && window.pageYOffset > 300) { lineFab.classList.add('show'); }
+                else if (lineFab) { lineFab.classList.remove('show'); }
+            };
+            var scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            if (scrollToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 300) { scrollToTopBtn.classList.add('show'); } 
+                    else { scrollToTopBtn.classList.remove('show'); }
+                });
+                scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            }
+            var sr = ScrollReveal({ distance: '50px', duration: 1000, easing: 'ease-out', reset: false });
+            sr.reveal('.reveal-title', { origin: 'top' });
+            sr.reveal('.reveal-text', { origin: 'bottom', delay: 200 });
+            sr.reveal('.reveal-card', { origin: 'bottom', interval: 200 });
+        });
+    </script>
+
+</body>
+</html>

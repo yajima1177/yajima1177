@@ -21,6 +21,18 @@
         header { transition: all 0.3s ease-in-out; }
         .nav-link::after { content: ''; display: block; width: 0; height: 2px; background: #0072b8; transition: width .3s; }
         .nav-link:hover::after { width: 100%; }
+        .dropdown { position: relative; }
+        .dropdown .dropdown-arrow { opacity: 0; transition: opacity 0.2s ease-in-out; }
+        .dropdown:hover .dropdown-arrow { opacity: 1; }
+        .dropdown-menu { opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.2s ease-out, transform 0.2s ease-out, visibility 0.2s; pointer-events: none; position: absolute; left: 0; top: 100%; }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+        .dropdown:hover > .dropdown-trigger { color: #0072b8; }
+        .dropdown-menu a { transition: background-color 0.2s ease, color 0.2s ease; }
+        .dropdown-menu a:hover { background-color: #eff6ff; color: #0072b8; }
+        #properties-submenu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
+        #properties-submenu.open { max-height: 200px; }
+        #properties-toggle .arrow-icon { transition: transform 0.3s ease; }
+        #properties-toggle.open .arrow-icon { transform: rotate(180deg); }
         .btn-primary { transition: all 0.3s ease; }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
         #scrollToTopBtn { position: fixed; bottom: 20px; right: 15px; z-index: 99; cursor: pointer; opacity: 0; transform: translateX(100px); transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: none; border: none; padding: 0; }
@@ -50,8 +62,18 @@
             <nav class="hidden md:flex items-center text-sm space-x-4 lg:space-x-6">
                 <a href="strengths.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-strengths">当社の強み</a>
                 <a href="flow.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-flow">ご入居までの流れ</a>
-                <a href="properties.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-properties">物件情報</a>
-                <a href="customers.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-customers">お客様の声</a>
+                <div class="dropdown">
+                    <div class="dropdown-trigger text-gray-600 transition-colors flex items-center py-2 cursor-pointer">
+                        <span data-lang-key="nav-properties">物件情報</span>
+                        <i class="fa-solid fa-chevron-down ml-1 text-xs dropdown-arrow"></i>
+                    </div>
+                    <div class="dropdown-menu w-48 bg-white rounded-md shadow-lg z-50 overflow-hidden">
+                        <a href="properties_rental.html" class="block px-4 py-3 text-sm text-gray-700" data-lang-key="nav-properties-rental">賃貸物件</a>
+                        <a href="properties_sale.html" class="block px-4 py-3 text-sm text-gray-700" data-lang-key="nav-properties-sale">売買物件</a>
+                        <a href="properties_parking.html" class="block px-4 py-3 text-sm text-gray-700" data-lang-key="nav-properties-parking">駐車場</a>
+                    </div>
+                </div>
+                <a href="customers.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-protagonists">まちの主役たち</a>
                 <a href="company.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-company">会社概要</a>
                 <a href="contact.html" class="bg-main-blue text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 btn-primary" data-lang-key="nav-contact">お問い合わせ</a>
                 <div class="relative lang-selector">
@@ -61,9 +83,9 @@
                         <i class="fa-solid fa-chevron-down ml-1 text-xs"></i>
                     </button>
                     <div class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl z-50 overflow-hidden lang-selector-dropdown">
-                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="ja">日本語</a>
-                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="en">English</a>
-                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="zh">中文</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="ja">日本語</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="en">English</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="zh">中文</a>
                     </div>
                 </div>
             </nav>
@@ -86,8 +108,18 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white">
             <a href="strengths.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-strengths">当社の強み</a>
             <a href="flow.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-flow">ご入居までの流れ</a>
-            <a href="properties.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties">物件情報</a>
-            <a href="customers.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-customers">お客様の声</a>
+            <div>
+                <button id="properties-toggle" class="w-full text-left block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100 font-bold flex justify-between items-center">
+                    <span data-lang-key="nav-properties">物件情報</span>
+                    <i class="fa-solid fa-chevron-down ml-1 text-xs arrow-icon"></i>
+                </button>
+                <div id="properties-submenu" class="pl-4">
+                     <a href="properties_rental.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties-rental">賃貸物件</a>
+                     <a href="properties_sale.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties-sale">売買物件</a>
+                     <a href="properties_parking.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties-parking">駐車場</a>
+                </div>
+             </div>
+            <a href="customers.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-protagonists">まちの主役たち</a>
             <a href="company.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-company">会社概要</a>
             <a href="contact.html" class="block py-2 px-6 text-sm bg-blue-100 text-main-blue" data-lang-key="nav-contact">お問い合わせ</a>
             <div class="border-t border-gray-200 mt-2 pt-2">
@@ -191,8 +223,8 @@
                     <h4 class="font-bold mb-3" data-lang-key="footer-sitemap">サイトマップ</h4>
                     <a href="strengths.html" class="block mt-2 hover:underline" data-lang-key="nav-strengths">当社の強み</a>
                     <a href="flow.html" class="block mt-2 hover:underline" data-lang-key="nav-flow">ご入居までの流れ</a>
-                    <a href="properties.html" class="block mt-2 hover:underline" data-lang-key="nav-properties">物件情報</a>
-                    <a href="customers.html" class="block mt-2 hover:underline" data-lang-key="nav-customers">お客様の声</a>
+                    <a href="properties_parking.html" class="block mt-2 hover:underline" data-lang-key="nav-properties">物件情報</a>
+                    <a href="customers.html" class="block mt-2 hover:underline" data-lang-key="nav-protagonists">まちの主役たち</a>
                     <a href="company.html" class="block mt-2 hover:underline" data-lang-key="nav-company">会社概要</a>
                     <a href="contact.html" class="block mt-2 hover:underline" data-lang-key="nav-contact">お問い合わせ</a>
                 </div>
@@ -222,7 +254,10 @@
                 "nav-strengths": { ja: "当社の強み", en: "Our Strengths", zh: "我们的优势" },
                 "nav-flow": { ja: "ご入居までの流れ", en: "Process", zh: "入住流程" },
                 "nav-properties": { ja: "物件情報", en: "Properties", zh: "房产信息" },
-                "nav-customers": { ja: "お客様の声", en: "Testimonials", zh: "客户心声" },
+                "nav-properties-rental": { ja: "賃貸物件", en: "Rental", zh: "租赁物业" },
+                "nav-properties-sale": { ja: "売買物件", en: "For Sale", zh: "买卖物业" },
+                "nav-properties-parking": { ja: "駐車場", en: "Parking", zh: "停车场" },
+                "nav-protagonists": { ja: "まちの主役たち", en: "Stars of the Town", zh: "小镇主角" },
                 "nav-company": { ja: "会社概要", en: "Company", zh: "公司简介" },
                 "nav-contact": { ja: "お問い合わせ", en: "Contact", zh: "联系我们" },
                 "contact-title": { ja: "お問い合わせ", en: "Contact Us", zh: "联系我们" },
@@ -257,7 +292,6 @@
                     }
                 });
                 
-                // Placeholderの翻訳
                 const messagePlaceholder = document.getElementById('message');
                 if (messagePlaceholder) {
                     const placeholderKey = messagePlaceholder.getAttribute('data-lang-placeholder');
@@ -304,7 +338,17 @@
 
             var mobileMenuButton = document.getElementById('mobile-menu-button');
             var mobileMenu = document.getElementById('mobile-menu');
+            var propertiesToggle = document.getElementById('properties-toggle');
+            var propertiesSubmenu = document.getElementById('properties-submenu');
+
             if (mobileMenuButton) { mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); }); }
+            if (propertiesToggle) { 
+                propertiesToggle.addEventListener('click', () => { 
+                    propertiesSubmenu.classList.toggle('open');
+                    propertiesToggle.classList.toggle('open');
+                }); 
+            }
+
             var header = document.getElementById('main-header');
             var lineFab = document.getElementById('line-fab');
             window.onscroll = function() {

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <link rel="preload" as="image" href="images/hero-poster.jpg" fetchpriority="high">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>有限会社 谷島商事 - 埼玉県羽生市の不動産会社</title>
@@ -25,6 +26,23 @@
         header { transition: all 0.3s ease-in-out; }
         .nav-link::after { content: ''; display: block; width: 0; height: 2px; background: #0072b8; transition: width .3s; }
         .nav-link:hover::after { width: 100%; }
+        
+        /* --- Dropdown Menu Styles --- */
+        .dropdown { position: relative; }
+        .dropdown .dropdown-arrow { opacity: 0; transition: opacity 0.2s ease-in-out; }
+        .dropdown:hover .dropdown-arrow { opacity: 1; }
+        .dropdown-menu { opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.2s ease-out, transform 0.2s ease-out, visibility 0.2s; pointer-events: none; position: absolute; left: 0; top: 100%; }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+        .dropdown:hover > .dropdown-trigger { color: #0072b8; }
+        .dropdown-menu a { transition: background-color 0.2s ease, color 0.2s ease; }
+        .dropdown-menu a:hover { background-color: #eff6ff; color: #0072b8; }
+
+        /* --- Mobile Submenu Styles --- */
+        #properties-submenu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
+        #properties-submenu.open { max-height: 200px; }
+        #properties-toggle .arrow-icon { transition: transform 0.3s ease; }
+        #properties-toggle.open .arrow-icon { transform: rotate(180deg); }
+
         .btn-primary { transition: all 0.3s ease; }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
         #scrollToTopBtn { position: fixed; bottom: 20px; right: 15px; z-index: 99; cursor: pointer; opacity: 0; transform: translateX(100px); transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: none; border: none; padding: 0; }
@@ -41,7 +59,17 @@
         #line-fab:hover { transform: scale(1.1); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
         .lang-selector-dropdown { transition: opacity 0.2s ease, transform 0.2s ease; transform: translateY(-10px); opacity: 0; pointer-events: none; }
         .lang-selector-dropdown.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
-    </style>
+    
+/* --- Hero video (fast-start HLS) --- */
+.hero { position: relative; aspect-ratio: 16/9; overflow: hidden; }
+.hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero__overlay { position: absolute; inset: 0; background: rgba(0,0,0,.25); }
+@media (prefers-reduced-motion: reduce) {
+  .hero__video { display: none; }
+  .hero { background: url('images/hero-poster.jpg') center/cover no-repeat; }
+}
+
+</style>
 </head>
 <body class="bg-white text-gray-800">
 
@@ -49,14 +77,24 @@
     <header id="main-header" class="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html">
-                <img src="images/logo.png" alt="有限会社 谷島商事 ロゴ" class="h-12 w-auto">
+                <img src="images/logo.png" alt="有限会社 谷島商事 ロゴ" class="h-16 md:h-17 w-auto">
             </a>
             <!-- Desktop Navigation -->
             <nav class="hidden md:flex items-center text-sm space-x-4 lg:space-x-6">
                 <a href="strengths.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-strengths">当社の強み</a>
                 <a href="flow.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-flow">ご入居までの流れ</a>
-                <a href="properties.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-properties">物件情報</a>
-                <a href="customers.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-customers">お客様の声</a>
+                <div class="dropdown">
+                    <div class="dropdown-trigger text-gray-600 transition-colors flex items-center py-2 cursor-pointer">
+                        <span data-lang-key="nav-properties">物件情報</span>
+                        <i class="fa-solid fa-chevron-down ml-1 text-xs dropdown-arrow"></i>
+                    </div>
+                    <div class="dropdown-menu w-48 bg-white rounded-md shadow-lg z-50 overflow-hidden">
+                        <a href="properties_rental.html" class="block px-4 py-3 text-sm text-gray-700" data-lang-key="nav-properties-rental">賃貸物件</a>
+                        <a href="properties_sale.html" class="block px-4 py-3 text-sm text-gray-700" data-lang-key="nav-properties-sale">売買物件</a>
+                        <a href="properties_parking.html" class="block px-4 py-3 text-sm text-gray-700" data-lang-key="nav-properties-parking">駐車場</a>
+                    </div>
+                </div>
+                <a href="customers.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-protagonists">まちの主役たち</a>
                 <a href="company.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-company">会社概要</a>
                 <a href="contact.html" class="bg-main-blue text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 btn-primary" data-lang-key="nav-contact">お問い合わせ</a>
                 <!-- Desktop Language Selector -->
@@ -67,9 +105,9 @@
                         <i class="fa-solid fa-chevron-down ml-1 text-xs"></i>
                     </button>
                     <div class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl z-50 overflow-hidden lang-selector-dropdown">
-                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="ja">日本語</a>
-                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="en">English</a>
-                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="zh">中文</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="ja">日本語</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="en">English</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="zh">中文</a>
                     </div>
                 </div>
             </nav>
@@ -96,8 +134,18 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white">
             <a href="strengths.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-strengths">当社の強み</a>
             <a href="flow.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-flow">ご入居までの流れ</a>
-            <a href="properties.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties">物件情報</a>
-            <a href="customers.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-customers">お客様の声</a>
+            <div>
+                <button id="properties-toggle" class="w-full text-left block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100 font-bold flex justify-between items-center">
+                    <span data-lang-key="nav-properties">物件情報</span>
+                    <i class="fa-solid fa-chevron-down ml-1 text-xs arrow-icon"></i>
+                </button>
+                <div id="properties-submenu" class="pl-4">
+                     <a href="properties_rental.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties-rental">賃貸物件</a>
+                     <a href="properties_sale.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties-sale">売買物件</a>
+                     <a href="properties_parking.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties-parking">駐車場</a>
+                </div>
+             </div>
+            <a href="customers.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-protagonists">まちの主役たち</a>
             <a href="company.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-company">会社概要</a>
             <a href="contact.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-contact">お問い合わせ</a>
             <div class="border-t border-gray-200 mt-2 pt-2">
@@ -111,12 +159,14 @@
 
     <!-- Main Content -->
     <main>
-        <section>
-            <video autoplay loop muted playsinline class="w-full h-auto">
-                <source src="videos/yajima_top.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </section>
+        <section class="hero">
+  <div class="hero__overlay"></div>
+  <video id="hero-video" class="hero__video"
+         poster="images/hero-poster.jpg"
+         autoplay muted playsinline loop preload="auto">
+    <!-- HLSはJSで設定。非対応ブラウザ向けに最低限のフォールバックMP4はJS側で指定 -->
+  </video>
+</section>
 
         <section class="py-16 sm:py-20">
             <div class="container mx-auto px-6 text-center">
@@ -126,7 +176,7 @@
                     豊富な物件情報と地域に精通した知識で、皆様の新しい生活をサポートいたします。
                 </p>
                 <div class="grid md:grid-cols-3 gap-8">
-                    <a href="properties.html" class="block bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transform hover:-translate-y-3 hover:scale-105 transition-all duration-300 reveal-card">
+                    <a href="properties_rental.html" class="block bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transform hover:-translate-y-3 hover:scale-105 transition-all duration-300 reveal-card">
                         <i class="fa-solid fa-magnifying-glass text-4xl mx-auto mb-4 text-main-blue"></i>
                         <h3 class="text-xl font-bold text-main-blue mb-2" data-lang-key="card1-title">物件を探す</h3>
                         <p class="text-gray-600" data-lang-key="card1-text">賃貸アパート・駐車場など、最新の物件情報はこちらからご覧ください。</p>
@@ -199,7 +249,7 @@
                     </div>
                 </div>
                 <div class="text-center mt-12 reveal-button">
-                     <a href="properties.html" class="bg-main-blue text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 btn-primary text-lg">
+                     <a href="properties_parking.html" class="bg-main-blue text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 btn-primary text-lg">
                         <span data-lang-key="rec-btn">もっと物件を見る</span> <i class="fa-solid fa-arrow-right ml-2"></i>
                     </a>
                 </div>
@@ -282,8 +332,8 @@
                     <h4 class="font-bold mb-3" data-lang-key="footer-sitemap">サイトマップ</h4>
                     <a href="strengths.html" class="block mt-2 hover:underline" data-lang-key="nav-strengths">当社の強み</a>
                     <a href="flow.html" class="block mt-2 hover:underline" data-lang-key="nav-flow">ご入居までの流れ</a>
-                    <a href="properties.html" class="block mt-2 hover:underline" data-lang-key="nav-properties">物件情報</a>
-                    <a href="customers.html" class="block mt-2 hover:underline" data-lang-key="nav-customers">お客様の声</a>
+                    <a href="properties_parking.html" class="block mt-2 hover:underline" data-lang-key="nav-properties">物件情報</a>
+                    <a href="customers.html" class="block mt-2 hover:underline" data-lang-key="nav-protagonists">まちの主役たち</a>
                     <a href="company.html" class="block mt-2 hover:underline" data-lang-key="nav-company">会社概要</a>
                     <a href="contact.html" class="block mt-2 hover:underline" data-lang-key="nav-contact">お問い合わせ</a>
                 </div>
@@ -313,7 +363,10 @@
                 "nav-strengths": { ja: "当社の強み", en: "Our Strengths", zh: "我们的优势" },
                 "nav-flow": { ja: "ご入居までの流れ", en: "Process", zh: "入住流程" },
                 "nav-properties": { ja: "物件情報", en: "Properties", zh: "房产信息" },
-                "nav-customers": { ja: "お客様の声", en: "Testimonials", zh: "客户心声" },
+                "nav-properties-rental": { ja: "賃貸物件", en: "Rental", zh: "租赁物业" },
+                "nav-properties-sale": { ja: "売買物件", en: "For Sale", zh: "买卖物业" },
+                "nav-properties-parking": { ja: "駐車場", en: "Parking", zh: "停车场" },
+                "nav-protagonists": { ja: "まちの主役たち", en: "Stars of the Town", zh: "小镇主角" },
                 "nav-company": { ja: "会社概要", en: "Company", zh: "公司简介" },
                 "nav-contact": { ja: "お問い合わせ", en: "Contact", zh: "联系我们" },
                 "hero-title": { ja: "ようこそ、谷島商事へ", en: "Welcome to Yajima Shoji", zh: "欢迎来到谷岛商事" },
@@ -406,10 +459,39 @@
             
             const savedLang = localStorage.getItem('preferredLanguage') || 'ja';
             setLanguage(savedLang);
+            
+            // --- START: Responsive Video Logic ---
+            const heroVideo = document.getElementById('hero-video');
+            const videoSource = document.getElementById('video-source');
+            const desktopVideo = 'videos/yajima_top.mp4';
+            const mobileVideo = 'videos/yajima_top_small.mp4';
+
+             else {
+                    if (currentSrc !== desktopVideo) {
+                        videoSource.setAttribute('src', desktopVideo);
+                        heroVideo.load();
+                    }
+                }
+            }
+
+            // Set the initial video source
+            // Add event listener for window resize
+            window.addEventListener('resize', setVideoSource);
+            // --- END: Responsive Video Logic ---
 
             var mobileMenuButton = document.getElementById('mobile-menu-button');
             var mobileMenu = document.getElementById('mobile-menu');
+            var propertiesToggle = document.getElementById('properties-toggle');
+            var propertiesSubmenu = document.getElementById('properties-submenu');
+
             if (mobileMenuButton) { mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); }); }
+            if (propertiesToggle) { 
+                propertiesToggle.addEventListener('click', () => { 
+                    propertiesSubmenu.classList.toggle('open');
+                    propertiesToggle.classList.toggle('open');
+                }); 
+            }
+            
             var header = document.getElementById('main-header');
             var lineFab = document.getElementById('line-fab');
             window.onscroll = function() {
@@ -433,5 +515,58 @@
         });
     </script>
 
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script>
+(function(){
+  var video = document.getElementById('hero-video');
+  if (!video) return;
+  var HLS_SRC = '/video/master.m3u8';      // あなたのm3u8に合わせて変更
+  var MP4_SRC = 'videos/hero-720.mp4';     // リネーム済みのフォールバック
+
+  // Data Saver（節約モード）時はMP4静止再生（自動再生しない）
+  if (navigator.connection && navigator.connection.saveData) {
+    video.removeAttribute('autoplay');
+    video.src = MP4_SRC;
+    return;
+  }
+
+  // Safari のネイティブHLS
+  if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = HLS_SRC;
+    // HLSが404等で失敗した時のフォールバック
+    video.addEventListener('error', function onErr(){
+      video.removeEventListener('error', onErr);
+      video.src = MP4_SRC;
+      try { video.play(); } catch(e){}
+    }, { once:true });
+    return;
+  }
+
+  // hls.js 経由
+  if (window.Hls && Hls.isSupported()) {
+    var hls = new Hls({
+      startLevel: 2,
+      capLevelToPlayerSize: true,
+      maxBufferLength: 8,
+      maxBufferSize: 8 * 1000 * 1000
+    });
+    hls.loadSource(HLS_SRC);
+    hls.attachMedia(video);
+
+    hls.on(Hls.Events.ERROR, function (evt, data) {
+      if (data && data.fatal) {
+        try { hls.destroy(); } catch(e){}
+        video.src = MP4_SRC;
+        try { video.play(); } catch(e){}
+      }
+    });
+    return;
+  }
+
+  // どれもダメならMP4
+  video.src = MP4_SRC;
+  try { video.play(); } catch(e){}
+})();
+</script>
 </body>
 </html>
