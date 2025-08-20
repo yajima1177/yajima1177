@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="title">プライバシーポリシー - 有限会社 谷島商事</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
+        .bg-main-blue { background-color: #0072b8; }
+        .text-main-blue { color: #0072b8; }
+        .border-main-blue { border-color: #0072b8; }
+        .bg-accent-yellow { background-color: #f8b500; }
+        .bg-deep-gray { background-color: #f3f4f6; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background-color: #0072b8; margin-top: 8px; margin-left: auto; margin-right: auto; }
+        .prose { max-width: 800px; margin-left: auto; margin-right: auto; }
+        .prose h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.5rem; border-left: 5px solid #0072b8; padding-left: 1rem; }
+        .prose p, .prose ul, .prose ol { line-height: 1.8; margin-bottom: 1.5rem; color: #374151; }
+        .prose a { color: #0072b8; text-decoration: underline; }
+        .prose a:hover { color: #005a8f; }
+        .prose ol { list-style-type: decimal; padding-left: 1.5rem; }
+        .prose ul { list-style-type: disc; padding-left: 1.5rem; }
+        .reveal { visibility: hidden; }
+        .header-scrolled { background-color: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); }
+        header { transition: all 0.3s ease-in-out; }
+        .nav-link::after { content: ''; display: block; width: 0; height: 2px; background: #0072b8; transition: width .3s; }
+        .nav-link:hover::after { width: 100%; }
+        .btn-primary { transition: all 0.3s ease; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+        #scrollToTopBtn { position: fixed; bottom: 20px; right: 15px; z-index: 99; cursor: pointer; opacity: 0; transform: translateY(100px); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); background: none; border: none; padding: 0; }
+        @media (min-width: 768px) { #scrollToTopBtn { bottom: 30px; right: 30px; } }
+        #scrollToTopBtn.show { opacity: 1; transform: translateY(0); }
+        #scrollToTopBtn:hover.show { transform: translateY(-5px); }
+        .btn-line-ghost { color: #fff; border: 2px solid #fff; transition: all 0.3s ease; }
+        .btn-line-ghost:hover { background: #06C755; color: #fff; border-color: #06C755; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0, 0.2); }
+        .speech-bubble { position: relative; background: #fff; border-radius: .4em; color: #333; }
+        .speech-bubble:after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 0; border: 12px solid transparent; border-top-color: #fff; border-bottom: 0; margin-left: -12px; margin-bottom: -12px; }
+        #line-fab { position: fixed; bottom: 20px; left: 15px; z-index: 99; width: 56px; height: 56px; background-color: #06C755; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15); opacity: 0; transform: scale(0.5); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        @media (min-width: 768px) { #line-fab { bottom: 30px; left: 30px; width: 64px; height: 64px; } }
+        #line-fab.show { opacity: 1; transform: scale(1); }
+        #line-fab:hover { transform: scale(1.1); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+        .lang-selector-dropdown { transition: opacity 0.2s ease, transform 0.2s ease; transform: translateY(-10px); opacity: 0; pointer-events: none; }
+        .lang-selector-dropdown.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        .dropdown { position: relative; }
+        .dropdown .dropdown-arrow { opacity: 0; transition: opacity 0.2s ease-in-out; }
+        .dropdown:hover .dropdown-arrow { opacity: 1; }
+        .dropdown-menu { opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.2s ease-out, transform 0.2s ease-out, visibility 0.2s; pointer-events: none; position: absolute; left: 0; top: 100%; }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+        .dropdown:hover > .dropdown-trigger { color: #0072b8; }
+        .dropdown-menu a { transition: background-color 0.2s ease, color 0.2s ease; }
+        .dropdown-menu a:hover { background-color: #eff6ff; color: #0072b8; }
+        #properties-submenu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
+        #properties-submenu.open { max-height: 200px; }
+        #properties-toggle .arrow-icon { transition: transform 0.3s ease; }
+        #properties-toggle.open .arrow-icon { transform: rotate(180deg); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header id="main-header" class="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html">
+                <img src="images/logo.png" alt="有限会社 谷島商事 ロゴ" class="h-12 w-auto">
+            </a>
+            <nav class="hidden md:flex items-center text-sm space-x-4 lg:space-x-6">
+                <a href="strengths.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-strengths">当社の強み</a>
+                <a href="flow.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-flow">ご入居までの流れ</a>
+                <div class="dropdown">
+                    <div class="dropdown-trigger text-gray-600 transition-colors flex items-center py-2 cursor-pointer">
+                        <span data-lang-key="nav-properties">物件情報</span>
+                        <i class="fa-solid fa-chevron-down ml-1 text-xs dropdown-arrow"></i>
+                    </div>
+                    <div class="dropdown-menu w-48 bg-white rounded-md shadow-lg z-50 overflow-hidden">
+                        <a href="properties_rental.html" class="block px-4 py-3 text-sm text-gray-700" data-lang-key="nav-properties-rental">賃貸物件</a>
+                        <a href="properties_sale.html" class="block px-4 py-3 text-sm text-gray-700" data-lang-key="nav-properties-sale">売買物件</a>
+                        <a href="properties_parking.html" class="block px-4 py-3 text-sm text-gray-700" data-lang-key="nav-properties-parking">駐車場</a>
+                    </div>
+                </div>
+                <a href="customers.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-protagonists">まちの主役たち</a>
+                <a href="company.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-company">会社概要</a>
+                <a href="contact.html" class="bg-main-blue text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 btn-primary" data-lang-key="nav-contact">お問い合わせ</a>
+                <div class="relative lang-selector">
+                    <button class="flex items-center text-gray-600 hover:text-main-blue transition-colors lang-selector-button">
+                        <i class="fa-solid fa-globe w-5 h-5"></i>
+                        <span class="ml-2 font-semibold current-lang">日本語</span>
+                        <i class="fa-solid fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl z-50 overflow-hidden lang-selector-dropdown">
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="ja">日本語</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="en">English</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="zh">中文</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="pt">Português</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="md:hidden flex items-center space-x-2">
+                 <div class="relative lang-selector">
+                    <button class="flex items-center text-gray-600 hover:text-main-blue transition-colors p-2 lang-selector-button">
+                        <i class="fa-solid fa-globe w-5 h-5"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl z-50 overflow-hidden lang-selector-dropdown">
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="ja">日本語</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="en">English</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="zh">中文</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="pt">Português</a>
+                    </div>
+                </div>
+                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <a href="strengths.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-strengths">当社の強み</a>
+            <a href="flow.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-flow">ご入居までの流れ</a>
+            <div>
+                <button id="properties-toggle" class="w-full text-left block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100 font-bold flex justify-between items-center">
+                    <span data-lang-key="nav-properties">物件情報</span>
+                    <i class="fa-solid fa-chevron-down ml-1 text-xs arrow-icon"></i>
+                </button>
+                <div id="properties-submenu" class="pl-4">
+                     <a href="properties_rental.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties-rental">賃貸物件</a>
+                     <a href="properties_sale.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties-sale">売買物件</a>
+                     <a href="properties_parking.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties-parking">駐車場</a>
+                </div>
+             </div>
+            <a href="customers.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-protagonists">まちの主役たち</a>
+            <a href="company.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-company">会社概要</a>
+            <a href="contact.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-contact">お問い合わせ</a>
+            <div class="border-t border-gray-200 mt-2 pt-2">
+                <p class="px-6 py-2 text-xs text-gray-400" data-lang-key="language-menu-title">Language</p>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="ja">日本語</a>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="en">English</a>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="zh">中文</a>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="vi">Tiếng Việt</a>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="pt">Português</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="py-16 sm:py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-800 inline-block section-title" data-lang-key="privacy-title">プライバシーポリシー</h1>
+                <p class="text-gray-500 mt-4" data-lang-key="privacy-subtitle">個人情報保護方針</p>
+            </div>
+            <article class="prose bg-white p-8 md:p-12 rounded-lg shadow-md">
+                <p data-lang-key="privacy-intro">有限会社 谷島商事（以下、「当社」といいます。）は、お客様の個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。</p>
+
+                <h2 data-lang-key="privacy-h2-1">第1条（個人情報）</h2>
+                <p data-lang-key="privacy-p-1">「個人情報」とは、個人情報の保護に関する法律（平成十五年法律第五十七号、以下「個人情報保護法」といいます。）にいう「個人情報」を指すものとし、生存する個人に関する情報であって、当該情報に含まれる氏名、生年月日、住所、電話番号、連絡先その他の記述等により特定の個人を識別できる情報及び容姿、指紋、声紋にかかるデータ、及び健康保険証の保険者番号などの当該情報単体から特定の個人を識別できる情報（個人識別情報）を指します。</p>
+
+                <h2 data-lang-key="privacy-h2-2">第2条（個人情報の収集方法）</h2>
+                <p data-lang-key="privacy-p-2">当社は、お客様が物件のお問い合わせ、内覧希望、または契約手続きをされる際に、氏名、生年月日、住所、電話番号、メールアドレス、勤務先、年収などの個人情報をお尋ねすることがあります。また、お客様と提携先などとの間でなされたお客様の個人情報を含む取引記録や決済に関する情報を、当社の提携先（情報提供元、広告主、広告配信先などを含みます。以下、｢提携先｣といいます。）などから収集することがあります。</p>
+
+                <h2 data-lang-key="privacy-h2-3">第3条（個人情報を収集・利用する目的）</h2>
+                <p data-lang-key="privacy-p-3-1">当社が個人情報を収集・利用する目的は、以下のとおりです。</p>
+                <ol>
+                    <li data-lang-key="privacy-li-3-1">不動産の売買、賃貸、仲介、管理等の取引に関する契約の履行、情報、サービスの提供のため</li>
+                    <li data-lang-key="privacy-li-3-2">当社の商品・サービス等のご案内のため</li>
+                    <li data-lang-key="privacy-li-3-3">お客様からのお問い合わせへの対応、アフターサービスのため</li>
+                    <li data-lang-key="privacy-li-3-4">マーケティング（アンケート等）活動、顧客動向分析または商品開発等の調査分析のため</li>
+                    <li data-lang-key="privacy-li-3-5">上記の利用目的に付随する目的</li>
+                </ol>
+
+                <h2 data-lang-key="privacy-h2-4">第4条（個人情報の第三者提供）</h2>
+                <p data-lang-key="privacy-p-4-1">当社は、次に掲げる場合を除いて、あらかじめお客様の同意を得ることなく、第三者に個人情報を提供することはありません。ただし、個人情報保護法その他の法令で認められる場合を除きます。</p>
+                <ol>
+                    <li data-lang-key="privacy-li-4-1">人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難であるとき</li>
+                    <li data-lang-key="privacy-li-4-2">公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難であるとき</li>
+                    <li data-lang-key="privacy-li-4-3">国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがあるとき</li>
+                </ol>
+
+                <h2 data-lang-key="privacy-h2-5">第5条（個人情報の開示）</h2>
+                <p data-lang-key="privacy-p-5-1">当社は、ご本人から個人情報の開示を求められたときは、ご本人に対し、遅滞なくこれを開示します。ただし、開示することにより次のいずれかに該当する場合は、その全部または一部を開示しないこともあり、開示しない決定をした場合には、その旨を遅滞なく通知します。</p>
+                <ol>
+                    <li data-lang-key="privacy-li-5-1">ご本人または第三者の生命、身体、財産その他の権利利益を害するおそれがある場合</li>
+                    <li data-lang-key="privacy-li-5-2">当社の業務の適正な実施に著しい支障を及ぼすおそれがある場合</li>
+                    <li data-lang-key="privacy-li-5-3">その他法令に違反することとなる場合</li>
+                </ol>
+
+                <h2 data-lang-key="privacy-h2-6">第6条（プライバシーポリシーの変更）</h2>
+                <p data-lang-key="privacy-p-6">本ポリシーの内容は、法令その他本ポリシーに別段の定めのある事項を除いて、お客様に通知することなく、変更することができるものとします。当社が別途定める場合を除いて、変更後のプライバシーポリシーは、本ウェブサイトに掲載したときから効力を生じるものとします。</p>
+
+                <h2 data-lang-key="privacy-h2-7">第7条（お問い合わせ窓口）</h2>
+                <p data-lang-key="privacy-p-7-1">本ポリシーに関するお問い合わせは、下記の窓口までお願いいたします。</p>
+                <p>
+                    <span data-lang-key="contact-address-label">住所</span>：〒348-0053 埼玉県羽生市南6丁目16-9<br>
+                    <span data-lang-key="contact-name-label">社名</span>：有限会社 谷島商事<br>
+                    <span data-lang-key="contact-phone-label">電話番号</span>：<strong class="text-red-600">048-563-1177</strong><br>
+                </p>
+
+                <p class="text-right mt-8" data-lang-key="privacy-end">以上</p>
+                <p class="text-right text-sm text-gray-500" data-lang-key="privacy-date">制定日：2025年8月20日</p>
+            </article>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="mb-6 md:mb-0">
+                    <p class="text-xl font-bold">有限会社 谷島商事</p>
+                    <p class="text-sm mt-2">〒348-0053<br>埼玉県羽生市南6丁目16-9</p>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="text-sm">
+                    <h4 class="font-bold mb-3" data-lang-key="footer-sitemap">サイトマップ</h4>
+                    <a href="strengths.html" class="block mt-2 hover:underline" data-lang-key="nav-strengths">当社の強み</a>
+                    <a href="flow.html" class="block mt-2 hover:underline" data-lang-key="nav-flow">ご入居までの流れ</a>
+                    <a href="properties_parking.html" class="block mt-2 hover:underline" data-lang-key="nav-properties">物件情報</a>
+                    <a href="customers.html" class="block mt-2 hover:underline" data-lang-key="nav-protagonists">まちの主役たち</a>
+                    <a href="company.html" class="block mt-2 hover:underline" data-lang-key="nav-company">会社概要</a>
+                    <a href="contact.html" class="block mt-2 hover:underline" data-lang-key="nav-contact">お問い合わせ</a>
+                    <a href="privacy.html" class="block mt-2 hover:underline" data-lang-key="nav-privacy">プライバシーポリシー</a>
+                </div>
+                 <div class="text-sm">
+                    <h4 class="font-bold mb-3" data-lang-key="footer-hours">営業時間</h4>
+                    <p data-lang-key="footer-hours-details">月-土: 9:00～19:00</p>
+                    <p data-lang-key="footer-closing-days">定休日: 水曜、日曜（第1・最終週を除く）</p>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-6 text-center text-sm text-gray-400">
+                <p>&copy; 2025 Yajima Shoji Co., Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scrollToTopBtn">
+        <img src="images/scroll-to-top-btn-img.png" alt="トップに戻る" class="w-20 h-20 md:w-40 md:h-40 transition-transform duration-300">
+    </button>
+    
+    <a href="https://page.line.me/504ohkyn?openQrModal=true" target="_blank" id="line-fab">
+        <i class="fab fa-line text-white text-3xl md:text-4xl"></i>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const translations = {
+                "title": { 
+                    ja: "プライバシーポリシー - 有限会社 谷島商事", 
+                    en: "Privacy Policy - Yajima Shoji Co., Ltd.", 
+                    zh: "隐私政策 - 谷岛商事有限公司",
+                    vi: "Chính sách Bảo mật - Công ty TNHH Yajima Shoji",
+                    pt: "Política de Privacidade - Yajima Shoji Co., Ltd."
+                },
+                "nav-strengths": { ja: "当社の強み", en: "Our Strengths", zh: "我们的优势", vi: "Thế mạnh của chúng tôi", pt: "Nossos Pontos Fortes" },
+                "nav-flow": { ja: "ご入居までの流れ", en: "Process", zh: "入住流程", vi: "Quy trình", pt: "Processo" },
+                "nav-properties": { ja: "物件情報", en: "Properties", zh: "房产信息", vi: "Tài sản", pt: "Imóveis" },
+                "nav-properties-rental": { ja: "賃貸物件", en: "Rental", zh: "租赁物业", vi: "Cho thuê", pt: "Aluguel" },
+                "nav-properties-sale": { ja: "売買物件", en: "For Sale", zh: "买卖物业", vi: "Rao bán", pt: "Para Venda" },
+                "nav-properties-parking": { ja: "駐車場", en: "Parking", zh: "停车场", vi: "Bãi đậu xe", pt: "Estacionamento" },
+                "nav-protagonists": { ja: "まちの主役たち", en: "Stars of the Town", zh: "小镇主角", vi: "Ngôi sao của Thị trấn", pt: "Estrelas da Cidade" },
+                "nav-company": { ja: "会社概要", en: "Company", zh: "公司简介", vi: "Công ty", pt: "Empresa" },
+                "nav-contact": { ja: "お問い合わせ", en: "Contact", zh: "联系我们", vi: "Liên hệ", pt: "Contato" },
+                "language-menu-title": { ja: "言語", en: "Language", zh: "语言", vi: "Ngôn ngữ", pt: "Idioma" },
+                "privacy-title": { ja: "プライバシーポリシー", en: "Privacy Policy", zh: "隐私政策", vi: "Chính sách Bảo mật", pt: "Política de Privacidade" },
+                "privacy-subtitle": { ja: "個人情報保護方針", en: "Personal Information Protection Policy", zh: "个人信息保护方针", vi: "Chính sách Bảo vệ Thông tin Cá nhân", pt: "Política de Proteção de Informações Pessoais" },
+                "privacy-intro": { 
+                    ja: "有限会社 谷島商事（以下、「当社」といいます。）は、お客様の個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。", 
+                    en: "Yajima Shoji Co., Ltd. (hereinafter referred to as 'the Company') establishes the following privacy policy (hereinafter referred to as 'this Policy') regarding the handling of customers' personal information.", 
+                    zh: "谷岛商事有限公司（以下简称“本公司”）就客户个人信息的处理制定以下隐私政策（以下简称“本政策”）。",
+                    vi: "Công ty TNHH Yajima Shoji (sau đây gọi là 'Công ty') thiết lập chính sách bảo mật sau đây (sau đây gọi là 'Chính sách này') về việc xử lý thông tin cá nhân của khách hàng.",
+                    pt: "A Yajima Shoji Co., Ltd. (doravante denominada 'a Empresa') estabelece a seguinte política de privacidade (doravante denominada 'esta Política') sobre o tratamento das informações pessoais dos clientes."
+                },
+                "privacy-h2-1": { ja: "第1条（個人情報）", en: "Article 1 (Personal Information)", zh: "第1条（个人信息）", vi: "Điều 1 (Thông tin cá nhân)", pt: "Artigo 1 (Informações Pessoais)" },
+                "privacy-p-1": { ja: "「個人情報」とは、個人情報の保護に関する法律（平成十五年法律第五十七号、以下「個人情報保護法」といいます。）にいう「個人情報」を指すものとし、生存する個人に関する情報であって、当該情報に含まれる氏名、生年月日、住所、電話番号、連絡先その他の記述等により特定の個人を識別できる情報及び容姿、指紋、声紋にかかるデータ、及び健康保険証の保険者番号などの当該情報単体から特定の個人を識別できる情報（個人識別情報）を指します。", en: "'Personal information' refers to 'personal information' as defined in the Act on the Protection of Personal Information (Act No. 57 of 2003, hereinafter referred to as the 'Personal Information Protection Act'), and is information about a living individual that can identify a specific individual by name, date of birth, address, telephone number, contact information, or other descriptions contained in such information, as well as data related to appearance, fingerprints, voiceprints, and information that can identify a specific individual from such information alone (personal identification information), such as the insurer number on a health insurance card.", zh: "“个人信息”是指个人信息保护法（2003年第57号法律，以下简称“个人信息保护法”）中定义的“个人信息”，即关于在世个人的信息，包括姓名、出生日期、地址、电话号码、联系方式等描述，可以识别特定个人的信息，以及与外貌、指纹、声纹有关的数据，以及健康保险证的保险人编号等仅凭该信息即可识别特定个人的信息（个人识别信息）。", vi: "'Thông tin cá nhân' đề cập đến 'thông tin cá nhân' như được định nghĩa trong Đạo luật về Bảo vệ Thông tin Cá nhân (Đạo luật số 57 năm 2003, sau đây gọi là 'Đạo luật Bảo vệ Thông tin Cá nhân'), và là thông tin về một cá nhân đang sống có thể nhận dạng một cá nhân cụ thể bằng tên, ngày sinh, địa chỉ, số điện thoại, thông tin liên lạc hoặc các mô tả khác có trong thông tin đó, cũng như dữ liệu liên quan đến ngoại hình, dấu vân tay, dấu giọng nói và thông tin có thể nhận dạng một cá nhân cụ thể chỉ từ thông tin đó (thông tin nhận dạng cá nhân), chẳng hạn như số của công ty bảo hiểm trên thẻ bảo hiểm y tế.", pt: "'Informações pessoais' refere-se a 'informações pessoais' conforme definido na Lei de Proteção de Informações Pessoais (Lei nº 57 de 2003, doravante denominada 'Lei de Proteção de Informações Pessoais'), e são informações sobre um indivíduo vivo que podem identificar um indivíduo específico por nome, data de nascimento, endereço, número de telefone, informações de contato ou outras descrições contidas em tais informações, bem como dados relacionados à aparência, impressões digitais, impressões de voz e informações que podem identificar um indivíduo específico apenas a partir de tais informações (informações de identificação pessoal), como o número da seguradora em um cartão de seguro de saúde." },
+                "privacy-h2-2": { ja: "第2条（個人情報の収集方法）", en: "Article 2 (Method of Collecting Personal Information)", zh: "第2条（个人信息的收集方法）", vi: "Điều 2 (Phương pháp thu thập thông tin cá nhân)", pt: "Artigo 2 (Método de Coleta de Informações Pessoais)" },
+                "privacy-p-2": { ja: "当社は、お客様が物件のお問い合わせ、内覧希望、または契約手続きをされる際に、氏名、生年月日、住所、電話番号、メールアドレス、勤務先、年収などの個人情報をお尋ねすることがあります。また、お客様と提携先などとの間でなされたお客様の個人情報を含む取引記録や決済に関する情報を、当社の提携先（情報提供元、広告主、広告配信先などを含みます。以下、｢提携先｣といいます。）などから収集することがあります。", en: "The Company may ask for personal information such as name, date of birth, address, telephone number, email address, place of employment, and annual income when customers inquire about properties, request a viewing, or complete contract procedures. In addition, the Company may collect transaction records including customers' personal information and information related to payments made between customers and our partners (including information providers, advertisers, ad distributors, etc., hereinafter referred to as 'partners').", zh: "本公司在客户咨询房产、希望看房或办理合同手续时，可能会询问姓名、出生日期、地址、电话号码、电子邮件地址、工作单位、年收入等个人信息。此外，本公司可能会从我们的合作伙伴（包括信息提供方、广告商、广告发布方等，以下简称“合作伙伴”）处收集客户与合作伙伴之间包含客户个人信息的交易记录和结算信息。", vi: "Công ty có thể yêu cầu thông tin cá nhân như tên, ngày sinh, địa chỉ, số điện thoại, địa chỉ email, nơi làm việc và thu nhập hàng năm khi khách hàng hỏi về tài sản, yêu cầu xem nhà hoặc hoàn tất các thủ tục hợp đồng. Ngoài ra, Công ty có thể thu thập hồ sơ giao dịch bao gồm thông tin cá nhân của khách hàng và thông tin liên quan đến các khoản thanh toán được thực hiện giữa khách hàng và các đối tác của chúng tôi (bao gồm các nhà cung cấp thông tin, nhà quảng cáo, nhà phân phối quảng cáo, v.v., sau đây gọi là 'đối tác').", pt: "A Empresa pode solicitar informações pessoais como nome, data de nascimento, endereço, número de telefone, endereço de e-mail, local de trabalho e renda anual quando os clientes consultam sobre imóveis, solicitam uma visita ou concluem procedimentos de contrato. Além disso, a Empresa pode coletar registros de transações, incluindo informações pessoais dos clientes e informações relacionadas a pagamentos feitos entre clientes e nossos parceiros (incluindo provedores de informações, anunciantes, distribuidores de anúncios, etc., doravante denominados 'parceiros')." },
+                "privacy-h2-3": { ja: "第3条（個人情報を収集・利用する目的）", en: "Article 3 (Purpose of Collecting and Using Personal Information)", zh: "第3条（收集和使用个人信息的目的）", vi: "Điều 3 (Mục đích thu thập và sử dụng thông tin cá nhân)", pt: "Artigo 3 (Finalidade da Coleta e Uso de Informações Pessoais)" },
+                "privacy-p-3-1": { ja: "当社が個人情報を収集・利用する目的は、以下のとおりです。", en: "The purposes for which the Company collects and uses personal information are as follows:", zh: "本公司收集和使用个人信息的目的如下：", vi: "Các mục đích mà Công ty thu thập và sử dụng thông tin cá nhân như sau:", pt: "Os fins para os quais a Empresa coleta e usa informações pessoais são os seguintes:" },
+                "privacy-li-3-1": { ja: "不動産の売買、賃貸、仲介、管理等の取引に関する契約の履行、情報、サービスの提供のため", en: "For the performance of contracts, provision of information, and services related to real estate transactions such as sales, leasing, brokerage, and management.", zh: "为履行房地产买卖、租赁、中介、管理等交易相关的合同，提供信息和服务。", vi: "Để thực hiện hợp đồng, cung cấp thông tin và dịch vụ liên quan đến các giao dịch bất động sản như bán, cho thuê, môi giới và quản lý.", pt: "Para a execução de contratos, fornecimento de informações e serviços relacionados a transações imobiliárias, como vendas, locação, corretagem e gestão." },
+                "privacy-li-3-2": { ja: "当社の商品・サービス等のご案内のため", en: "To provide information about our products and services.", zh: "为介绍本公司的商品和服务等。", vi: "Để cung cấp thông tin về các sản phẩm và dịch vụ của chúng tôi.", pt: "Para fornecer informações sobre nossos produtos e serviços." },
+                "privacy-li-3-3": { ja: "お客様からのお問い合わせへの対応、アフターサービスのため", en: "To respond to customer inquiries and provide after-sales service.", zh: "为应对客户的咨询和提供售后服务。", vi: "Để trả lời các câu hỏi của khách hàng và cung cấp dịch vụ sau bán hàng.", pt: "Para responder às perguntas dos clientes и fornecer serviço pós-venda." },
+                "privacy-li-3-4": { ja: "マーケティング（アンケート等）活動、顧客動向分析または商品開発等の調査分析のため", en: "For marketing activities (such as surveys), customer trend analysis, or research and analysis for product development.", zh: "为进行市场营销（问卷调查等）活动、客户动向分析或商品开发等调查分析。", vi: "Đối với các hoạt động tiếp thị (chẳng hạn như khảo sát), phân tích xu hướng khách hàng hoặc nghiên cứu và phân tích để phát triển sản phẩm.", pt: "Para atividades de marketing (como pesquisas), análise de tendências de clientes ou pesquisa e análise para o desenvolvimento de produtos." },
+                "privacy-li-3-5": { ja: "上記の利用目的に付随する目的", en: "For purposes incidental to the above purposes of use.", zh: "为附属于上述使用目的的目的。", vi: "Cho các mục đích ngẫu nhiên với các mục đích sử dụng trên.", pt: "Para fins incidentais aos fins de uso acima." },
+                "privacy-h2-4": { ja: "第4条（個人情報の第三者提供）", en: "Article 4 (Provision of Personal Information to Third Parties)", zh: "第4条（向第三方提供个人信息）", vi: "Điều 4 (Cung cấp thông tin cá nhân cho bên thứ ba)", pt: "Artigo 4 (Fornecimento de Informações Pessoais a Terceiros)" },
+                "privacy-p-4-1": { ja: "当社は、次に掲げる場合を除いて、あらかじめお客様の同意を得ることなく、第三者に個人情報を提供することはありません。ただし、個人情報保護法その他の法令で認められる場合を除きます。", en: "The Company will not provide personal information to a third party without the prior consent of the customer, except in the following cases. However, this does not apply to cases permitted by the Personal Information Protection Act and other laws and regulations.", zh: "除以下情况外，未经客户事先同意，本公司不会向第三方提供个人信息。但是，个人信息保护法及其他法律法规允许的情况除外。", vi: "Công ty sẽ không cung cấp thông tin cá nhân cho bên thứ ba mà không có sự đồng ý trước của khách hàng, ngoại trừ các trường hợp sau. Tuy nhiên, điều này không áp dụng cho các trường hợp được cho phép bởi Đạo luật Bảo vệ Thông tin Cá nhân và các luật và quy định khác.", pt: "A Empresa não fornecerá informações pessoais a terceiros sem o consentimento prévio do cliente, exceto nos seguintes casos. No entanto, isso não se aplica aos casos permitidos pela Lei de Proteção de Informações Pessoais e outras leis e regulamentos." },
+                "privacy-li-4-1": { ja: "人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難であるとき", en: "When it is necessary for the protection of a person's life, body, or property and it is difficult to obtain the person's consent.", zh: "为保护人的生命、身体或财产而有必要，且难以获得本人同意时。", vi: "Khi cần thiết để bảo vệ tính mạng, cơ thể hoặc tài sản của một người và khó có được sự đồng ý của người đó.", pt: "Quando for necessário para a proteção da vida, corpo ou propriedade de uma pessoa e for difícil obter o consentimento da pessoa." },
+                "privacy-li-4-2": { ja: "公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難であるとき", en: "When it is particularly necessary for the improvement of public health or the promotion of the sound upbringing of children and it is difficult to obtain the person's consent.", zh: "为改善公共卫生或促进儿童健康成长而特别有必要，且难以获得本人同意时。", vi: "Khi đặc biệt cần thiết để cải thiện sức khỏe cộng đồng hoặc thúc đẩy sự phát triển lành mạnh của trẻ em và khó có được sự đồng ý của người đó.", pt: "Quando for particularmente necessário para a melhoria da saúde pública ou a promoção da educação saudável de crianças e for difícil obter o consentimento da pessoa." },
+                "privacy-li-4-3": { ja: "国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがあるとき", en: "When it is necessary to cooperate with a state organ or a local public entity or a person entrusted by either of them in executing the affairs prescribed by laws and regulations and obtaining the person's consent is likely to impede the execution of the said affairs.", zh: "国家机关、地方公共团体或其委托的人员为执行法律法规规定的事务需要合作，且获得本人同意可能妨碍该事务的执行时。", vi: "Khi cần thiết phải hợp tác với một cơ quan nhà nước hoặc một cơ quan công quyền địa phương hoặc một người được một trong hai bên ủy thác trong việc thực hiện các công việc theo quy định của pháp luật và việc có được sự đồng ý của người đó có khả năng cản trở việc thực hiện các công việc nói trên.", pt: "Quando for necessário cooperar com um órgão estatal ou uma entidade pública local ou uma pessoa por eles incumbida na execução dos assuntos prescritos por leis e regulamentos e a obtenção do consentimento da pessoa provavelmente impedirá a execução dos referidos assuntos." },
+                "privacy-h2-5": { ja: "第5条（個人情報の開示）", en: "Article 5 (Disclosure of Personal Information)", zh: "第5条（个人信息的披露）", vi: "Điều 5 (Tiết lộ thông tin cá nhân)", pt: "Artigo 5 (Divulgação de Informações Pessoais)" },
+                "privacy-p-5-1": { ja: "当社は、ご本人から個人情報の開示を求められたときは、ご本人に対し、遅滞なくこれを開示します。ただし、開示することにより次のいずれかに該当する場合は、その全部または一部を開示しないこともあり、開示しない決定をした場合には、その旨を遅滞なく通知します。", en: "When requested by the person to disclose his/her personal information, the Company will disclose it to the person without delay. However, if disclosure falls under any of the following cases, all or part of the information may not be disclosed, and if a decision is made not to disclose, the person will be notified to that effect without delay.", zh: "当本人要求披露其个人信息时，本公司将立即向本人披露。但是，如果披露属于以下任何一种情况，我们可能不会披露全部或部分信息，如果决定不披露，我们将立即通知本人。", vi: "Khi được người đó yêu cầu tiết lộ thông tin cá nhân của mình, Công ty sẽ tiết lộ thông tin đó cho người đó mà không chậm trễ. Tuy nhiên, nếu việc tiết lộ thuộc một trong các trường hợp sau, tất cả hoặc một phần thông tin có thể không được tiết lộ, và nếu quyết định không tiết lộ, người đó sẽ được thông báo về việc đó mà không chậm trễ.", pt: "Quando solicitado pela pessoa a divulgar suas informações pessoais, a Empresa as divulgará à pessoa sem demora. No entanto, se a divulgação se enquadrar em qualquer um dos seguintes casos, todas ou parte das informações podem não ser divulgadas e, se for tomada a decisão de não divulgar, a pessoa será notificada para esse efeito sem demora." },
+                "privacy-li-5-1": { ja: "ご本人または第三者の生命、身体、財産その他の権利利益を害するおそれがある場合", en: "When there is a risk of harming the life, body, property, or other rights and interests of the person or a third party.", zh: "可能损害本人或第三方的生命、身体、财产或其他权利利益时。", vi: "Khi có nguy cơ gây hại đến tính mạng, cơ thể, tài sản hoặc các quyền và lợi ích khác của người đó hoặc bên thứ ba.", pt: "Quando houver risco de prejudicar a vida, o corpo, a propriedade ou outros direitos e interesses da pessoa ou de terceiros." },
+                "privacy-li-5-2": { ja: "当社の業務の適正な実施に著しい支障を及ぼすおそれがある場合", en: "When there is a risk of significant hindrance to the proper execution of the Company's business.", zh: "可能严重妨碍本公司业务的正常执行时。", vi: "Khi có nguy cơ cản trở đáng kể đến việc thực hiện đúng đắn hoạt động kinh doanh của Công ty.", pt: "Quando houver risco de impedimento significativo à execução adequada dos negócios da Empresa." },
+                "privacy-li-5-3": { ja: "その他法令に違反することとなる場合", en: "When it would violate other laws and regulations.", zh: "违反其他法律法规时。", vi: "Khi nó sẽ vi phạm các luật và quy định khác.", pt: "Quando violaria outras leis e regulamentos." },
+                "privacy-h2-6": { ja: "第6条（プライバシーポリシーの変更）", en: "Article 6 (Changes to the Privacy Policy)", zh: "第6条（隐私政策的变更）", vi: "Điều 6 (Thay đổi Chính sách Bảo mật)", pt: "Artigo 6 (Alterações à Política de Privacidade)" },
+                "privacy-p-6": { ja: "本ポリシーの内容は、法令その他本ポリシーに別段の定めのある事項を除いて、お客様に通知することなく、変更することができるものとします。当社が別途定める場合を除いて、変更後のプライバシーポリシーは、本ウェブサイトに掲載したときから効力を生じるものとします。", en: "The contents of this Policy may be changed without notice to the customer, except as otherwise provided by law or in this Policy. Unless otherwise specified by the Company, the revised privacy policy shall become effective when it is posted on this website.", zh: "除法律法规及本政策另有规定外，本政策内容可不经通知客户而变更。除本公司另有规定外，变更后的隐私政策自在本网站发布之时起生效。", vi: "Nội dung của Chính sách này có thể được thay đổi mà không cần thông báo cho khách hàng, trừ khi có quy định khác của pháp luật hoặc trong Chính sách này. Trừ khi được Công ty quy định khác, chính sách bảo mật sửa đổi sẽ có hiệu lực khi được đăng trên trang web này.", pt: "O conteúdo desta Política pode ser alterado sem aviso prévio ao cliente, exceto quando disposto de outra forma por lei ou nesta Política. A menos que especificado de outra forma pela Empresa, a política de privacidade revisada entrará em vigor quando for publicada neste site." },
+                "privacy-h2-7": { ja: "第7条（お問い合わせ窓口）", en: "Article 7 (Contact for Inquiries)", zh: "第7条（咨询窗口）", vi: "Điều 7 (Liên hệ για yêu cầu)", pt: "Artigo 7 (Contato para Consultas)" },
+                "privacy-p-7-1": { ja: "本ポリシーに関するお問い合わせは、下記の窓口までお願いいたします。", en: "For inquiries regarding this Policy, please contact the following:", zh: "有关本政策的咨询，请联系以下窗口：", vi: "Đối với các yêu cầu liên quan đến Chính sách này, vui lòng liên hệ với những người sau:", pt: "Para perguntas sobre esta Política, entre em contato com o seguinte:" },
+                "contact-address-label": { ja: "住所", en: "Address", zh: "地址", vi: "Địa chỉ", pt: "Endereço" },
+                "contact-name-label": { ja: "社名", en: "Company Name", zh: "公司名称", vi: "Tên công ty", pt: "Nome da Empresa" },
+                "contact-phone-label": { ja: "電話番号", en: "Phone Number", zh: "电话号码", vi: "Số điện thoại", pt: "Número de Telefone" },
+                "privacy-end": { ja: "以上", en: "End", zh: "以上", vi: "Kết thúc", pt: "Fim" },
+                "privacy-date": { ja: "制定日：2025年8月20日", en: "Date of Enactment: August 20, 2025", zh: "制定日期：2025年8月20日", vi: "Ngày ban hành: 20 tháng 8 năm 2025", pt: "Data de Promulgação: 20 de agosto de 2025" },
+                "footer-sitemap": { ja: "サイトマップ", en: "Sitemap", zh: "网站地图", vi: "Sơ đồ trang web", pt: "Mapa do Site" },
+                "nav-privacy": { ja: "プライバシーポリシー", en: "Privacy Policy", zh: "隐私政策", vi: "Chính sách Bảo mật", pt: "Política de Privacidade" },
+                "footer-hours": { ja: "営業時間", en: "Business Hours", zh: "营业时间", vi: "Giờ làm việc", pt: "Horário de Funcionamento" },
+                "footer-hours-details": { ja: "月-土: 9:00～19:00", en: "Mon-Sat: 9:00 AM - 7:00 PM", zh: "周一至周六: 9:00 - 19:00", vi: "Thứ Hai-Thứ Bảy: 9:00 - 19:00", pt: "Seg-Sáb: 9:00 - 19:00" },
+                "footer-closing-days": { ja: "定休日: 水曜、日曜（第1・最終週を除く）", en: "Closed: Wednesdays, Sundays (except 1st & last of month)", zh: "休息日: 周三、周日（每月第一和最后一周除外）", vi: "Đóng cửa: Thứ Tư, Chủ Nhật (trừ Chủ Nhật đầu tiên và cuối cùng của tháng)", pt: "Fechado: Quartas-feiras, Domingos (exceto o primeiro e último domingo do mês)" }
+            };
+
+            function setLanguage(lang) {
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-lang-key]').forEach(elem => {
+                    const key = elem.getAttribute('data-lang-key');
+                    if (translations[key] && translations[key][lang]) {
+                        if (elem.tagName === 'TITLE') {
+                            elem.textContent = translations[key][lang];
+                        } else {
+                            elem.innerHTML = translations[key][lang];
+                        }
+                    }
+                });
+                document.querySelectorAll('.current-lang').forEach(elem => {
+                    if(lang === 'ja') elem.textContent = '日本語';
+                    if(lang === 'en') elem.textContent = 'English';
+                    if(lang === 'zh') elem.textContent = '中文';
+                    if(lang === 'vi') elem.textContent = 'Tiếng Việt';
+                    if(lang === 'pt') elem.textContent = 'Português';
+                });
+
+                localStorage.setItem('preferredLanguage', lang);
+                document.querySelectorAll('.lang-selector-dropdown').forEach(dropdown => dropdown.classList.remove('show'));
+            }
+
+            document.querySelectorAll('.lang-selector-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const dropdown = button.nextElementSibling;
+                    dropdown.classList.toggle('show');
+                });
+            });
+
+            document.addEventListener('click', () => {
+                document.querySelectorAll('.lang-selector-dropdown').forEach(dropdown => {
+                    if (dropdown.classList.contains('show')) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            });
+
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    setLanguage(e.target.getAttribute('data-lang'));
+                });
+            });
+            
+            const savedLang = localStorage.getItem('preferredLanguage') || 'ja';
+            setLanguage(savedLang);
+
+            var mobileMenuButton = document.getElementById('mobile-menu-button');
+            var mobileMenu = document.getElementById('mobile-menu');
+            var propertiesToggle = document.getElementById('properties-toggle');
+            var propertiesSubmenu = document.getElementById('properties-submenu');
+
+            if (mobileMenuButton) { mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); }); }
+            if (propertiesToggle) { 
+                propertiesToggle.addEventListener('click', () => { 
+                    propertiesSubmenu.classList.toggle('open');
+                    propertiesToggle.classList.toggle('open');
+                }); 
+            }
+            
+            var header = document.getElementById('main-header');
+            var lineFab = document.getElementById('line-fab');
+            var scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+            window.onscroll = function() {
+                if (header && window.scrollY > 50) { header.classList.add('header-scrolled'); } 
+                else if (header) { header.classList.remove('header-scrolled'); }
+                
+                if (window.pageYOffset > 300) {
+                    if(lineFab) lineFab.classList.add('show');
+                    if(scrollToTopBtn) scrollToTopBtn.classList.add('show');
+                } else {
+                    if(lineFab) lineFab.classList.remove('show');
+                    if(scrollToTopBtn) scrollToTopBtn.classList.remove('show');
+                }
+            };
+
+            if (scrollToTopBtn) {
+                scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            }
+        });
+    </script>
+
+</body>
+</html>

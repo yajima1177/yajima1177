@@ -38,10 +38,10 @@
         #properties-submenu.open { max-height: 200px; }
         #properties-toggle .arrow-icon { transition: transform 0.3s ease; }
         #properties-toggle.open .arrow-icon { transform: rotate(180deg); }
-        #scrollToTopBtn { position: fixed; bottom: 20px; right: 15px; z-index: 99; cursor: pointer; opacity: 0; transform: translateX(100px); transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: none; border: none; padding: 0; }
+        #scrollToTopBtn { position: fixed; bottom: 20px; right: 15px; z-index: 99; cursor: pointer; opacity: 0; transform: translateY(100px); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); background: none; border: none; padding: 0; }
         @media (min-width: 768px) { #scrollToTopBtn { bottom: 30px; right: 30px; } }
-        #scrollToTopBtn.show { opacity: 0.7; transform: translateX(0); }
-        #scrollToTopBtn:hover.show { opacity: 1; }
+        #scrollToTopBtn.show { opacity: 1; transform: translateY(0); }
+        #scrollToTopBtn:hover.show { transform: translateY(-5px); }
         .btn-primary { transition: all 0.3s ease; }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
         .bg-accent-yellow { background-color: #f8b500; }
@@ -59,7 +59,6 @@
 </head>
 <body class="bg-deep-gray text-gray-800">
 
-    <!-- Header -->
     <header id="main-header" class="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html">
@@ -92,6 +91,8 @@
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="ja">日本語</a>
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="en">English</a>
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="zh">中文</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="pt">Português</a>
                     </div>
                 </div>
             </nav>
@@ -104,6 +105,8 @@
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="ja">日本語</a>
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="en">English</a>
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="zh">中文</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="pt">Português</a>
                     </div>
                 </div>
                 <button id="mobile-menu-button" class="text-gray-600 focus:outline-none p-2">
@@ -133,11 +136,12 @@
                 <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="ja">日本語</a>
                 <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="en">English</a>
                 <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="zh">中文</a>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="vi">Tiếng Việt</a>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="pt">Português</a>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="py-16 sm:py-20">
         <div class="container mx-auto px-6">
             <h1 class="section-title text-3xl font-bold text-center inline-block w-full mb-8 reveal-title" data-lang-key="flow-title">ご入居までの流れ</h1>
@@ -196,7 +200,6 @@
         </div>
     </main>
     
-    <!-- LINE CTA Section -->
     <section class="bg-white py-16 sm:py-20">
         <div class="container mx-auto px-6 max-w-4xl">
             <div class="bg-gray-700 rounded-2xl shadow-xl p-8 reveal-card">
@@ -209,7 +212,7 @@
                         <p class="text-gray-300 mb-6" data-lang-key="line-text">
                             友だち追加で、最新の物件情報やお得な情報をお届けします。
                         </p>
-                        <a href="https://line.me/R/ti/p/YOUR_LINE_ID" target="_blank" class="font-bold py-3 px-8 rounded-full transition-all text-lg inline-flex items-center justify-center btn-line-ghost">
+                        <a href="https://page.line.me/504ohkyn?openQrModal=true" target="_blank" class="font-bold py-3 px-8 rounded-full transition-all text-lg inline-flex items-center justify-center btn-line-ghost">
                             <i class="fa-solid fa-plus mr-2"></i> <span data-lang-key="line-btn">友だち追加はこちら</span>
                         </a>
                     </div>
@@ -223,7 +226,7 @@
                     </div>
                     <div class="col-span-12 md:col-span-4 flex items-center justify-center md:justify-end">
                         <div class="w-36 h-36 p-2 bg-white rounded-lg shadow-lg flex-shrink-0">
-                            <img src="https://placehold.co/144x144/ffffff/333333?text=QR" alt="LINE QR Code">
+                            <img src="images/lineqr.png" alt="LINE QR Code">
                         </div>
                     </div>
                 </div>
@@ -231,13 +234,17 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white mt-16 sm:mt-20">
+    <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-10">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="mb-6 md:mb-0">
                     <p class="text-xl font-bold">有限会社 谷島商事</p>
                     <p class="text-sm mt-2">〒348-0053<br>埼玉県羽生市南6丁目16-9</p>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
                 <div class="text-sm">
                     <h4 class="font-bold mb-3" data-lang-key="footer-sitemap">サイトマップ</h4>
@@ -247,6 +254,7 @@
                     <a href="customers.html" class="block mt-2 hover:underline" data-lang-key="nav-protagonists">まちの主役たち</a>
                     <a href="company.html" class="block mt-2 hover:underline" data-lang-key="nav-company">会社概要</a>
                     <a href="contact.html" class="block mt-2 hover:underline" data-lang-key="nav-contact">お問い合わせ</a>
+                    <a href="privacy.html" class="block mt-2 hover:underline" data-lang-key="nav-privacy">プライバシーポリシー</a>
                 </div>
                  <div class="text-sm">
                     <h4 class="font-bold mb-3" data-lang-key="footer-hours">営業時間</h4>
@@ -255,61 +263,64 @@
                 </div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-6 text-center text-sm text-gray-400">
-                <p>&copy; 2024 Yajima Shoji Co., Ltd. All Rights Reserved.</p>
+                <p>&copy; 2025 Yajima Shoji Co., Ltd. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <button id="scrollToTopBtn">
-        <img src="images/scroll-to-top-btn-img.png" alt="トップに戻る" class="w-20 h-20 md:w-40 md:h-40 transition-transform duration-300 hover:scale-110">
+        <img src="images/scroll-to-top-btn-img.png" alt="トップに戻る" class="w-20 h-20 md:w-40 md:h-40 transition-transform duration-300">
     </button>
     
-    <a href="https://line.me/R/ti/p/YOUR_LINE_ID" target="_blank" id="line-fab">
+    <a href="https://page.line.me/504ohkyn?openQrModal=true" target="_blank" id="line-fab">
         <i class="fab fa-line text-white text-3xl md:text-4xl"></i>
     </a>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
              const translations = {
-                "nav-strengths": { ja: "当社の強み", en: "Our Strengths", zh: "我们的优势" },
-                "nav-flow": { ja: "ご入居までの流れ", en: "Process", zh: "入住流程" },
-                "nav-properties": { ja: "物件情報", en: "Properties", zh: "房产信息" },
-                "nav-properties-rental": { ja: "賃貸物件", en: "Rental", zh: "租赁物业" },
-                "nav-properties-sale": { ja: "売買物件", en: "For Sale", zh: "买卖物业" },
-                "nav-properties-parking": { ja: "駐車場", en: "Parking", zh: "停车场" },
-                "nav-protagonists": { ja: "まちの主役たち", en: "Stars of the Town", zh: "小镇主角" },
-                "nav-company": { ja: "会社概要", en: "Company", zh: "公司简介" },
-                "nav-contact": { ja: "お問い合わせ", en: "Contact", zh: "联系我们" },
-                "flow-title": { ja: "ご入居までの流れ", en: "Move-in Process", zh: "入住流程" },
+                "nav-strengths": { ja: "当社の強み", en: "Our Strengths", zh: "我们的优势", vi: "Thế mạnh của chúng tôi", pt: "Nossos Pontos Fortes" },
+                "nav-flow": { ja: "ご入居までの流れ", en: "Process", zh: "入住流程", vi: "Quy trình", pt: "Processo" },
+                "nav-properties": { ja: "物件情報", en: "Properties", zh: "房产信息", vi: "Tài sản", pt: "Imóveis" },
+                "nav-properties-rental": { ja: "賃貸物件", en: "Rental", zh: "租赁物业", vi: "Cho thuê", pt: "Aluguel" },
+                "nav-properties-sale": { ja: "売買物件", en: "For Sale", zh: "买卖物业", vi: "Rao bán", pt: "Para Venda" },
+                "nav-properties-parking": { ja: "駐車場", en: "Parking", zh: "停车场", vi: "Bãi đậu xe", pt: "Estacionamento" },
+                "nav-protagonists": { ja: "まちの主役たち", en: "Stars of the Town", zh: "小镇主角", vi: "Ngôi sao của Thị trấn", pt: "Estrelas da Cidade" },
+                "nav-company": { ja: "会社概要", en: "Company", zh: "公司简介", vi: "Công ty", pt: "Empresa" },
+                "nav-contact": { ja: "お問い合わせ", en: "Contact", zh: "联系我们", vi: "Liên hệ", pt: "Contato" },
+                "nav-privacy": { ja: "プライバシーポリシー", en: "Privacy Policy", zh: "隐私政策", vi: "Chính sách Bảo mật", pt: "Política de Privacidade" },
+                "flow-title": { ja: "ご入居までの流れ", en: "Move-in Process", zh: "入住流程", vi: "Quy trình nhận nhà", pt: "Processo de Mudança" },
                 "flow-intro": { 
                     ja: `お問い合わせからご入居まで、スムーズに進められるようサポートいたします。<br>ご不明な点は、どのステップでもお気軽にご質問ください。`,
                     en: `We will support you for a smooth process from inquiry to moving in.<br>Please feel free to ask any questions at any step.`,
-                    zh: `从咨询到入住，我们将为您提供顺畅的支持。<br>在任何步骤有任何疑问，请随时提出。`
+                    zh: `从咨询到入住，我们将为您提供顺畅的支持。<br>在任何步骤有任何疑问，请随时提出。`,
+                    vi: `Chúng tôi sẽ hỗ trợ bạn để quy trình diễn ra suôn sẻ từ khi yêu cầu đến khi nhận nhà.<br>Vui lòng đặt bất kỳ câu hỏi nào ở bất kỳ bước nào.`,
+                    pt: `Nós o apoiaremos para um processo tranquilo desde a consulta até a mudança.<br>Sinta-se à vontade para fazer qualquer pergunta em qualquer etapa.`
                 },
-                "step1-label": { ja: "STEP 1", en: "STEP 1", zh: "第 1 步" },
-                "step1-title": { ja: "ご相談・物件探し", en: "Consultation & Property Search", zh: "咨询与找房" },
-                "step1-text": { ja: "ご希望のエリア、間取り、家賃など、お客様の「理想の暮らし」をお聞かせください。最適な物件をご提案します。", en: "Tell us your ideal living situation, including desired area, layout, and rent. We will propose the best properties for you.", zh: "请告诉我们您期望的地区、户型、租金等“理想生活”的条件。我们将为您推荐最合适的房产。" },
-                "step2-label": { ja: "STEP 2", en: "STEP 2", zh: "第 2 步" },
-                "step2-title": { ja: "物件見学（内見）", en: "Property Viewing", zh: "看房" },
-                "step2-text": { ja: "気になる物件が見つかったら、実際に現地へご案内します。お部屋の雰囲気や日当たり、周辺環境などをじっくりご確認ください。", en: "Once you find a property you're interested in, we'll show you the site. Please take your time to check the room's atmosphere, sunlight, and surrounding environment.", zh: "找到您感兴趣的房产后，我们将带您实地看房。请仔细确认房间的氛围、采光、周边环境等。" },
-                "step3-label": { ja: "STEP 3", en: "STEP 3", zh: "第 3 步" },
-                "step3-title": { ja: "お申し込み", en: "Application", zh: "申请" },
-                "step3-text": { ja: "物件を気に入っていただけましたら、入居申込書にご記入いただきます。申込金や必要書類についてもご案内します。", en: "If you like the property, you will fill out an application form. We will also inform you about the application fee and necessary documents.", zh: "如果您对房产满意，请填写租赁申请书。我们也会向您说明申请费和所需文件。" },
-                "step4-label": { ja: "STEP 4", en: "STEP 4", zh: "第 4 步" },
-                "step4-title": { ja: "入居審査・ご契約", en: "Screening & Contract", zh: "入住审查与签约" },
-                "step4-text": { ja: "大家様による入居審査後、契約条件や重要事項のご説明を行い、賃貸借契約を結びます。初期費用のお支払いもこのタイミングです。", en: "After the landlord's screening, we will explain the contract terms and important matters, then sign the lease agreement. The initial payment is also made at this time.", zh: "通过房东的入住审查后，我们将说明合同条款和重要事项，并签订租赁合同。初期费用也在此阶段支付。" },
-                "step5-label": { ja: "STEP 5", en: "STEP 5", zh: "第 5 步" },
-                "step5-title": { ja: "鍵のお渡し・ご入居", en: "Key Handover & Move-in", zh: "交接钥匙与入住" },
-                "step5-text": { ja: "契約開始日に鍵をお渡しします。いよいよ新しい生活のスタートです！ご入居後も、何かあればいつでもご相談ください。", en: "We will hand over the keys on the contract start date. Your new life is about to begin! Even after moving in, feel free to consult us anytime.", zh: "我们将在合同生效日将钥匙交给您。新生活即将开始！入住后如有任何问题，也请随时与我们联系。" },
-                "line-title": { ja: "LINE公式アカウント", en: "Official LINE Account", zh: "LINE官方账号" },
-                "line-text": { ja: "友だち追加で、最新の物件情報やお得な情報をお届けします。", en: "Add us to get the latest property deals and information.", zh: "添加好友，获取最新的房产信息和优惠资讯。" },
-                "line-btn": { ja: "友だち追加はこちら", en: "Add Friend", zh: "添加好友" },
-                "line-char-bubble": { ja: "お気軽に<br>ご相談ください！", en: "Feel free<br>to ask!", zh: "欢迎<br>随时咨询！" },
-                "footer-sitemap": { ja: "サイトマップ", en: "Sitemap", zh: "网站地图" },
-                "footer-hours": { ja: "営業時間", en: "Business Hours", zh: "营业时间" },
-                "footer-hours-details": { ja: "月-土: 9:00～19:00", en: "Mon-Sat: 9:00 AM - 7:00 PM", zh: "周一至周六: 9:00 - 19:00" },
-                "footer-closing-days": { ja: "定休日: 水曜、日曜（第1・最終週を除く）", en: "Closed: Wednesdays, Sundays (except 1st & last of month)", zh: "休息日: 周三、周日（每月第一和最后一周除外）" },
-                "language-menu-title": { ja: "言語", en: "Language", zh: "语言" }
+                "step1-label": { ja: "STEP 1", en: "STEP 1", zh: "第 1 步", vi: "BƯỚC 1", pt: "PASSO 1" },
+                "step1-title": { ja: "ご相談・物件探し", en: "Consultation & Property Search", zh: "咨询与找房", vi: "Tư vấn & Tìm kiếm Tài sản", pt: "Consulta e Busca de Imóveis" },
+                "step1-text": { ja: "ご希望のエリア、間取り、家賃など、お客様の「理想の暮らし」をお聞かせください。最適な物件をご提案します。", en: "Tell us your ideal living situation, including desired area, layout, and rent. We will propose the best properties for you.", zh: "请告诉我们您期望的地区、户型、租金等“理想生活”的条件。我们将为您推荐最合适的房产。", vi: "Hãy cho chúng tôi biết về cuộc sống lý tưởng của bạn, bao gồm khu vực mong muốn, cách bố trí và giá thuê. Chúng tôi sẽ đề xuất những tài sản tốt nhất cho bạn.", pt: "Diga-nos a sua situação de vida ideal, incluindo a área desejada, layout e aluguel. Proporemos os melhores imóveis para você." },
+                "step2-label": { ja: "STEP 2", en: "STEP 2", zh: "第 2 步", vi: "BƯỚC 2", pt: "PASSO 2" },
+                "step2-title": { ja: "物件見学（内見）", en: "Property Viewing", zh: "看房", vi: "Xem tài sản", pt: "Visita ao Imóvel" },
+                "step2-text": { ja: "気になる物件が見つかったら、実際に現地へご案内します。お部屋の雰囲気や日当たり、周辺環境などをじっくりご確認ください。", en: "Once you find a property you're interested in, we'll show you the site. Please take your time to check the room's atmosphere, sunlight, and surrounding environment.", zh: "找到您感兴趣的房产后，我们将带您实地看房。请仔细确认房间的氛围、采光、周边环境等。", vi: "Khi bạn tìm thấy một tài sản mà bạn quan tâm, chúng tôi sẽ dẫn bạn đến xem. Vui lòng dành thời gian kiểm tra không khí của căn phòng, ánh sáng mặt trời và môi trường xung quanh.", pt: "Quando encontrar um imóvel de seu interesse, nós o levaremos para uma visita. Por favor, reserve um tempo para verificar a atmosfera do quarto, a luz solar e o ambiente circundante." },
+                "step3-label": { ja: "STEP 3", en: "STEP 3", zh: "第 3 步", vi: "BƯỚC 3", pt: "PASSO 3" },
+                "step3-title": { ja: "お申し込み", en: "Application", zh: "申请", vi: "Đơn xin", pt: "Inscrição" },
+                "step3-text": { ja: "物件を気に入っていただけましたら、入居申込書にご記入いただきます。申込金や必要書類についてもご案内します。", en: "If you like the property, you will fill out an application form. We will also inform you about the application fee and necessary documents.", zh: "如果您对房产满意，请填写租赁申请书。我们也会向您说明申请费和所需文件。", vi: "Nếu bạn thích tài sản này, bạn sẽ điền vào một mẫu đơn. Chúng tôi cũng sẽ thông báo cho bạn về phí đăng ký và các tài liệu cần thiết.", pt: "Se você gostar do imóvel, preencherá um formulário de inscrição. Também o informaremos sobre a taxa de inscrição e os documentos necessários." },
+                "step4-label": { ja: "STEP 4", en: "STEP 4", zh: "第 4 步", vi: "BƯỚC 4", pt: "PASSO 4" },
+                "step4-title": { ja: "入居審査・ご契約", en: "Screening & Contract", zh: "入住审查与签约", vi: "Sàng lọc & Hợp đồng", pt: "Análise e Contrato" },
+                "step4-text": { ja: "大家様による入居審査後、契約条件や重要事項のご説明を行い、賃貸借契約を結びます。初期費用のお支払いもこのタイミングです。", en: "After the landlord's screening, we will explain the contract terms and important matters, then sign the lease agreement. The initial payment is also made at this time.", zh: "通过房东的入住审查后，我们将说明合同条款和重要事项，并签订租赁合同。初期费用也在此阶段支付。", vi: "Sau khi chủ nhà sàng lọc, chúng tôi sẽ giải thích các điều khoản hợp đồng và các vấn đề quan trọng, sau đó ký hợp đồng thuê. Khoản thanh toán ban đầu cũng được thực hiện vào thời điểm này.", pt: "Após a análise do proprietário, explicaremos os termos do contrato e assuntos importantes e, em seguida, assinaremos o contrato de locação. O pagamento inicial também é feito neste momento." },
+                "step5-label": { ja: "STEP 5", en: "STEP 5", zh: "第 5 步", vi: "BƯỚC 5", pt: "PASSO 5" },
+                "step5-title": { ja: "鍵のお渡し・ご入居", en: "Key Handover & Move-in", zh: "交接钥匙与入住", vi: "Bàn giao chìa khóa & Dọn vào", pt: "Entrega das Chaves e Mudança" },
+                "step5-text": { ja: "契約開始日に鍵をお渡しします。いよいよ新しい生活のスタートです！ご入居後も、何かあればいつでもご相談ください。", en: "We will hand over the keys on the contract start date. Your new life is about to begin! Even after moving in, feel free to consult us anytime.", zh: "我们将在合同生效日将钥匙交给您。新生活即将开始！入住后如有任何问题，也请随时与我们联系。", vi: "Chúng tôi sẽ bàn giao chìa khóa vào ngày bắt đầu hợp đồng. Cuộc sống mới của bạn sắp bắt đầu! Ngay cả sau khi chuyển đến, hãy thoải mái tham khảo ý kiến của chúng tôi bất cứ lúc nào.", pt: "Entregaremos as chaves na data de início do contrato. Sua nova vida está prestes a começar! Mesmo depois de se mudar, sinta-se à vontade para nos consultar a qualquer momento." },
+                "line-title": { ja: "LINE公式アカウント", en: "Official LINE Account", zh: "LINE官方账号", vi: "Tài khoản LINE chính thức", pt: "Conta Oficial do LINE" },
+                "line-text": { ja: "友だち追加で、最新の物件情報やお得な情報をお届けします。", en: "Add us to get the latest property deals and information.", zh: "添加好友，获取最新的房产信息和优惠资讯。", vi: "Thêm chúng tôi để nhận các ưu đãi và thông tin tài sản mới nhất.", pt: "Adicione-nos para receber as últimas ofertas e informações sobre imóveis." },
+                "line-btn": { ja: "友だち追加はこちら", en: "Add Friend", zh: "添加好友", vi: "Thêm bạn", pt: "Adicionar Amigo" },
+                "line-char-bubble": { ja: "お気軽に<br>ご相談ください！", en: "Feel free<br>to ask!", zh: "欢迎<br>随时咨询！", vi: "Hãy thoải mái<br>hỏi!", pt: "Sinta-se à vontade<br>para perguntar!" },
+                "footer-sitemap": { ja: "サイトマップ", en: "Sitemap", zh: "网站地图", vi: "Sơ đồ trang web", pt: "Mapa do Site" },
+                "footer-hours": { ja: "営業時間", en: "Business Hours", zh: "营业时间", vi: "Giờ làm việc", pt: "Horário de Funcionamento" },
+                "footer-hours-details": { ja: "月-土: 9:00～19:00", en: "Mon-Sat: 9:00 AM - 7:00 PM", zh: "周一至周六: 9:00 - 19:00", vi: "Thứ Hai-Thứ Bảy: 9:00 - 19:00", pt: "Seg-Sáb: 9:00 - 19:00" },
+                "footer-closing-days": { ja: "定休日: 水曜、日曜（第1・最終週を除く）", en: "Closed: Wednesdays, Sundays (except 1st & last of month)", zh: "休息日: 周三、周日（每月第一和最后一周除外）", vi: "Đóng cửa: Thứ Tư, Chủ Nhật (trừ Chủ Nhật đầu tiên và cuối cùng của tháng)", pt: "Fechado: Quartas-feiras, Domingos (exceto o primeiro e último domingo do mês)" },
+                "language-menu-title": { ja: "言語", en: "Language", zh: "语言", vi: "Ngôn ngữ", pt: "Idioma" }
             };
 
             function setLanguage(lang) {
@@ -324,6 +335,8 @@
                     if(lang === 'ja') elem.textContent = '日本語';
                     if(lang === 'en') elem.textContent = 'English';
                     if(lang === 'zh') elem.textContent = '中文';
+                    if(lang === 'vi') elem.textContent = 'Tiếng Việt';
+                    if(lang === 'pt') elem.textContent = 'Português';
                 });
 
                 localStorage.setItem('preferredLanguage', lang);
@@ -371,17 +384,25 @@
 
             var header = document.getElementById('main-header');
             var lineFab = document.getElementById('line-fab');
-            window.onscroll = function() {
-                if (header && window.scrollY > 50) { header.classList.add('header-scrolled'); } else if (header) { header.classList.remove('header-scrolled'); }
-                if (lineFab && window.pageYOffset > 300) { lineFab.classList.add('show'); } else if (lineFab) { lineFab.classList.remove('show'); }
-            };
             var scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+            window.onscroll = function() {
+                if (header && window.scrollY > 50) { header.classList.add('header-scrolled'); } 
+                else if (header) { header.classList.remove('header-scrolled'); }
+                
+                if (window.pageYOffset > 300) {
+                    if(lineFab) lineFab.classList.add('show');
+                    if(scrollToTopBtn) scrollToTopBtn.classList.add('show');
+                } else {
+                    if(lineFab) lineFab.classList.remove('show');
+                    if(scrollToTopBtn) scrollToTopBtn.classList.remove('show');
+                }
+            };
+
             if (scrollToTopBtn) {
-                window.addEventListener('scroll', () => {
-                    if (window.pageYOffset > 300) { scrollToTopBtn.classList.add('show'); } else { scrollToTopBtn.classList.remove('show'); }
-                });
                 scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
             }
+            
             var sr = ScrollReveal({ distance: '50px', duration: 1000, easing: 'ease-out', reset: false });
             sr.reveal('.reveal-title', { origin: 'top' });
             sr.reveal('.reveal-text', { origin: 'bottom', delay: 200 });

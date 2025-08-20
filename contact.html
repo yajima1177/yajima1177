@@ -9,6 +9,7 @@
     <script src="https://unpkg.com/scrollreveal"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
+        html { scroll-behavior: smooth; }
         body { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
         .bg-main-blue { background-color: #0072b8; }
         .text-main-blue { color: #0072b8; }
@@ -23,10 +24,10 @@
         .nav-link:hover::after { width: 100%; }
         .btn-primary { transition: all 0.3s ease; }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
-        #scrollToTopBtn { position: fixed; bottom: 20px; right: 15px; z-index: 99; cursor: pointer; opacity: 0; transform: translateX(100px); transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: none; border: none; padding: 0; }
+        #scrollToTopBtn { position: fixed; bottom: 20px; right: 15px; z-index: 99; cursor: pointer; opacity: 0; transform: translateY(100px); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); background: none; border: none; padding: 0; }
         @media (min-width: 768px) { #scrollToTopBtn { bottom: 30px; right: 30px; } }
-        #scrollToTopBtn.show { opacity: 0.7; transform: translateX(0); }
-        #scrollToTopBtn:hover.show { opacity: 1; }
+        #scrollToTopBtn.show { opacity: 1; transform: translateY(0); }
+        #scrollToTopBtn:hover.show { transform: translateY(-5px); }
         .btn-line-ghost { color: #fff; border: 2px solid #fff; transition: all 0.3s ease; }
         .btn-line-ghost:hover { background: #06C755; color: #fff; border-color: #06C755; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0, 0.2); }
         .speech-bubble { position: relative; background: #fff; border-radius: .4em; color: #333; }
@@ -37,11 +38,22 @@
         #line-fab:hover { transform: scale(1.1); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
         .lang-selector-dropdown { transition: opacity 0.2s ease, transform 0.2s ease; transform: translateY(-10px); opacity: 0; pointer-events: none; }
         .lang-selector-dropdown.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        .dropdown { position: relative; }
+        .dropdown .dropdown-arrow { opacity: 0; transition: opacity 0.2s ease-in-out; }
+        .dropdown:hover .dropdown-arrow { opacity: 1; }
+        .dropdown-menu { opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.2s ease-out, transform 0.2s ease-out, visibility 0.2s; pointer-events: none; position: absolute; left: 0; top: 100%; }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+        .dropdown:hover > .dropdown-trigger { color: #0072b8; }
+        .dropdown-menu a { transition: background-color 0.2s ease, color 0.2s ease; }
+        .dropdown-menu a:hover { background-color: #eff6ff; color: #0072b8; }
+        #properties-submenu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
+        #properties-submenu.open { max-height: 200px; }
+        #properties-toggle .arrow-icon { transition: transform 0.3s ease; }
+        #properties-toggle.open .arrow-icon { transform: rotate(180deg); }
     </style>
 </head>
 <body class="bg-deep-gray text-gray-800">
 
-    <!-- Header -->
     <header id="main-header" class="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html">
@@ -50,8 +62,18 @@
             <nav class="hidden md:flex items-center text-sm space-x-4 lg:space-x-6">
                 <a href="strengths.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-strengths">当社の強み</a>
                 <a href="flow.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-flow">ご入居までの流れ</a>
-                <a href="properties.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-properties">物件情報</a>
-                <a href="customers.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-customers">お客様の声</a>
+                <div class="dropdown">
+                    <div class="dropdown-trigger text-gray-600 transition-colors flex items-center py-2 cursor-pointer">
+                        <span data-lang-key="nav-properties">物件情報</span>
+                        <i class="fa-solid fa-chevron-down ml-1 text-xs dropdown-arrow"></i>
+                    </div>
+                    <div class="dropdown-menu w-48 bg-white rounded-md shadow-lg z-50 overflow-hidden">
+                        <a href="properties_rental.html" class="block px-4 py-3 text-sm text-gray-700" data-lang-key="nav-properties-rental">賃貸物件</a>
+                        <a href="properties_sale.html" class="block px-4 py-3 text-sm text-gray-700" data-lang-key="nav-properties-sale">売買物件</a>
+                        <a href="properties_parking.html" class="block px-4 py-3 text-sm text-gray-700" data-lang-key="nav-properties-parking">駐車場</a>
+                    </div>
+                </div>
+                <a href="customers.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-protagonists">まちの主役たち</a>
                 <a href="company.html" class="text-gray-600 hover:text-main-blue transition-colors nav-link" data-lang-key="nav-company">会社概要</a>
                 <a href="contact.html" class="bg-main-blue text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 btn-primary" data-lang-key="nav-contact">お問い合わせ</a>
                 <div class="relative lang-selector">
@@ -61,9 +83,11 @@
                         <i class="fa-solid fa-chevron-down ml-1 text-xs"></i>
                     </button>
                     <div class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl z-50 overflow-hidden lang-selector-dropdown">
-                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="ja">日本語</a>
-                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="en">English</a>
-                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="zh">中文</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="ja">日本語</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="en">English</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="zh">中文</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="pt">Português</a>
                     </div>
                 </div>
             </nav>
@@ -76,6 +100,8 @@
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="ja">日本語</a>
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="en">English</a>
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="zh">中文</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="pt">Português</a>
                     </div>
                 </div>
                 <button id="mobile-menu-button" class="text-gray-600 focus:outline-none p-2">
@@ -86,8 +112,18 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white">
             <a href="strengths.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-strengths">当社の強み</a>
             <a href="flow.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-flow">ご入居までの流れ</a>
-            <a href="properties.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties">物件情報</a>
-            <a href="customers.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-customers">お客様の声</a>
+            <div>
+                <button id="properties-toggle" class="w-full text-left block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100 font-bold flex justify-between items-center">
+                    <span data-lang-key="nav-properties">物件情報</span>
+                    <i class="fa-solid fa-chevron-down ml-1 text-xs arrow-icon"></i>
+                </button>
+                <div id="properties-submenu" class="pl-4">
+                     <a href="properties_rental.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties-rental">賃貸物件</a>
+                     <a href="properties_sale.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties-sale">売買物件</a>
+                     <a href="properties_parking.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-properties-parking">駐車場</a>
+                </div>
+             </div>
+            <a href="customers.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-protagonists">まちの主役たち</a>
             <a href="company.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100" data-lang-key="nav-company">会社概要</a>
             <a href="contact.html" class="block py-2 px-6 text-sm bg-blue-100 text-main-blue" data-lang-key="nav-contact">お問い合わせ</a>
             <div class="border-t border-gray-200 mt-2 pt-2">
@@ -95,25 +131,24 @@
                 <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="ja">日本語</a>
                 <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="en">English</a>
                 <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="zh">中文</a>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="vi">Tiếng Việt</a>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="pt">Português</a>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="py-16 sm:py-20">
         <div class="container mx-auto px-6">
             <h1 class="section-title text-3xl font-bold text-center inline-block w-full mb-12 reveal-title" data-lang-key="contact-title">お問い合わせ</h1>
             <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg reveal-card">
                 <p class="text-center text-gray-600 mb-8" data-lang-key="contact-intro">物件に関するご質問やご相談など、お気軽にお問い合わせください。<br>担当者より折り返しご連絡いたします。</p>
                 
-                <!-- ▼▼▼ フォームの修正箇所 ▼▼▼ -->
                 <form action="https://formspree.io/f/myzpqgdk" method="POST">
                     <div class="space-y-6">
                         <div>
                             <label for="name" class="block text-gray-700 font-bold mb-2"><span data-lang-key="form-name">お名前</span><span class="text-red-500 ml-2">*</span></label>
                             <div class="relative">
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-3"><i class="fa-solid fa-user text-gray-400"></i></span>
-                                <!-- `name`属性を追加 -->
                                 <input type="text" id="name" name="name" class="w-full pl-10 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-main-blue" required placeholder="例：谷島 太郎">
                             </div>
                         </div>
@@ -121,7 +156,6 @@
                             <label for="email" class="block text-gray-700 font-bold mb-2"><span data-lang-key="form-email">メールアドレス</span><span class="text-red-500 ml-2">*</span></label>
                              <div class="relative">
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-3"><i class="fa-solid fa-envelope text-gray-400"></i></span>
-                                <!-- `name`属性を追加 -->
                                 <input type="email" id="email" name="email" class="w-full pl-10 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-main-blue" required placeholder="例：example@yajima.co.jp">
                             </div>
                         </div>
@@ -129,28 +163,25 @@
                             <label for="tel" class="block text-gray-700 font-bold mb-2" data-lang-key="form-tel">電話番号</label>
                              <div class="relative">
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-3"><i class="fa-solid fa-phone text-gray-400"></i></span>
-                                <!-- `name`属性を追加 -->
                                 <input type="tel" id="tel" name="tel" class="w-full pl-10 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-main-blue" placeholder="例：048-563-1177">
                             </div>
                         </div>
                         <div>
                             <label for="message" class="block text-gray-700 font-bold mb-2"><span data-lang-key="form-message">お問い合わせ内容</span><span class="text-red-500 ml-2">*</span></label>
-                            <!-- `name`属性を追加 -->
                             <textarea id="message" name="message" rows="5" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-main-blue" required data-lang-placeholder="form-message-placeholder"></textarea>
                         </div>
                     </div>
+                    <input name="_gotcha" style="display:none" tabindex="-1" type="text"/>
                     <div class="text-center mt-8">
                         <button type="submit" class="bg-accent-yellow text-white font-bold py-3 px-8 rounded-lg hover:bg-amber-500 btn-primary text-lg">
                             <span data-lang-key="form-submit">入力内容を確認して送信</span> <i class="fa-solid fa-paper-plane ml-2"></i>
                         </button>
                     </div>
                 </form>
-                 <!-- ▲▲▲ ここまで ▲▲▲ -->
             </div>
         </div>
     </main>
 
-    <!-- LINE CTA Section -->
     <section class="bg-white py-16 sm:py-20">
         <div class="container mx-auto px-6 max-w-4xl">
             <div class="bg-gray-700 rounded-2xl shadow-xl p-8 reveal-card">
@@ -163,7 +194,7 @@
                         <p class="text-gray-300 mb-6" data-lang-key="line-text">
                             友だち追加で、最新の物件情報やお得な情報をお届けします。
                         </p>
-                        <a href="https://line.me/R/ti/p/YOUR_LINE_ID" target="_blank" class="font-bold py-3 px-8 rounded-full transition-all text-lg inline-flex items-center justify-center btn-line-ghost">
+                        <a href="https://page.line.me/504ohkyn?openQrModal=true" target="_blank" class="font-bold py-3 px-8 rounded-full transition-all text-lg inline-flex items-center justify-center btn-line-ghost">
                             <i class="fa-solid fa-plus mr-2"></i> <span data-lang-key="line-btn">友だち追加はこちら</span>
                         </a>
                     </div>
@@ -177,7 +208,7 @@
                     </div>
                     <div class="col-span-12 md:col-span-4 flex items-center justify-center md:justify-end">
                         <div class="w-36 h-36 p-2 bg-white rounded-lg shadow-lg flex-shrink-0">
-                            <img src="https://placehold.co/144x144/ffffff/333333?text=QR" alt="LINE QR Code">
+                            <img src="images/lineqr.png" alt="LINE QR Code">
                         </div>
                     </div>
                 </div>
@@ -185,22 +216,27 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-10">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="mb-6 md:mb-0">
                     <p class="text-xl font-bold">有限会社 谷島商事</p>
                     <p class="text-sm mt-2">〒348-0053<br>埼玉県羽生市南6丁目16-9</p>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
                 <div class="text-sm">
                     <h4 class="font-bold mb-3" data-lang-key="footer-sitemap">サイトマップ</h4>
                     <a href="strengths.html" class="block mt-2 hover:underline" data-lang-key="nav-strengths">当社の強み</a>
                     <a href="flow.html" class="block mt-2 hover:underline" data-lang-key="nav-flow">ご入居までの流れ</a>
-                    <a href="properties.html" class="block mt-2 hover:underline" data-lang-key="nav-properties">物件情報</a>
-                    <a href="customers.html" class="block mt-2 hover:underline" data-lang-key="nav-customers">お客様の声</a>
+                    <a href="properties_parking.html" class="block mt-2 hover:underline" data-lang-key="nav-properties">物件情報</a>
+                    <a href="customers.html" class="block mt-2 hover:underline" data-lang-key="nav-protagonists">まちの主役たち</a>
                     <a href="company.html" class="block mt-2 hover:underline" data-lang-key="nav-company">会社概要</a>
                     <a href="contact.html" class="block mt-2 hover:underline" data-lang-key="nav-contact">お問い合わせ</a>
+                    <a href="privacy.html" class="block mt-2 hover:underline" data-lang-key="nav-privacy">プライバシーポリシー</a>
                 </div>
                  <div class="text-sm">
                     <h4 class="font-bold mb-3" data-lang-key="footer-hours">営業時間</h4>
@@ -209,49 +245,55 @@
                 </div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-6 text-center text-sm text-gray-400">
-                <p>&copy; 2024 Yajima Shoji Co., Ltd. All Rights Reserved.</p>
+                <p>&copy; 2025 Yajima Shoji Co., Ltd. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <button id="scrollToTopBtn">
-        <img src="images/scroll-to-top-btn-img.png" alt="トップに戻る" class="w-20 h-20 md:w-40 md:h-40 transition-transform duration-300 hover:scale-110">
+        <img src="images/scroll-to-top-btn-img.png" alt="トップに戻る" class="w-20 h-20 md:w-40 md:h-40 transition-transform duration-300">
     </button>
     
-    <a href="https://line.me/R/ti/p/YOUR_LINE_ID" target="_blank" id="line-fab">
+    <a href="https://page.line.me/504ohkyn?openQrModal=true" target="_blank" id="line-fab">
         <i class="fab fa-line text-white text-3xl md:text-4xl"></i>
     </a>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
              const translations = {
-                "nav-strengths": { ja: "当社の強み", en: "Our Strengths", zh: "我们的优势" },
-                "nav-flow": { ja: "ご入居までの流れ", en: "Process", zh: "入住流程" },
-                "nav-properties": { ja: "物件情報", en: "Properties", zh: "房产信息" },
-                "nav-customers": { ja: "お客様の声", en: "Testimonials", zh: "客户心声" },
-                "nav-company": { ja: "会社概要", en: "Company", zh: "公司简介" },
-                "nav-contact": { ja: "お問い合わせ", en: "Contact", zh: "联系我们" },
-                "contact-title": { ja: "お問い合わせ", en: "Contact Us", zh: "联系我们" },
+                "nav-strengths": { ja: "当社の強み", en: "Our Strengths", zh: "我们的优势", vi: "Thế mạnh của chúng tôi", pt: "Nossos Pontos Fortes" },
+                "nav-flow": { ja: "ご入居までの流れ", en: "Process", zh: "入住流程", vi: "Quy trình", pt: "Processo" },
+                "nav-properties": { ja: "物件情報", en: "Properties", zh: "房产信息", vi: "Tài sản", pt: "Imóveis" },
+                "nav-properties-rental": { ja: "賃貸物件", en: "Rental", zh: "租赁物业", vi: "Cho thuê", pt: "Aluguel" },
+                "nav-properties-sale": { ja: "売買物件", en: "For Sale", zh: "买卖物业", vi: "Rao bán", pt: "Para Venda" },
+                "nav-properties-parking": { ja: "駐車場", en: "Parking", zh: "停车场", vi: "Bãi đậu xe", pt: "Estacionamento" },
+                "nav-protagonists": { ja: "まちの主役たち", en: "Stars of the Town", zh: "小镇主角", vi: "Ngôi sao của Thị trấn", pt: "Estrelas da Cidade" },
+                "nav-company": { ja: "会社概要", en: "Company", zh: "公司简介", vi: "Công ty", pt: "Empresa" },
+                "nav-contact": { ja: "お問い合わせ", en: "Contact", zh: "联系我们", vi: "Liên hệ", pt: "Contato" },
+                "nav-privacy": { ja: "プライバシーポリシー", en: "Privacy Policy", zh: "隐私政策", vi: "Chính sách Bảo mật", pt: "Política de Privacidade" },
+                "contact-title": { ja: "お問い合わせ", en: "Contact Us", zh: "联系我们", vi: "Liên hệ chúng tôi", pt: "Contate-nos" },
                 "contact-intro": { 
                     ja: `物件に関するご質問やご相談など、お気軽にお問い合わせください。<br>担当者より折り返しご連絡いたします。`,
                     en: `Please feel free to contact us with any questions or consultations regarding properties.<br>Our staff will get back to you shortly.`,
-                    zh: `有关房产的任何问题或咨询，请随时与我们联系。<br>负责人会尽快回复您。`
+                    zh: `有关房产的任何问题或咨询，请随时与我们联系。<br>负责人会尽快回复您。`,
+                    vi: `Vui lòng liên hệ với chúng tôi nếu có bất kỳ câu hỏi hoặc thắc mắc nào về bất động sản.<br>Nhân viên của chúng tôi sẽ sớm liên hệ lại với bạn.`,
+                    pt: `Sinta-se à vontade para nos contatar com quaisquer perguntas ou consultas sobre imóveis.<br>Nossa equipe entrará em contato com você em breve.`
                 },
-                "form-name": { ja: "お名前", en: "Name", zh: "姓名" },
-                "form-email": { ja: "メールアドレス", en: "Email Address", zh: "电子邮件地址" },
-                "form-tel": { ja: "電話番号", en: "Phone Number", zh: "电话号码" },
-                "form-message": { ja: "お問い合わせ内容", en: "Inquiry", zh: "咨询内容" },
-                "form-message-placeholder": { ja: "物件に関するご質問、ご相談など、ご自由にご記入ください。", en: "Please feel free to write any questions or consultations regarding properties.", zh: "请自由填写有关房产的任何问题或咨询。" },
-                "form-submit": { ja: "入力内容を確認して送信", en: "Confirm and Send", zh: "确认并发送" },
-                "line-title": { ja: "LINE公式アカウント", en: "Official LINE Account", zh: "LINE官方账号" },
-                "line-text": { ja: "友だち追加で、最新の物件情報やお得な情報をお届けします。", en: "Add us to get the latest property deals and information.", zh: "添加好友，获取最新的房产信息和优惠资讯。" },
-                "line-btn": { ja: "友だち追加はこちら", en: "Add Friend", zh: "添加好友" },
-                "line-char-bubble": { ja: "お気軽に<br>ご相談ください！", en: "Feel free<br>to ask!", zh: "欢迎<br>随时咨询！" },
-                "footer-sitemap": { ja: "サイトマップ", en: "Sitemap", zh: "网站地图" },
-                "footer-hours": { ja: "営業時間", en: "Business Hours", zh: "营业时间" },
-                "footer-hours-details": { ja: "月-土: 9:00～19:00", en: "Mon-Sat: 9:00 AM - 7:00 PM", zh: "周一至周六: 9:00 - 19:00" },
-                "footer-closing-days": { ja: "定休日: 水曜、日曜（第1・最終週を除く）", en: "Closed: Wednesdays, Sundays (except 1st & last of month)", zh: "休息日: 周三、周日（每月第一和最后一周除外）" },
-                "language-menu-title": { ja: "言語", en: "Language", zh: "语言" }
+                "form-name": { ja: "お名前", en: "Name", zh: "姓名", vi: "Tên", pt: "Nome" },
+                "form-email": { ja: "メールアドレス", en: "Email Address", zh: "电子邮件地址", vi: "Địa chỉ email", pt: "Endereço de Email" },
+                "form-tel": { ja: "電話番号", en: "Phone Number", zh: "电话号码", vi: "Số điện thoại", pt: "Número de Telefone" },
+                "form-message": { ja: "お問い合わせ内容", en: "Inquiry", zh: "咨询内容", vi: "Nội dung yêu cầu", pt: "Mensagem" },
+                "form-message-placeholder": { ja: "物件に関するご質問、ご相談など、ご自由にご記入ください。", en: "Please feel free to write any questions or consultations regarding properties.", zh: "请自由填写有关房产的任何问题或咨询。", vi: "Vui lòng viết bất kỳ câu hỏi hoặc thắc mắc nào liên quan đến tài sản.", pt: "Sinta-se à vontade para escrever quaisquer perguntas ou consultas sobre imóveis." },
+                "form-submit": { ja: "入力内容を確認して送信", en: "Confirm and Send", zh: "确认并发送", vi: "Xác nhận và gửi", pt: "Confirmar e Enviar" },
+                "line-title": { ja: "LINE公式アカウント", en: "Official LINE Account", zh: "LINE官方账号", vi: "Tài khoản LINE chính thức", pt: "Conta Oficial do LINE" },
+                "line-text": { ja: "友だち追加で、最新の物件情報やお得な情報をお届けします。", en: "Add us to get the latest property deals and information.", zh: "添加好友，获取最新的房产信息和优惠资讯。", vi: "Thêm chúng tôi để nhận các ưu đãi và thông tin tài sản mới nhất.", pt: "Adicione-nos para receber as últimas ofertas e informações sobre imóveis." },
+                "line-btn": { ja: "友だち追加はこちら", en: "Add Friend", zh: "添加好友", vi: "Thêm bạn", pt: "Adicionar Amigo" },
+                "line-char-bubble": { ja: "お気軽に<br>ご相談ください！", en: "Feel free<br>to ask!", zh: "欢迎<br>随时咨询！", vi: "Hãy thoải mái<br>hỏi!", pt: "Sinta-se à vontade<br>para perguntar!" },
+                "footer-sitemap": { ja: "サイトマップ", en: "Sitemap", zh: "网站地图", vi: "Sơ đồ trang web", pt: "Mapa do Site" },
+                "footer-hours": { ja: "営業時間", en: "Business Hours", zh: "营业时间", vi: "Giờ làm việc", pt: "Horário de Funcionamento" },
+                "footer-hours-details": { ja: "月-土: 9:00～19:00", en: "Mon-Sat: 9:00 AM - 7:00 PM", zh: "周一至周六: 9:00 - 19:00", vi: "Thứ Hai-Thứ Bảy: 9:00 - 19:00", pt: "Seg-Sáb: 9:00 - 19:00" },
+                "footer-closing-days": { ja: "定休日: 水曜、日曜（第1・最終週を除く）", en: "Closed: Wednesdays, Sundays (except 1st & last of month)", zh: "休息日: 周三、周日（每月第一和最后一周除外）", vi: "Đóng cửa: Thứ Tư, Chủ Nhật (trừ Chủ Nhật đầu tiên và cuối cùng của tháng)", pt: "Fechado: Quartas-feiras, Domingos (exceto o primeiro e último domingo do mês)" },
+                "language-menu-title": { ja: "言語", en: "Language", zh: "语言", vi: "Ngôn ngữ", pt: "Idioma" }
             };
 
             function setLanguage(lang) {
@@ -276,6 +318,8 @@
                     if(lang === 'ja') elem.textContent = '日本語';
                     if(lang === 'en') elem.textContent = 'English';
                     if(lang === 'zh') elem.textContent = '中文';
+                    if(lang === 'vi') elem.textContent = 'Tiếng Việt';
+                    if(lang === 'pt') elem.textContent = 'Português';
                 });
 
                 localStorage.setItem('preferredLanguage', lang);
@@ -310,20 +354,38 @@
 
             var mobileMenuButton = document.getElementById('mobile-menu-button');
             var mobileMenu = document.getElementById('mobile-menu');
+            var propertiesToggle = document.getElementById('properties-toggle');
+            var propertiesSubmenu = document.getElementById('properties-submenu');
+
             if (mobileMenuButton) { mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); }); }
+            if (propertiesToggle) { 
+                propertiesToggle.addEventListener('click', () => { 
+                    propertiesSubmenu.classList.toggle('open');
+                    propertiesToggle.classList.toggle('open');
+                }); 
+            }
+
             var header = document.getElementById('main-header');
             var lineFab = document.getElementById('line-fab');
-            window.onscroll = function() {
-                if (header && window.scrollY > 50) { header.classList.add('header-scrolled'); } else if (header) { header.classList.remove('header-scrolled'); }
-                if (lineFab && window.pageYOffset > 300) { lineFab.classList.add('show'); } else if (lineFab) { lineFab.classList.remove('show'); }
-            };
             var scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+            window.onscroll = function() {
+                if (header && window.scrollY > 50) { header.classList.add('header-scrolled'); } 
+                else if (header) { header.classList.remove('header-scrolled'); }
+                
+                if (window.pageYOffset > 300) {
+                    if(lineFab) lineFab.classList.add('show');
+                    if(scrollToTopBtn) scrollToTopBtn.classList.add('show');
+                } else {
+                    if(lineFab) lineFab.classList.remove('show');
+                    if(scrollToTopBtn) scrollToTopBtn.classList.remove('show');
+                }
+            };
+
             if (scrollToTopBtn) {
-                window.addEventListener('scroll', () => {
-                    if (window.pageYOffset > 300) { scrollToTopBtn.classList.add('show'); } else { scrollToTopBtn.classList.remove('show'); }
-                });
                 scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
             }
+            
             var sr = ScrollReveal({ distance: '50px', duration: 1000, easing: 'ease-out', reset: false });
             sr.reveal('.reveal-title', { origin: 'top' });
             sr.reveal('.reveal-card', { origin: 'bottom' });

@@ -31,10 +31,10 @@
         #properties-submenu.open { max-height: 200px; }
         #properties-toggle .arrow-icon { transition: transform 0.3s ease; }
         #properties-toggle.open .arrow-icon { transform: rotate(180deg); }
-        #scrollToTopBtn { position: fixed; bottom: 20px; right: 15px; z-index: 99; cursor: pointer; opacity: 0; transform: translateX(100px); transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: none; border: none; padding: 0; }
+        #scrollToTopBtn { position: fixed; bottom: 20px; right: 15px; z-index: 99; cursor: pointer; opacity: 0; transform: translateY(100px); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); background: none; border: none; padding: 0; }
         @media (min-width: 768px) { #scrollToTopBtn { bottom: 30px; right: 30px; } }
-        #scrollToTopBtn.show { opacity: 0.7; transform: translateX(0); }
-        #scrollToTopBtn:hover.show { opacity: 1; }
+        #scrollToTopBtn.show { opacity: 1; transform: translateY(0); }
+        #scrollToTopBtn:hover.show { transform: translateY(-5px); }
         .btn-primary { transition: all 0.3s ease; }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
         .bg-accent-yellow { background-color: #f8b500; }
@@ -52,7 +52,6 @@
 </head>
 <body class="bg-deep-gray text-gray-800">
 
-    <!-- Header -->
     <header id="main-header" class="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html">
@@ -85,6 +84,8 @@
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="ja">日本語</a>
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="en">English</a>
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="zh">中文</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="pt">Português</a>
                     </div>
                 </div>
             </nav>
@@ -97,6 +98,8 @@
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="ja">日本語</a>
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="en">English</a>
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="zh">中文</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="pt">Português</a>
                     </div>
                 </div>
                 <button id="mobile-menu-button" class="text-gray-600 focus:outline-none p-2">
@@ -126,11 +129,12 @@
                 <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="ja">日本語</a>
                 <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="en">English</a>
                 <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="zh">中文</a>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="vi">Tiếng Việt</a>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="pt">Português</a>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="py-16 sm:py-20">
         <div class="container mx-auto px-6">
             <h1 class="section-title text-3xl font-bold text-center inline-block w-full mb-12 reveal-title" data-lang-key="company-title">会社概要</h1>
@@ -161,7 +165,7 @@
                             <h3 class="font-bold text-lg text-main-blue mb-4" data-lang-key="company-map-label">アクセスマップ</h3>
                             <div class="mb-4">
                                 <div class="aspect-w-16 aspect-h-9 rounded-md overflow-hidden border">
-                                    <iframe src="https://www.google.com/maps?q=有限会社谷島商事,埼玉県羽生市南6丁目16-9&z=17&output=embed" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    <iframe src="http://googleusercontent.com/maps/google.com/0" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 </div>
                             </div>
                             <p class="font-semibold text-gray-800">有限会社 谷島商事</p>
@@ -174,7 +178,6 @@
         </div>
     </main>
 
-    <!-- LINE CTA Section -->
     <section class="bg-white py-16 sm:py-20">
         <div class="container mx-auto px-6 max-w-4xl">
             <div class="bg-gray-700 rounded-2xl shadow-xl p-8 reveal-card">
@@ -187,7 +190,7 @@
                         <p class="text-gray-300 mb-6" data-lang-key="line-text">
                             友だち追加で、最新の物件情報やお得な情報をお届けします。
                         </p>
-                        <a href="https://line.me/R/ti/p/YOUR_LINE_ID" target="_blank" class="font-bold py-3 px-8 rounded-full transition-all text-lg inline-flex items-center justify-center btn-line-ghost">
+                        <a href="https://page.line.me/504ohkyn?openQrModal=true" target="_blank" class="font-bold py-3 px-8 rounded-full transition-all text-lg inline-flex items-center justify-center btn-line-ghost">
                             <i class="fa-solid fa-plus mr-2"></i> <span data-lang-key="line-btn">友だち追加はこちら</span>
                         </a>
                     </div>
@@ -201,7 +204,7 @@
                     </div>
                     <div class="col-span-12 md:col-span-4 flex items-center justify-center md:justify-end">
                         <div class="w-36 h-36 p-2 bg-white rounded-lg shadow-lg flex-shrink-0">
-                            <img src="https://placehold.co/144x144/ffffff/333333?text=QR" alt="LINE QR Code">
+                            <img src="images/lineqr.png" alt="LINE QR Code">
                         </div>
                     </div>
                 </div>
@@ -209,13 +212,17 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white mt-16 sm:mt-20">
+    <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-10">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="mb-6 md:mb-0">
                     <p class="text-xl font-bold">有限会社 谷島商事</p>
                     <p class="text-sm mt-2">〒348-0053<br>埼玉県羽生市南6丁目16-9</p>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
                 <div class="text-sm">
                     <h4 class="font-bold mb-3" data-lang-key="footer-sitemap">サイトマップ</h4>
@@ -225,6 +232,7 @@
                     <a href="customers.html" class="block mt-2 hover:underline" data-lang-key="nav-protagonists">まちの主役たち</a>
                     <a href="company.html" class="block mt-2 hover:underline" data-lang-key="nav-company">会社概要</a>
                     <a href="contact.html" class="block mt-2 hover:underline" data-lang-key="nav-contact">お問い合わせ</a>
+                    <a href="privacy.html" class="block mt-2 hover:underline" data-lang-key="nav-privacy">プライバシーポリシー</a>
                 </div>
                  <div class="text-sm">
                     <h4 class="font-bold mb-3" data-lang-key="footer-hours">営業時間</h4>
@@ -233,61 +241,66 @@
                 </div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-6 text-center text-sm text-gray-400">
-                <p>&copy; 2024 Yajima Shoji Co., Ltd. All Rights Reserved.</p>
+                <p>© 2025 Yajima Shoji Co., Ltd. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <button id="scrollToTopBtn">
-        <img src="images/scroll-to-top-btn-img.png" alt="トップに戻る" class="w-20 h-20 md:w-40 md:h-40 transition-transform duration-300 hover:scale-110">
+        <img src="images/scroll-to-top-btn-img.png" alt="トップに戻る" class="w-20 h-20 md:w-40 md:h-40 transition-transform duration-300">
     </button>
     
-    <a href="https://line.me/R/ti/p/YOUR_LINE_ID" target="_blank" id="line-fab">
+    <a href="https://page.line.me/504ohkyn?openQrModal=true" target="_blank" id="line-fab">
         <i class="fab fa-line text-white text-3xl md:text-4xl"></i>
     </a>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
              const translations = {
-                "nav-strengths": { ja: "当社の強み", en: "Our Strengths", zh: "我们的优势" },
-                "nav-flow": { ja: "ご入居までの流れ", en: "Process", zh: "入住流程" },
-                "nav-properties": { ja: "物件情報", en: "Properties", zh: "房产信息" },
-                "nav-properties-rental": { ja: "賃貸物件", en: "Rental", zh: "租赁物业" },
-                "nav-properties-sale": { ja: "売買物件", en: "For Sale", zh: "买卖物业" },
-                "nav-properties-parking": { ja: "駐車場", en: "Parking", zh: "停车场" },
-                "nav-protagonists": { ja: "まちの主役たち", en: "Stars of the Town", zh: "小镇主角" },
-                "nav-company": { ja: "会社概要", en: "Company", zh: "公司简介" },
-                "nav-contact": { ja: "お問い合わせ", en: "Contact", zh: "联系我们" },
-                "company-title": { ja: "会社概要", en: "Company Profile", zh: "公司简介" },
+                "nav-strengths": { ja: "当社の強み", en: "Our Strengths", zh: "我们的优势", vi: "Thế mạnh của chúng tôi", pt: "Nossos Pontos Fortes" },
+                "nav-flow": { ja: "ご入居までの流れ", en: "Process", zh: "入住流程", vi: "Quy trình", pt: "Processo" },
+                "nav-properties": { ja: "物件情報", en: "Properties", zh: "房产信息", vi: "Tài sản", pt: "Imóveis" },
+                "nav-properties-rental": { ja: "賃貸物件", en: "Rental", zh: "租赁物业", vi: "Cho thuê", pt: "Aluguel" },
+                "nav-properties-sale": { ja: "売買物件", en: "For Sale", zh: "买卖物业", vi: "Rao bán", pt: "Para Venda" },
+                "nav-properties-parking": { ja: "駐車場", en: "Parking", zh: "停车场", vi: "Bãi đậu xe", pt: "Estacionamento" },
+                "nav-protagonists": { ja: "まちの主役たち", en: "Stars of the Town", zh: "小镇主角", vi: "Ngôi sao của Thị trấn", pt: "Estrelas da Cidade" },
+                "nav-company": { ja: "会社概要", en: "Company", zh: "公司简介", vi: "Công ty", pt: "Empresa" },
+                "nav-contact": { ja: "お問い合わせ", en: "Contact", zh: "联系我们", vi: "Liên hệ", pt: "Contato" },
+                "nav-privacy": { ja: "プライバシーポリシー", en: "Privacy Policy", zh: "隐私政策", vi: "Chính sách Bảo mật", pt: "Política de Privacidade" },
+                "company-title": { ja: "会社概要", en: "Company Profile", zh: "公司简介", vi: "Hồ sơ công ty", pt: "Perfil da Empresa" },
                 "company-quote": { 
                     ja: "当社は東武伊勢崎線羽生市を基点に埼玉県の北部及び群馬県東部に営業を展開しております。賃貸（貸家・店舗・倉庫・アパート・マンション・駐車場）、売買（土地・住宅・店舗・工場倉庫用地）の不動産情報は当社へお任せ下さい。どうぞお気軽にご相談ご来店下さい。",
                     en: "Based in Hanyu City on the Tobu Isesaki Line, we operate in northern Saitama and eastern Gunma. Please entrust us with real estate information for both rental (houses, shops, warehouses, apartments, condos, parking) and sales (land, homes, shops, factory/warehouse sites). Feel free to visit us for a consultation.",
-                    zh: "本公司以东武伊势崎线的羽生市为据点，业务范围覆盖埼玉县北部及群马县东部。无论是租赁（独栋、店铺、仓库、公寓、停车场）还是买卖（土地、住宅、店铺、工厂仓库用地）的房地产信息，请放心交给我们。欢迎随时光临咨询。"
+                    zh: "本公司以东武伊势崎线的羽生市为据点，业务范围覆盖埼玉县北部及群马县东部。无论是租赁（独栋、店铺、仓库、公寓、停车场）还是买卖（土地、住宅、店铺、工厂仓库用地）的房地产信息，请放心交给我们。欢迎随时光临咨询。",
+                    vi: "Có trụ sở tại Thành phố Hanyu trên Tuyến Tobu Isesaki, chúng tôi hoạt động ở phía bắc Saitama và phía đông Gunma. Vui lòng giao phó cho chúng tôi thông tin bất động sản cho cả thuê (nhà, cửa hàng, nhà kho, căn hộ, chung cư, bãi đậu xe) và bán (đất, nhà, cửa hàng, nhà xưởng/kho bãi). Hãy đến thăm chúng tôi để được tư vấn.",
+                    pt: "Com sede na cidade de Hanyu, na Linha Tobu Isesaki, operamos no norte de Saitama и no leste de Gunma. Por favor, confie-nos informações imobiliárias para aluguel (casas, lojas, armazéns, apartamentos, condomínios, estacionamento) e vendas (terrenos, casas, lojas, terrenos para fábricas/armazéns). Sinta-se à vontade para nos visitar para uma consulta."
                 },
-                "company-name-label": { ja: "会社名", en: "Company Name", zh: "公司名称" },
-                "company-rep-label": { ja: "代表者", en: "Representative", zh: "代表人" },
-                "company-hours-label": { ja: "営業時間", en: "Business Hours", zh: "营业时间" },
-                "company-closed-label": { ja: "定休日", en: "Closing Days", zh: "休息日" },
-                "company-closed-value": { ja: "水曜 / 第1日曜日と最終週の日曜日を除く日曜日", en: "Wednesdays / Sundays (excluding the first and last Sunday of the month)", zh: "星期三 / 除第一个和最后一个星期日外的星期日" },
-                "company-license-label": { ja: "免許番号", en: "License No.", zh: "许可证号" },
-                "company-org-label": { ja: "所属団体", en: "Affiliations", zh: "所属团体" },
-                "company-services-label": { ja: "主な取扱物件", en: "Main Properties", zh: "主要经营项目" },
+                "company-name-label": { ja: "会社名", en: "Company Name", zh: "公司名称", vi: "Tên công ty", pt: "Nome da Empresa" },
+                "company-rep-label": { ja: "代表者", en: "Representative", zh: "代表人", vi: "Người đại diện", pt: "Representante" },
+                "company-hours-label": { ja: "営業時間", en: "Business Hours", zh: "营业时间", vi: "Giờ làm việc", pt: "Horário de Funcionamento" },
+                "company-closed-label": { ja: "定休日", en: "Closing Days", zh: "休息日", vi: "Ngày nghỉ", pt: "Dias de Fechamento" },
+                "company-closed-value": { ja: "水曜 / 第1日曜日と最終週の日曜日を除く日曜日", en: "Wednesdays / Sundays (excluding the first and last Sunday of the month)", zh: "星期三 / 除第一个和最后一个星期日外的星期日", vi: "Thứ Tư / Chủ Nhật (trừ Chủ Nhật đầu tiên và cuối cùng của tháng)", pt: "Quartas-feiras / Domingos (exceto o primeiro e último domingo do mês)" },
+                "company-license-label": { ja: "免許番号", en: "License No.", zh: "许可证号", vi: "Số giấy phép", pt: "Nº da Licença" },
+                "company-org-label": { ja: "所属団体", en: "Affiliations", zh: "所属团体", vi: "Các hiệp hội", pt: "Afiliações" },
+                "company-services-label": { ja: "主な取扱物件", en: "Main Properties", zh: "主要经营项目", vi: "Tài sản chính", pt: "Principais Imóveis" },
                 "company-services-value": { 
                     ja: "【賃貸】アパート・マンション、戸建ほか、事務所・店舗、駐車場、工場・倉庫<br>【売買】新築・中古戸建、中古マンション、土地、事務所・店舗",
                     en: "[Rental] Apartments, condos, houses, offices, shops, parking, factories, warehouses<br>[Sale] New/used houses, used condos, land, offices, shops",
-                    zh: "【租赁】公寓、高级公寓、独栋住宅、办公室、店铺、停车场、工厂、仓库<br>【买卖】新建/二手独栋住宅、二手高级公寓、土地、办公室、店铺"
+                    zh: "【租赁】公寓、高级公寓、独栋住宅、办公室、店铺、停车场、工厂、仓库<br>【买卖】新建/二手独栋住宅、二手高级公寓、土地、办公室、店铺",
+                    vi: "[Cho thuê] Căn hộ, chung cư, nhà riêng, văn phòng, cửa hàng, bãi đậu xe, nhà máy, nhà kho<br>[Bán] Nhà mới/cũ, chung cư cũ, đất, văn phòng, cửa hàng",
+                    pt: "[Aluguel] Apartamentos, condomínios, casas, escritórios, lojas, estacionamento, fábricas, armazéns<br>[Venda] Casas novas/usadas, condomínios usados, terrenos, escritórios, lojas"
                 },
-                "company-map-label": { ja: "アクセスマップ", en: "Access Map", zh: "交通地图" },
-                "company-access": { ja: "東武伊勢崎線・大師線 / 羽生駅 徒歩20分", en: "Tobu Isesaki/Daishi Line / 20-min walk from Hanyu Station", zh: "东武伊势崎线・大师线 / 羽生站 步行20分钟" },
-                "line-title": { ja: "LINE公式アカウント", en: "Official LINE Account", zh: "LINE官方账号" },
-                "line-text": { ja: "友だち追加で、最新の物件情報やお得な情報をお届けします。", en: "Add us to get the latest property deals and information.", zh: "添加好友，获取最新的房产信息和优惠资讯。" },
-                "line-btn": { ja: "友だち追加はこちら", en: "Add Friend", zh: "添加好友" },
-                "line-char-bubble": { ja: "お気軽に<br>ご相談ください！", en: "Feel free<br>to ask!", zh: "欢迎<br>随时咨询！" },
-                "footer-sitemap": { ja: "サイトマップ", en: "Sitemap", zh: "网站地图" },
-                "footer-hours": { ja: "営業時間", en: "Business Hours", zh: "营业时间" },
-                "footer-hours-details": { ja: "月-土: 9:00～19:00", en: "Mon-Sat: 9:00 AM - 7:00 PM", zh: "周一至周六: 9:00 - 19:00" },
-                "footer-closing-days": { ja: "定休日: 水曜、日曜（第1・最終週を除く）", en: "Closed: Wednesdays, Sundays (except 1st & last of month)", zh: "休息日: 周三、周日（每月第一和最后一周除外）" },
-                "language-menu-title": { ja: "言語", en: "Language", zh: "语言" }
+                "company-map-label": { ja: "アクセスマップ", en: "Access Map", zh: "交通地图", vi: "Bản đồ truy cập", pt: "Mapa de Acesso" },
+                "company-access": { ja: "東武伊勢崎線・大師線 / 羽生駅 徒歩20分", en: "Tobu Isesaki/Daishi Line / 20-min walk from Hanyu Station", zh: "东武伊势崎线・大师线 / 羽生站 步行20分钟", vi: "Tuyến Tobu Isesaki/Daishi / 20 phút đi bộ từ Ga Hanyu", pt: "Linha Tobu Isesaki/Daishi / 20 min a pé da Estação de Hanyu" },
+                "line-title": { ja: "LINE公式アカウント", en: "Official LINE Account", zh: "LINE官方账号", vi: "Tài khoản LINE chính thức", pt: "Conta Oficial do LINE" },
+                "line-text": { ja: "友だち追加で、最新の物件情報やお得な情報をお届けします。", en: "Add us to get the latest property deals and information.", zh: "添加好友，获取最新的房产信息和优惠资讯。", vi: "Thêm chúng tôi để nhận các ưu đãi và thông tin tài sản mới nhất.", pt: "Adicione-nos para receber as últimas ofertas e informações sobre imóveis." },
+                "line-btn": { ja: "友だち追加はこちら", en: "Add Friend", zh: "添加好友", vi: "Thêm bạn", pt: "Adicionar Amigo" },
+                "line-char-bubble": { ja: "お気軽に<br>ご相談ください！", en: "Feel free<br>to ask!", zh: "欢迎<br>随时咨询！", vi: "Hãy thoải mái<br>hỏi!", pt: "Sinta-se à vontade<br>para perguntar!" },
+                "footer-sitemap": { ja: "サイトマップ", en: "Sitemap", zh: "网站地图", vi: "Sơ đồ trang web", pt: "Mapa do Site" },
+                "footer-hours": { ja: "営業時間", en: "Business Hours", zh: "营业时间", vi: "Giờ làm việc", pt: "Horário de Funcionamento" },
+                "footer-hours-details": { ja: "月-土: 9:00～19:00", en: "Mon-Sat: 9:00 AM - 7:00 PM", zh: "周一至周六: 9:00 - 19:00", vi: "Thứ Hai-Thứ Bảy: 9:00 - 19:00", pt: "Seg-Sáb: 9:00 - 19:00" },
+                "footer-closing-days": { ja: "定休日: 水曜、日曜（第1・最終週を除く）", en: "Closed: Wednesdays, Sundays (except 1st & last of month)", zh: "休息日: 周三、周日（每月第一和最后一周除外）", vi: "Đóng cửa: Thứ Tư, Chủ Nhật (trừ Chủ Nhật đầu tiên và cuối cùng của tháng)", pt: "Fechado: Quartas-feiras, Domingos (exceto o primeiro e último domingo do mês)" },
+                "language-menu-title": { ja: "言語", en: "Language", zh: "语言", vi: "Ngôn ngữ", pt: "Idioma" }
             };
 
             function setLanguage(lang) {
@@ -302,6 +315,8 @@
                     if(lang === 'ja') elem.textContent = '日本語';
                     if(lang === 'en') elem.textContent = 'English';
                     if(lang === 'zh') elem.textContent = '中文';
+                    if(lang === 'vi') elem.textContent = 'Tiếng Việt';
+                    if(lang === 'pt') elem.textContent = 'Português';
                 });
 
                 localStorage.setItem('preferredLanguage', lang);
@@ -349,17 +364,25 @@
 
             var header = document.getElementById('main-header');
             var lineFab = document.getElementById('line-fab');
-            window.onscroll = function() {
-                if (header && window.scrollY > 50) { header.classList.add('header-scrolled'); } else if (header) { header.classList.remove('header-scrolled'); }
-                if (lineFab && window.pageYOffset > 300) { lineFab.classList.add('show'); } else if (lineFab) { lineFab.classList.remove('show'); }
-            };
             var scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+            window.onscroll = function() {
+                if (header && window.scrollY > 50) { header.classList.add('header-scrolled'); } 
+                else if (header) { header.classList.remove('header-scrolled'); }
+                
+                if (window.pageYOffset > 300) {
+                    if(lineFab) lineFab.classList.add('show');
+                    if(scrollToTopBtn) scrollToTopBtn.classList.add('show');
+                } else {
+                    if(lineFab) lineFab.classList.remove('show');
+                    if(scrollToTopBtn) scrollToTopBtn.classList.remove('show');
+                }
+            };
+
             if (scrollToTopBtn) {
-                window.addEventListener('scroll', () => {
-                    if (window.pageYOffset > 300) { scrollToTopBtn.classList.add('show'); } else { scrollToTopBtn.classList.remove('show'); }
-                });
                 scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
             }
+            
             var sr = ScrollReveal({ distance: '50px', duration: 1000, easing: 'ease-out', reset: false });
             sr.reveal('.reveal-title', { origin: 'top' });
             sr.reveal('.reveal-card', { origin: 'bottom' });

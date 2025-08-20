@@ -39,10 +39,10 @@
         #properties-toggle .arrow-icon { transition: transform 0.3s ease; }
         #properties-toggle.open .arrow-icon { transform: rotate(180deg); }
 
-        #scrollToTopBtn { position: fixed; bottom: 20px; right: 15px; z-index: 99; cursor: pointer; opacity: 0; transform: translateX(100px); transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: none; border: none; padding: 0; }
+        #scrollToTopBtn { position: fixed; bottom: 20px; right: 15px; z-index: 99; cursor: pointer; opacity: 0; transform: translateY(100px); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); background: none; border: none; padding: 0; }
         @media (min-width: 768px) { #scrollToTopBtn { bottom: 30px; right: 30px; } }
-        #scrollToTopBtn.show { opacity: 0.7; transform: translateX(0); }
-        #scrollToTopBtn:hover.show { opacity: 1; }
+        #scrollToTopBtn.show { opacity: 1; transform: translateY(0); }
+        #scrollToTopBtn:hover.show { transform: translateY(-5px); }
         .btn-primary { transition: all 0.3s ease; }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
         .btn-line-ghost { color: #fff; border: 2px solid #fff; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
@@ -59,7 +59,6 @@
 </head>
 <body class="bg-deep-gray text-gray-800">
 
-    <!-- Header -->
     <header id="main-header" class="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html">
@@ -92,6 +91,8 @@
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="ja">日本語</a>
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="en">English</a>
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="zh">中文</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 hover:text-main-blue" data-lang="pt">Português</a>
                     </div>
                 </div>
             </nav>
@@ -104,6 +105,8 @@
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="ja">日本語</a>
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="en">English</a>
                         <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="zh">中文</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" class="lang-option block px-4 py-2 text-sm text-gray-800 hover:bg-main-blue hover:text-white" data-lang="pt">Português</a>
                     </div>
                 </div>
                 <button id="mobile-menu-button" class="text-gray-600 focus:outline-none p-2">
@@ -133,11 +136,12 @@
                 <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="ja">日本語</a>
                 <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="en">English</a>
                 <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="zh">中文</a>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="vi">Tiếng Việt</a>
+                <a href="#" class="lang-option block px-6 py-2 text-sm text-gray-600 hover:bg-gray-100" data-lang="pt">Português</a>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="py-16 sm:py-20">
         <div class="container mx-auto px-6">
             <h1 class="section-title text-3xl font-bold text-center inline-block w-full mb-8 reveal-title" data-lang-key="strengths-title">当社の強み</h1>
@@ -150,7 +154,7 @@
             <div class="space-y-20">
                 <div class="md:flex items-center gap-12 reveal-card">
                     <div class="md:w-1/2">
-                        <img src="https://placehold.co/600x400/e0f2fe/333333?text=Hanyu+City+Map" alt="羽生市の地図" class="rounded-lg shadow-lg w-full">
+                        <img src="images/gaikan.jpeg" alt="地域密着の情報力" class="rounded-lg shadow-lg w-full">
                     </div>
                     <div class="md:w-1/2 mt-8 md:mt-0">
                         <div class="flex items-center mb-4">
@@ -163,7 +167,7 @@
 
                 <div class="md:flex items-center gap-12 flex-row-reverse reveal-card">
                     <div class="md:w-1/2">
-                        <img src="https://placehold.co/600x400/fefce8/333333?text=Experienced+Staff" alt="経験豊富なスタッフ" class="rounded-lg shadow-lg w-full">
+                        <img src="images/staff.jpeg" alt="経験豊富なスタッフ" class="rounded-lg shadow-lg w-full">
                     </div>
                     <div class="md:w-1/2 mt-8 md:mt-0">
                         <div class="flex items-center mb-4">
@@ -176,7 +180,7 @@
 
                 <div class="md:flex items-center gap-12 reveal-card">
                     <div class="md:w-1/2">
-                        <img src="https://placehold.co/600x400/dbeafe/333333?text=Total+Support" alt="総合的なサポート" class="rounded-lg shadow-lg w-full">
+                        <img src="images/support.jpeg" alt="総合的なサポート" class="rounded-lg shadow-lg w-full">
                     </div>
                     <div class="md:w-1/2 mt-8 md:mt-0">
                         <div class="flex items-center mb-4">
@@ -190,7 +194,6 @@
         </div>
     </main>
     
-    <!-- LINE CTA Section -->
     <section class="bg-white py-16 sm:py-20">
         <div class="container mx-auto px-6 max-w-4xl">
             <div class="bg-gray-700 rounded-2xl shadow-xl p-8 reveal-card">
@@ -203,7 +206,7 @@
                         <p class="text-gray-300 mb-6" data-lang-key="line-text">
                             友だち追加で、最新の物件情報やお得な情報をお届けします。
                         </p>
-                        <a href="https://line.me/R/ti/p/YOUR_LINE_ID" target="_blank" class="font-bold py-3 px-8 rounded-full transition-all text-lg inline-flex items-center justify-center btn-line-ghost">
+                        <a href="https://page.line.me/504ohkyn?openQrModal=true" target="_blank" class="font-bold py-3 px-8 rounded-full transition-all text-lg inline-flex items-center justify-center btn-line-ghost">
                             <i class="fa-solid fa-plus mr-2"></i> <span data-lang-key="line-btn">友だち追加はこちら</span>
                         </a>
                     </div>
@@ -217,7 +220,7 @@
                     </div>
                     <div class="col-span-12 md:col-span-4 flex items-center justify-center md:justify-end">
                         <div class="w-36 h-36 p-2 bg-white rounded-lg shadow-lg flex-shrink-0">
-                            <img src="https://placehold.co/144x144/ffffff/333333?text=QR" alt="LINE QR Code">
+                            <img src="images/lineqr.png" alt="LINE QR Code">
                         </div>
                     </div>
                 </div>
@@ -225,13 +228,17 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white mt-16 sm:mt-20">
+    <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-10">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="mb-6 md:mb-0">
                     <p class="text-xl font-bold">有限会社 谷島商事</p>
                     <p class="text-sm mt-2">〒348-0053<br>埼玉県羽生市南6丁目16-9</p>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
                 <div class="text-sm">
                     <h4 class="font-bold mb-3" data-lang-key="footer-sitemap">サイトマップ</h4>
@@ -241,6 +248,7 @@
                     <a href="customers.html" class="block mt-2 hover:underline" data-lang-key="nav-protagonists">まちの主役たち</a>
                     <a href="company.html" class="block mt-2 hover:underline" data-lang-key="nav-company">会社概要</a>
                     <a href="contact.html" class="block mt-2 hover:underline" data-lang-key="nav-contact">お問い合わせ</a>
+                    <a href="privacy.html" class="block mt-2 hover:underline" data-lang-key="nav-privacy">プライバシーポリシー</a>
                 </div>
                  <div class="text-sm">
                     <h4 class="font-bold mb-3" data-lang-key="footer-hours">営業時間</h4>
@@ -249,52 +257,55 @@
                 </div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-6 text-center text-sm text-gray-400">
-                <p>&copy; 2024 Yajima Shoji Co., Ltd. All Rights Reserved.</p>
+                <p>&copy; 2025 Yajima Shoji Co., Ltd. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <button id="scrollToTopBtn">
-        <img src="images/scroll-to-top-btn-img.png" alt="トップに戻る" class="w-20 h-20 md:w-40 md:h-40 transition-transform duration-300 hover:scale-110">
+        <img src="images/scroll-to-top-btn-img.png" alt="トップに戻る" class="w-20 h-20 md:w-40 md:h-40 transition-transform duration-300">
     </button>
     
-    <a href="https://line.me/R/ti/p/YOUR_LINE_ID" target="_blank" id="line-fab">
+    <a href="https://page.line.me/504ohkyn?openQrModal=true" target="_blank" id="line-fab">
         <i class="fab fa-line text-white text-3xl md:text-4xl"></i>
     </a>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const translations = {
-                "nav-strengths": { ja: "当社の強み", en: "Our Strengths", zh: "我们的优势" },
-                "nav-flow": { ja: "ご入居までの流れ", en: "Process", zh: "入住流程" },
-                "nav-properties": { ja: "物件情報", en: "Properties", zh: "房产信息" },
-                "nav-properties-rental": { ja: "賃貸物件", en: "Rental", zh: "租赁物业" },
-                "nav-properties-sale": { ja: "売買物件", en: "For Sale", zh: "买卖物业" },
-                "nav-properties-parking": { ja: "駐車場", en: "Parking", zh: "停车场" },
-                "nav-protagonists": { ja: "まちの主役たち", en: "Stars of the Town", zh: "小镇主角" },
-                "nav-company": { ja: "会社概要", en: "Company", zh: "公司简介" },
-                "nav-contact": { ja: "お問い合わせ", en: "Contact", zh: "联系我们" },
-                "strengths-title": { ja: "当社の強み", en: "Our Strengths", zh: "我们的优势" },
+                "nav-strengths": { ja: "当社の強み", en: "Our Strengths", zh: "我们的优势", vi: "Thế mạnh của chúng tôi", pt: "Nossos Pontos Fortes" },
+                "nav-flow": { ja: "ご入居までの流れ", en: "Process", zh: "入住流程", vi: "Quy trình", pt: "Processo" },
+                "nav-properties": { ja: "物件情報", en: "Properties", zh: "房产信息", vi: "Tài sản", pt: "Imóveis" },
+                "nav-properties-rental": { ja: "賃貸物件", en: "Rental", zh: "租赁物业", vi: "Cho thuê", pt: "Aluguel" },
+                "nav-properties-sale": { ja: "売買物件", en: "For Sale", zh: "买卖物业", vi: "Rao bán", pt: "Para Venda" },
+                "nav-properties-parking": { ja: "駐車場", en: "Parking", zh: "停车场", vi: "Bãi đậu xe", pt: "Estacionamento" },
+                "nav-protagonists": { ja: "まちの主役たち", en: "Stars of the Town", zh: "小镇主角", vi: "Ngôi sao của Thị trấn", pt: "Estrelas da Cidade" },
+                "nav-company": { ja: "会社概要", en: "Company", zh: "公司简介", vi: "Công ty", pt: "Empresa" },
+                "nav-contact": { ja: "お問い合わせ", en: "Contact", zh: "联系我们", vi: "Liên hệ", pt: "Contato" },
+                "nav-privacy": { ja: "プライバシーポリシー", en: "Privacy Policy", zh: "隐私政策", vi: "Chính sách Bảo mật", pt: "Política de Privacidade" },
+                "strengths-title": { ja: "当社の強み", en: "Our Strengths", zh: "我们的优势", vi: "Thế mạnh của chúng tôi", pt: "Nossos Pontos Fortes" },
                 "strengths-intro": { 
                     ja: `「谷島商事にお願いしてよかった」<br>そう言っていただけることが、私たちの何よりの喜びです。<br>地域に根ざした不動産会社だからこそできる、3つの強みをご紹介します。`,
                     en: `"We're glad we chose Yajima Shoji."<br>Hearing these words is our greatest joy.<br>Here are three strengths that only a locally-rooted real estate company can offer.`,
-                    zh: `“选择谷岛商事真是太好了。”<br>能听到您这样说，是我们最大的荣幸。<br>在此介绍我们作为一家扎根于地区的不动产公司所独有的三大优势。`
+                    zh: `“选择谷岛商事真是太好了。”<br>能听到您这样说，是我们最大的荣幸。<br>在此介绍我们作为一家扎根于地区的不动产公司所独有的三大优势。`,
+                    vi: `"Chúng tôi rất vui vì đã chọn Yajima Shoji."<br>Nghe những lời này là niềm vui lớn nhất của chúng tôi.<br>Đây là ba thế mạnh mà chỉ một công ty bất động sản có nguồn gốc địa phương mới có thể cung cấp.`,
+                    pt: `"Estamos felizes por ter escolhido a Yajima Shoji."<br>Ouvir estas palavras é a nossa maior alegria.<br>Aqui estão três pontos fortes que apenas uma empresa imobiliária com raízes locais pode oferecer.`
                 },
-                "strength1-title": { ja: "地域密着の情報力", en: "Local Information Power", zh: "本地化的信息力量" },
-                "strength1-text": { ja: "羽生市の物件ならお任せください。長年培ってきたネットワークを活かし、インターネットには掲載されていないような掘り出し物の物件情報もご提供できるのが自慢です。地域のイベントやお店の情報など、暮らしに役立つ情報もお伝えします。", en: "Leave Hanyu City properties to us. We pride ourselves on using our long-cultivated network to provide information on hidden gems not found online. We also share useful local information on events and shops.", zh: "羽生市的房产请放心交给我们。我们活用多年建立的网络，为您提供网上找不到的珍贵房源信息，这是我们的骄傲。我们还会提供地区活动、商店等对生活有用的信息。" },
-                "strength2-title": { ja: "経験豊富なスタッフ", en: "Experienced Staff", zh: "经验丰富的员工" },
-                "strength2-text": { ja: "この道数十年のベテランスタッフが、お客様一人ひとりのご要望やライフプランに親身に寄り添います。「こんな暮らしがしたい」という想いを、ぜひお聞かせください。資金計画やローンのご相談も承ります。", en: "Our veteran staff, with decades of experience, will closely support each customer's needs and life plans. Please tell us your ideal lifestyle. We also offer consultations on financial planning and loans.", zh: "我们拥有数十年经验的资深员工，会贴近每一位客户的需求和人生规划，倾听您“想要这样生活”的想法。我们也接受关于资金规划和贷款的咨询。" },
-                "strength3-title": { ja: "総合的なサポート", en: "Comprehensive Support", zh: "全方位的支持" },
-                "strength3-text": { ja: "物件探しから資金計画、ご契約、そしてご入居後のアフターフォローまで一貫してサポートいたします。リフォームや火災保険、引越し業者のご紹介など、暮らしの中でのお困りごとも、お気軽にご相談ください。", en: "We provide consistent support from property searching and financial planning to contracts and after-move-in follow-ups. Feel free to consult us about any living-related issues, such as renovations, fire insurance, or moving company referrals.", zh: "从找房、资金规划、签约到入住后的跟踪服务，我们提供一贯的支持。无论是装修、火灾保险，还是搬家公司的介绍，生活中遇到的任何困难，都请随时与我们商量。" },
-                "line-title": { ja: "LINE公式アカウント", en: "Official LINE Account", zh: "LINE官方账号" },
-                "line-text": { ja: "友だち追加で、最新の物件情報やお得な情報をお届けします。", en: "Add us to get the latest property deals and information.", zh: "添加好友，获取最新的房产信息和优惠资讯。" },
-                "line-btn": { ja: "友だち追加はこちら", en: "Add Friend", zh: "添加好友" },
-                "line-char-bubble": { ja: "お気軽に<br>ご相談ください！", en: "Feel free<br>to ask!", zh: "欢迎<br>随时咨询！" },
-                "footer-sitemap": { ja: "サイトマップ", en: "Sitemap", zh: "网站地图" },
-                "footer-hours": { ja: "営業時間", en: "Business Hours", zh: "营业时间" },
-                "footer-hours-details": { ja: "月-土: 9:00～19:00", en: "Mon-Sat: 9:00 AM - 7:00 PM", zh: "周一至周六: 9:00 - 19:00" },
-                "footer-closing-days": { ja: "定休日: 水曜、日曜（第1・最終週を除く）", en: "Closed: Wednesdays, Sundays (except 1st & last of month)", zh: "休息日: 周三、周日（每月第一和最后一周除外）" },
-                "language-menu-title": { ja: "言語", en: "Language", zh: "语言" }
+                "strength1-title": { ja: "地域密着の情報力", en: "Local Information Power", zh: "本地化的信息力量", vi: "Sức mạnh Thông tin Địa phương", pt: "Poder de Informação Local" },
+                "strength1-text": { ja: "羽生市の物件ならお任せください。長年培ってきたネットワークを活かし、インターネットには掲載されていないような掘り出し物の物件情報もご提供できるのが自慢です。地域のイベントやお店の情報など、暮らしに役立つ情報もお伝えします。", en: "Leave Hanyu City properties to us. We pride ourselves on using our long-cultivated network to provide information on hidden gems not found online. We also share useful local information on events and shops.", zh: "羽生市的房产请放心交给我们。我们活用多年建立的网络，为您提供网上找不到的珍贵房源信息，这是我们的骄傲。我们还会提供地区活动、商店等对生活有用的信息。", vi: "Hãy để các tài sản ở Thành phố Hanyu cho chúng tôi. Chúng tôi tự hào về việc sử dụng mạng lưới được xây dựng lâu năm của mình để cung cấp thông tin về những viên ngọc quý không có trên mạng. Chúng tôi cũng chia sẻ thông tin địa phương hữu ích về các sự kiện và cửa hàng.", pt: "Deixe os imóveis da cidade de Hanyu conosco. Orgulhamo-nos de usar nossa rede cultivada há muito tempo para fornecer informações sobre joias escondidas não encontradas online. Também compartilhamos informações locais úteis sobre eventos e lojas." },
+                "strength2-title": { ja: "経験豊富なスタッフ", en: "Experienced Staff", zh: "经验丰富的员工", vi: "Nhân viên giàu kinh nghiệm", pt: "Equipe Experiente" },
+                "strength2-text": { ja: "この道数十年のベテランスタッフが、お客様一人ひとりのご要望やライフプランに親身に寄り添います。「こんな暮らしがしたい」という想いを、ぜひお聞かせください。資金計画やローンのご相談も承ります。", en: "Our veteran staff, with decades of experience, will closely support each customer's needs and life plans. Please tell us your ideal lifestyle. We also offer consultations on financial planning and loans.", zh: "我们拥有数十年经验的资深员工，会贴近每一位客户的需求和人生规划，倾听您“想要这样生活”的想法。我们也接受关于资金规划和贷款的咨询。", vi: "Đội ngũ nhân viên kỳ cựu của chúng tôi, với hàng chục năm kinh nghiệm, sẽ hỗ trợ chặt chẽ nhu cầu và kế hoạch cuộc sống của mỗi khách hàng. Vui lòng cho chúng tôi biết lối sống lý tưởng của bạn. Chúng tôi cũng cung cấp tư vấn về kế hoạch tài chính và các khoản vay.", pt: "Nossa equipe veterana, com décadas de experiência, apoiará de perto as necessidades e os planos de vida de cada cliente. Por favor, diga-nos o seu estilo de vida ideal. Também oferecemos consultas sobre planejamento financeiro e empréstimos." },
+                "strength3-title": { ja: "総合的なサポート", en: "Comprehensive Support", zh: "全方位的支持", vi: "Hỗ trợ toàn diện", pt: "Suporte Abrangente" },
+                "strength3-text": { ja: "物件探しから資金計画、ご契約、そしてご入居後のアフターフォローまで一貫してサポートいたします。リフォームや火災保険、引越し業者のご紹介など、暮らしの中でのお困りごとも、お気軽にご相談ください。", en: "We provide consistent support from property searching and financial planning to contracts and after-move-in follow-ups. Feel free to consult us about any living-related issues, such as renovations, fire insurance, or moving company referrals.", zh: "从找房、资金规划、签约到入住后的跟踪服务，我们提供一贯的支持。无论是装修、火灾保险，还是搬家公司的介绍，生活中遇到的任何困难，都请随时与我们商量。", vi: "Chúng tôi cung cấp hỗ trợ nhất quán từ việc tìm kiếm tài sản và lập kế hoạch tài chính đến hợp đồng và theo dõi sau khi chuyển đến. Vui lòng tham khảo ý kiến của chúng tôi về bất kỳ vấn đề nào liên quan đến cuộc sống, chẳng hạn như cải tạo, bảo hiểm cháy nổ hoặc giới thiệu công ty chuyển nhà.", pt: "Oferecemos suporte consistente desde a busca de imóveis e planejamento financeiro até contratos e acompanhamento pós-mudança. Sinta-se à vontade para nos consultar sobre quaisquer questões relacionadas à vida, como reformas, seguro contra incêndio ou indicações de empresas de mudança." },
+                "line-title": { ja: "LINE公式アカウント", en: "Official LINE Account", zh: "LINE官方账号", vi: "Tài khoản LINE chính thức", pt: "Conta Oficial do LINE" },
+                "line-text": { ja: "友だち追加で、最新の物件情報やお得な情報をお届けします。", en: "Add us to get the latest property deals and information.", zh: "添加好友，获取最新的房产信息和优惠资讯。", vi: "Thêm chúng tôi để nhận các ưu đãi và thông tin tài sản mới nhất.", pt: "Adicione-nos para receber as últimas ofertas e informações sobre imóveis." },
+                "line-btn": { ja: "友だち追加はこちら", en: "Add Friend", zh: "添加好友", vi: "Thêm bạn", pt: "Adicionar Amigo" },
+                "line-char-bubble": { ja: "お気軽に<br>ご相談ください！", en: "Feel free<br>to ask!", zh: "欢迎<br>随时咨询！", vi: "Hãy thoải mái<br>hỏi!", pt: "Sinta-se à vontade<br>para perguntar!" },
+                "footer-sitemap": { ja: "サイトマップ", en: "Sitemap", zh: "网站地图", vi: "Sơ đồ trang web", pt: "Mapa do Site" },
+                "footer-hours": { ja: "営業時間", en: "Business Hours", zh: "营业时间", vi: "Giờ làm việc", pt: "Horário de Funcionamento" },
+                "footer-hours-details": { ja: "月-土: 9:00～19:00", en: "Mon-Sat: 9:00 AM - 7:00 PM", zh: "周一至周六: 9:00 - 19:00", vi: "Thứ Hai-Thứ Bảy: 9:00 - 19:00", pt: "Seg-Sáb: 9:00 - 19:00" },
+                "footer-closing-days": { ja: "定休日: 水曜、日曜（第1・最終週を除く）", en: "Closed: Wednesdays, Sundays (except 1st & last of month)", zh: "休息日: 周三、周日（每月第一和最后一周除外）", vi: "Đóng cửa: Thứ Tư, Chủ Nhật (trừ Chủ Nhật đầu tiên và cuối cùng của tháng)", pt: "Fechado: Quartas-feiras, Domingos (exceto o primeiro e último domingo do mês)" },
+                "language-menu-title": { ja: "言語", en: "Language", zh: "语言", vi: "Ngôn ngữ", pt: "Idioma" }
             };
 
             function setLanguage(lang) {
@@ -309,6 +320,8 @@
                     if(lang === 'ja') elem.textContent = '日本語';
                     if(lang === 'en') elem.textContent = 'English';
                     if(lang === 'zh') elem.textContent = '中文';
+                    if(lang === 'vi') elem.textContent = 'Tiếng Việt';
+                    if(lang === 'pt') elem.textContent = 'Português';
                 });
 
                 localStorage.setItem('preferredLanguage', lang);
@@ -356,17 +369,25 @@
             
             var header = document.getElementById('main-header');
             var lineFab = document.getElementById('line-fab');
-            window.onscroll = function() {
-                if (header && window.scrollY > 50) { header.classList.add('header-scrolled'); } else if (header) { header.classList.remove('header-scrolled'); }
-                if (lineFab && window.pageYOffset > 300) { lineFab.classList.add('show'); } else if (lineFab) { lineFab.classList.remove('show'); }
-            };
             var scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+            window.onscroll = function() {
+                if (header && window.scrollY > 50) { header.classList.add('header-scrolled'); } 
+                else if (header) { header.classList.remove('header-scrolled'); }
+                
+                if (window.pageYOffset > 300) {
+                    if(lineFab) lineFab.classList.add('show');
+                    if(scrollToTopBtn) scrollToTopBtn.classList.add('show');
+                } else {
+                    if(lineFab) lineFab.classList.remove('show');
+                    if(scrollToTopBtn) scrollToTopBtn.classList.remove('show');
+                }
+            };
+
             if (scrollToTopBtn) {
-                window.addEventListener('scroll', () => {
-                    if (window.pageYOffset > 300) { scrollToTopBtn.classList.add('show'); } else { scrollToTopBtn.classList.remove('show'); }
-                });
                 scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
             }
+            
             var sr = ScrollReveal({ distance: '50px', duration: 1000, easing: 'ease-out', reset: false });
             sr.reveal('.reveal-title', { origin: 'top' });
             sr.reveal('.reveal-text', { origin: 'bottom', delay: 200 });
@@ -376,3 +397,5 @@
 
 </body>
 </html>
+}
+次はこれにも翻訳の適応をお願い！
