@@ -180,6 +180,9 @@
         <section class="bg-deep-gray py-16 sm:py-20">
             <div class="container mx-auto px-6">
                 <h2 class="section-title text-3xl font-bold text-center inline-block w-full mb-12 reveal-title" data-lang-key="rec-title">おすすめ物件情報</h2>
+                
+                <!-- おすすめ物件情報をコメントアウト -->
+                <!--
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <a href="https://www.park-direct.jp/parkinglot/PK000061082" target="_blank" rel="noopener noreferrer" class="block bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 reveal-card">
                         <div class="relative h-56">
@@ -215,7 +218,7 @@
                     </a>
                     <a href="https://www.park-direct.jp/parkinglot/PK000061084" target="_blank" rel="noopener noreferrer" class="block bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 reveal-card">
                         <div class="relative h-56">
-                           <iframe src="https://maps.google.co.jp/maps?output=embed&q=%E7%94%B0%E8%BE%BA%E9%A7%90%E8%BB%8A%E5%A0%B4%EF%BD%9C%E3%83%91%E3%83%BC%E3%82%AF%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%2C%20%E5%9F%BC%E7%8E%89%E7%9C%8C%E7%BE%BD%E7%94%9F%E5%B8%82%E8%A5%BF5-30-1&t=m&z=17" class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                           <iframe src="https://maps.google.co.jp/maps?output=embed&q=%E7%94%B0%E8%BE%BA%E9%A7%90%E8%BB%8A%E5%A0%B4%EF%BD%9C%E3%83%91%E3%83%BC%E3%82%AF%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%2C%20%E5%9F%BC%E7%8E%89%E7%9C%8C%E7%BE%羽%E7%94%9F%E5%B8%82%E8%A5%BF5-30-1&t=m&z=17" class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             <div class="absolute top-2 left-2 flex flex-wrap gap-1">
                                 <span class="bg-accent-yellow text-white text-xs font-bold px-2 py-1 rounded-full" data-lang-key="tag-available">空きあり</span>
                             </div>
@@ -235,6 +238,13 @@
                         <span data-lang-key="rec-btn">もっと物件を見る</span> <i class="fa-solid fa-arrow-right ml-2"></i>
                     </a>
                 </div>
+                -->
+                <!-- 物件がない場合のメッセージを表示 -->
+                <div class="text-center py-16 bg-white rounded-lg shadow-lg">
+                    <i class="fa-solid fa-hourglass-half text-4xl text-gray-400 mb-4"></i>
+                    <p class="text-xl text-gray-600" data-lang-key="prep-title">現在、公開中の物件はありません。</p>
+                    <p class="text-gray-500 mt-2" data-lang-key="prep-text">準備が整い次第、順次公開いたしますので、今しばらくお待ちください。</p>
+                </div>
             </div>
         </section>
 
@@ -245,7 +255,7 @@
                     <ul class="divide-y divide-gray-200">
                         <li class="p-4">
                             <div>
-                                <time class="text-sm text-gray-500 mr-4">2025.09.05</time>
+                                <time class="text-sm text-gray-500 mr-4">2025.09.13</time>
                                 <span class="font-bold text-main-blue">
                                     <i class="fa-solid fa-globe mr-2 text-gray-400"></i>
                                     <span>ホームページをリニューアルしました。</span>
@@ -289,7 +299,7 @@
                             <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-40 speech-bubble p-2 text-center text-sm font-bold shadow-lg">
                                 <p data-lang-key="line-char-bubble">お気軽に<br>ご相談ください！</p>
                             </div>
-                            <img src="images/yajimashoji_originalcharacter_A.png" alt="谷島商事 オリジナルキャラクター" class="w-full h-full object-contain drop-shadow-lg mt-11">
+                            <img src="images/yajimashoji_originalcharacter_A.png" alt="谷島商事 オリジナルキャラクター" class="w-full object-contain drop-shadow-lg">
                         </div>
                     </div>
                     <div class="col-span-12 md:col-span-4 flex items-center justify-center md:justify-end">
@@ -420,7 +430,7 @@
                 "hero-title": { 
                     ja: "ようこそ、谷島商事へ", 
                     en: "Welcome to Yajima Shoji", 
-                    zh: "欢迎来到谷岛商事",
+                    zh: "欢迎来到谷島商事",
                     vi: "Chào mừng đến với Yajima Shoji",
                     pt: "Bem-vindo à Yajima Shoji"
                 },
@@ -598,6 +608,20 @@
                     zh: "语言",
                     vi: "Ngôn ngữ",
                     pt: "Idioma"
+                },
+                "prep-title": { 
+                    ja: "現在、公開中の物件はありません。", 
+                    en: "There are currently no properties available.", 
+                    zh: "目前没有可供查看的房产。",
+                    vi: "Hiện tại không có tài sản nào được đăng.",
+                    pt: "Atualmente, não há imóveis disponíveis." 
+                },
+                "prep-text": { 
+                    ja: "準備が整い次第、順次公開いたしますので、今しばらくお待ちください。", 
+                    en: "We will be releasing them as they become ready. Please check back again soon.", 
+                    zh: "准备就绪后我们将陆续发布，请稍候。",
+                    vi: "Chúng tôi sẽ đăng chúng ngay khi sẵn sàng. Vui lòng kiểm tra lại sau.",
+                    pt: "Nós os lançaremos assim que estiverem prontos. Por favor, volte em breve."
                 }
             };
 
@@ -690,5 +714,4 @@
 
 </body>
 </html>
-}
-お知らせの日付を今日の日付に変えてほしい
+
