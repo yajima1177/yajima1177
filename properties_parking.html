@@ -139,6 +139,8 @@
         <div class="container mx-auto px-6">
             <h1 class="section-title text-3xl font-bold text-center inline-block w-full mb-16" data-lang-key="properties-parking-title">駐車場物件</h1>
 
+            <!-- フィルター機能をコメントアウトして非表示に -->
+            <!--
             <div class="bg-white p-6 rounded-lg shadow-lg mb-12">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
                     <div>
@@ -163,13 +165,15 @@
                     </div>
                 </div>
             </div>
+            -->
 
             <div id="properties-list" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                </div>
-            <div id="no-results" class="hidden text-center py-16">
-                <i class="fa-solid fa-magnifying-glass text-4xl text-gray-400 mb-4"></i>
-                <p class="text-xl text-gray-600" data-lang-key="no-results-title">指定された条件の物件は見つかりませんでした。</p>
-                <p class="text-gray-500 mt-2" data-lang-key="no-results-text">条件を変更して再度お試しください。</p>
+                <!-- 物件リストはJavaScriptによってここに挿入されます -->
+            </div>
+            <div id="no-results" class="hidden text-center py-16 bg-white rounded-lg shadow-lg">
+                <i class="fa-solid fa-hourglass-half text-4xl text-gray-400 mb-4"></i>
+                <p class="text-xl text-gray-600" data-lang-key="prep-title">現在、公開中の物件はありません。</p>
+                <p class="text-gray-500 mt-2" data-lang-key="prep-text">準備が整い次第、順次公開いたしますので、今しばらくお待ちください。</p>
             </div>
         </div>
     </main>
@@ -272,8 +276,8 @@
                 "filter-sort-asc": { ja: "賃料の安い順", en: "Price: Low to High", zh: "租金从低到高", vi: "Giá: Thấp đến Cao", pt: "Preço: Menor para o Maior" },
                 "filter-sort-desc": { ja: "賃料の高い順", en: "Price: High to Low", zh: "租金从高到低", vi: "Giá: Cao đến Thấp", pt: "Preço: Maior para o Menor" },
                 "filter-reset": { ja: "リセット", en: "Reset", zh: "重置", vi: "Đặt lại", pt: "Redefinir" },
-                "no-results-title": { ja: "指定された条件の物件は見つかりませんでした。", en: "No properties were found matching your criteria.", zh: "未找到符合您条件的房产。", vi: "Không tìm thấy tài sản nào phù hợp với tiêu chí của bạn.", pt: "Nenhum imóvel encontrado com os seus critérios." },
-                "no-results-text": { ja: "条件を変更して再度お試しください。", en: "Please change the criteria and try again.", zh: "请更改条件后重试。", vi: "Vui lòng thay đổi tiêu chí và thử lại.", pt: "Por favor, altere os critérios e tente novamente." },
+                "prep-title": { ja: "現在、公開中の物件はありません。", en: "There are currently no properties available.", zh: "目前没有可供查看的房产。", vi: "Hiện tại không có tài sản nào được đăng.", pt: "Atualmente, não há imóveis disponíveis." },
+                "prep-text": { ja: "準備が整い次第、順次公開いたしますので、今しばらくお待ちください。", en: "We will be releasing them as they become ready. Please check back again soon.", zh: "准备就绪后我们将陆续发布，请稍候。", vi: "Chúng tôi sẽ đăng chúng ngay khi sẵn sàng. Vui lòng kiểm tra lại sau.", pt: "Nós os lançaremos assim que estiverem prontos. Por favor, volte em breve." },
                 "line-title": { ja: "LINE公式アカウント", en: "Official LINE Account", zh: "LINE官方账号", vi: "Tài khoản LINE chính thức", pt: "Conta Oficial do LINE" },
                 "line-text": { ja: "友だち追加で、最新の物件情報やお得な情報をお届けします。", en: "Add us to get the latest property deals and information.", zh: "添加好友，获取最新的房产信息和优惠资讯。", vi: "Thêm chúng tôi để nhận các ưu đãi và thông tin tài sản mới nhất.", pt: "Adicione-nos para receber as últimas ofertas e informações sobre imóveis." },
                 "line-btn": { ja: "友だち追加はこちら", en: "Add Friend", zh: "添加好友", vi: "Thêm bạn", pt: "Adicionar Amigo" },
@@ -290,6 +294,8 @@
                 "language-menu-title": { ja: "言語", en: "Language", zh: "语言", vi: "Ngôn ngữ", pt: "Idioma" }
             };
 
+            // 物件データをコメントアウトして非表示に
+            /*
             const propertiesData = [
                 {"id":1,"type":"parking","name":{"ja":"城沼駐車場","en":"Shironuma Parking","zh":"城沼停车场","vi":"Bãi đậu xe Shironuma","pt":"Estacionamento Shironuma"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。","vi":"Nhấp vào thẻ để biết chi tiết và đăng ký.","pt":"Clique no cartão para detalhes e inscrição."},"price":4322,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県羽生市東8-12-1","en":"8-12-1 Higashi, Hanyu, Saitama","zh":"埼玉县羽生市东8-12-1","vi":"8-12-1 Higashi, Hanyu, Saitama","pt":"8-12-1 Higashi, Hanyu, Saitama"},"url":"https://www.park-direct.jp/parkinglot/PK000061082"}},
                 {"id":2,"type":"parking","name":{"ja":"篠崎駐車場","en":"Shinozaki Parking","zh":"篠崎停车场","vi":"Bãi đậu xe Shinozaki","pt":"Estacionamento Shinozaki"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。","vi":"Nhấp vào thẻ để biết chi tiết và đăng ký.","pt":"Clique no cartão para detalhes e inscrição."},"price":4322,"tags":["tag-available"],"details":{"address":{"ja":"埼玉県羽生市西5-35-13","en":"5-35-13 Nishi, Hanyu, Saitama","zh":"埼玉县羽生市西5-35-13","vi":"5-35-13 Nishi, Hanyu, Saitama","pt":"5-35-13 Nishi, Hanyu, Saitama"},"url":"https://www.park-direct.jp/parkinglot/PK000061083"}},
@@ -328,6 +334,8 @@
                 {"id":39,"type":"parking","name":{"ja":"高崎問屋町駅前駐車場","en":"Takasaki-Tonyamachi Station Front Parking","zh":"高崎问屋町站前停车场","vi":"Bãi đậu xe ga Takasaki-Tonyamachi","pt":"Estacionamento da Estação Takasaki-Tonyamachi"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。","vi":"Nhấp vào thẻ để biết chi tiết và đăng ký.","pt":"Clique no cartão para detalhes e inscrição."},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"群馬県高崎市問屋町1-1-1","en":"1-1-1 Toiyamachi, Takasaki, Gunma","zh":"群马县高崎市问屋町1-1-1","vi":"1-1-1 Toiyamachi, Takasaki, Gunma","pt":"1-1-1 Toiyamachi, Takasaki, Gunma"},"url":"https://www.park-direct.jp/parkinglot/PK000063140"}},
                 {"id":40,"type":"parking","name":{"ja":"井野駅前駐車場","en":"Ino Station Front Parking","zh":"井野站前停车场","vi":"Bãi đậu xe ga Ino","pt":"Estacionamento da Estação Ino"},"description":{"ja":"詳細・お申し込みはカードをクリックしてください。","en":"Click card for details and application.","zh":"点击卡片查看详情和申请。","vi":"Nhấp vào thẻ để biết chi tiết và đăng ký.","pt":"Clique no cartão para detalhes e inscrição."},"price":4950,"tags":["tag-available","tag-station"],"details":{"address":{"ja":"群馬県高崎市井野町1084-1","en":"1084-1 Ino-machi, Takasaki, Gunma","zh":"群马县高崎市井野町1084-1","vi":"1084-1 Ino-machi, Takasaki, Gunma","pt":"1084-1 Ino-machi, Takasaki, Gunma"},"url":"https://www.park-direct.jp/parkinglot/PK000063141"}},
             ];
+            */
+            const propertiesData = []; // 空の配列にして物件を非表示に
 
             const propertyList = document.getElementById('properties-list');
             const noResults = document.getElementById('no-results');
@@ -371,12 +379,17 @@
             const filterAndSortProperties = () => {
                 const lang = document.documentElement.lang || 'ja';
                 let filtered = [...propertiesData];
-                const tags = [...tagsFilter.querySelectorAll('input:checked')].map(el => el.value);
-                const sort = sortOrder.value;
+                
+                // フィルターがnullでないことを確認
+                if (tagsFilter && sortOrder) {
+                    const tags = [...tagsFilter.querySelectorAll('input:checked')].map(el => el.value);
+                    const sort = sortOrder.value;
 
-                if (tags.length > 0) { filtered = filtered.filter(p => tags.every(tagKey => p.tags.includes(tagKey))); }
-                if (sort === 'price-asc') { filtered.sort((a, b) => a.price - b.price); } 
-                else if (sort === 'price-desc') { filtered.sort((a, b) => b.price - a.price); }
+                    if (tags.length > 0) { filtered = filtered.filter(p => tags.every(tagKey => p.tags.includes(tagKey))); }
+                    if (sort === 'price-asc') { filtered.sort((a, b) => a.price - b.price); } 
+                    else if (sort === 'price-desc') { filtered.sort((a, b) => b.price - a.price); }
+                }
+
                 renderProperties(filtered, lang);
             };
             
@@ -411,13 +424,15 @@
                 option.addEventListener('click', (e) => { e.preventDefault(); setLanguage(e.target.getAttribute('data-lang')); });
             });
             
-            tagsFilter.addEventListener('change', filterAndSortProperties);
-            sortOrder.addEventListener('change', filterAndSortProperties);
-            resetFilterBtn.addEventListener('click', () => {
-                sortOrder.value = 'default';
-                [...tagsFilter.querySelectorAll('input')].forEach(el => el.checked = false);
-                filterAndSortProperties();
-            });
+            if (tagsFilter) tagsFilter.addEventListener('change', filterAndSortProperties);
+            if (sortOrder) sortOrder.addEventListener('change', filterAndSortProperties);
+            if (resetFilterBtn) {
+                resetFilterBtn.addEventListener('click', () => {
+                    sortOrder.value = 'default';
+                    [...tagsFilter.querySelectorAll('input')].forEach(el => el.checked = false);
+                    filterAndSortProperties();
+                });
+            }
 
             const savedLang = localStorage.getItem('preferredLanguage') || 'ja';
             setLanguage(savedLang);
@@ -458,5 +473,3 @@
 
 </body>
 </html>
-}
-次はこれにもお願い！
